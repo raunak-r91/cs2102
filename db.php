@@ -2,5 +2,5 @@
 	session_start();
 
 	include $_SERVER['DOCUMENT_ROOT'].'/db.class.php';
-	$db = new database('CS2102', '54.251.249.158/localhost', 'root', 'root'); // new instance of database class
+	$db = new database('CS2102', '54.251.249.158/phpmyadmin', 'root', 'root'); // new instance of database class
 ?>
