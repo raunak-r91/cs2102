@@ -213,7 +213,7 @@
 				  <select type="text" class="input-medium" style="margin-left:50px;">
 				   <?php include'db.php';
     
-					$hotelBranch_query = $db->query("SELECT name FROM Hotel Branch");
+					$hotelBranch_query = $db->query("SELECT city FROM Hotel Branch");
 					while($hotelBranch = $db->fetch_assoc($hotelBranch_query))
 					{
 					     echo '
