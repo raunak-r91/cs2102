@@ -213,11 +213,11 @@
 				  <select type="text" class="input-medium" style="margin-left:50px;">
 				   <?php include'db.php';
     
-					$hotelBranch_query = $db->query("SELECT city FROM Hotel Branch");
-					while($hotelBranch = $db->fetch_assoc($hotelBranch_query))
+					$user_query = $db->query("SELECT city FROM Hotel Branch");
+					while($user = $db->fetch_assoc($user_query))
 					{
 					     echo '
-						   <option>'.stripslashes($hotelBranch['city']).'</option>
+						   <option>'.stripslashes($user['city']).'</option>
 						  ';
 					}    
 				   ?>
