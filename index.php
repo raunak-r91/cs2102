@@ -234,22 +234,6 @@
 				  <strong> Hotel Name </strong>
 				  <select type="text" id="hotel_name" class="input-medium" style="margin-left:50px;">
 				   
-				   <?php
-    
-					$hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
-					$hotel = $db->fetch_assoc($hotel_query);
-
-					$choice = $hotel['city'];
-
-		    			$hotel_query = $db->query("SELECT name FROM `Hotel` where city = '$choice'");
-					while($hotel = $db->fetch_assoc($hotel_query))
-					{
-					 echo '<option>'
-					 .stripslashes($hotel['name']).
-					 '</option>';
-					}    
-				   ?> 
-
 				  </select>
 				  
 				  <div>
@@ -333,7 +317,7 @@
 	    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	    <script>
-	       $("#city").change(function() {
+	       $("#city").select(function() {
 		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());		    
 	       });
 	       
