@@ -76,7 +76,7 @@
      
      <?php
      function enterinsql($user_id, $bookid, $hotelname, $country, $city, $number, $arrivdata, $returndate) {
-	$db->query("INSERT into `Booking` values ('$user_id', '$bookid', '$hotelname', '$country', '$city', '$number', '$arrivdata', '$returndate'));  
+	$db->query("INSERT into `Booking` values ('$user_id', '$bookid', '$hotelname', '$country', '$city', '$number', '$arrivdata', '$returndate')");  
      }
      ?>
      
