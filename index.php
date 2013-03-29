@@ -339,8 +339,8 @@
 	       });
 	       $("#room_type").click(function() {
 	       //$("#room_type").load("getroomtype.php?choice=Fortuna%20Gate&citychoice=" + $("#city").val() );		    		    
-		    var value = $("#hotel_name").val(); // value = 9.61 use $("#text").text() if you are not on select box...
-		    value = value.replace(" ", "%20"); // value = 9:61
+		    var value = $("#hotel_name").val();
+		    value = value.replace(new RegExp(" ","g"), "%20"); 
 
 		     $("#room_type").load("getroomtype.php?choice=" + value + "&citychoice=" + $("#city").val());		    		    
 	       });
