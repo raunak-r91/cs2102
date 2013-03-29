@@ -336,11 +336,10 @@
 
 	       $("#city").change(function() {
 		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());
+		    
 		    var value = $("#hotel_name").val();
 		    value = value.replace(new RegExp(" ","g"), "%20"); 
-
 		     $("#room_type").load("getroomtype.php?choice=" + value + "&citychoice=" + $("#city").val());		    		    
-
 	       });
 	       
 	       	       
@@ -351,7 +350,7 @@
 		     $("#room_type").load("getroomtype.php?choice=" + value + "&citychoice=" + $("#city").val());		    		    
 	       });
 	       
-	       $("#room_name").click(function() {
+	       $("#room_type").click(function() {
 		    var value = $("#hotel_name").val();
 		    value = value.replace(new RegExp(" ","g"), "%20"); 
 
