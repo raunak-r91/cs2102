@@ -335,10 +335,9 @@
 	    <script>
 	       $("#city").change(function() {
 		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());
-	       $("#room_type").load("getroomtype.php?choice=" + $("#city").val());		    
-
 	       });
 	       $("#hotel_name").change(function() {
+	       $("#room_type").load("getroomtype.php?choice=" + $("#hotel_name").val() + "&citychoice=" + $("#city").val() );		    
 	       });
 	       
 						  $(document).ready(function(){
