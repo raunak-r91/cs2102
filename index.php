@@ -210,17 +210,29 @@
 		  <br/>
 				  
 				  <strong> City </strong>
-				  <select type="text" class="input-medium" style="margin-left:50px;">
+				  <select type="text" class="input-medium" id="city" style="margin-left:50px;">
+				   
+				   <!-- database city -->
 				   <?php include'db.php';
     
-					$hotel_query = $db->query("SELECT city FROM `Hotel`");
+					$hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
 					while($hotel = $db->fetch_assoc($hotel_query))
 					{
 					     echo '
 						   <option>'.stripslashes($hotel['city']).'</option>
 						  ';
 					}    
-				   ?>
+				   ?> 
+
+					 <!-- <option>New York</option>
+					  <option>Singapore</option>
+					  <option>Dubai</option>
+					  <option>Paris</option>-->
+				  </select>
+				  
+				  <strong> Hotel Name </strong>
+				  <select type="text" id="hotel_name" class="input-medium" style="margin-left:50px;">
+				    
 
 					 <!-- <option>New York</option>
 					  <option>Singapore</option>
@@ -309,6 +321,11 @@
 	    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	    <script>
+	       $("#city").change(function() {
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());		    
+	       });
+	       
+	       
 						  $(document).ready(function(){
 							  $('.carousel').carousel();
 						  });
