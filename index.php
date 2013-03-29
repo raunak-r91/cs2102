@@ -334,8 +334,6 @@
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	    <script>
 
-	       var value = 
-
 	       $("#city").change(function() {
 		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());
 	       });
