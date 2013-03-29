@@ -223,7 +223,6 @@
 						   <option>'.stripslashes($hotel['city']).'</option>
 						  ';
 					}
-					$db->disconnect();
 				   ?> 
 
 					 <!-- <option>New York</option>
@@ -244,7 +243,6 @@
 						   <option>'.stripslashes($hotel['city']).'</option>
 						  ';
 					}
-					$db->disconnect();
 				   ?> 
 
 				  </select>
