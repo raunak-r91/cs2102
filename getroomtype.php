@@ -1,6 +1,6 @@
 <?php include'db.php';
 
-    $choice = mysql_real_escape_string($_GET['choice']);
+    $choice = $_GET['choice'];
 
      echo '<option>'
      .$choice.
