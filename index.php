@@ -334,10 +334,11 @@
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	    <script>
 	       $("#city").change(function() {
-		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());		    
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());
+	       $("#room_type").load("getroomtype.php?choice=" + $("#city").val());		    
+
 	       });
 	       $("#hotel_name").change(function() {
-		  $("#room_type").load("getroomtype.php?choice=" + $("#hotel_name").val());		    
 	       });
 	       
 						  $(document).ready(function(){
