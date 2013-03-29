@@ -237,12 +237,17 @@
 				   <?php
     
 					$hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
+					$hotel = $db->fetch_assoc($hotel_query);
+
+					$choice = $hotel['city'];
+
+		    			$hotel_query = $db->query("SELECT name FROM `Hotel` where city = '$choice'");
 					while($hotel = $db->fetch_assoc($hotel_query))
 					{
-					     echo '
-						   <option>'.stripslashes($hotel['city']).'</option>
-						  ';
-					}
+					 echo '<option>'
+					 .stripslashes($hotel['name']).
+					 '</option>';
+					}    
 				   ?> 
 
 				  </select>
