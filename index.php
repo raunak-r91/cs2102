@@ -233,11 +233,17 @@
 				  <strong> Hotel Name </strong>
 				  <select type="text" id="hotel_name" class="input-medium" style="margin-left:50px;">
 				   
-			      
-					  <option>New York</option>
-					  <option>Singapore</option>
-					  <option>Dubai</option>
-					  <option>Paris</option>
+				   <?php include'db.php';
+    
+					$hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
+					while($hotel = $db->fetch_assoc($hotel_query))
+					{
+					     echo '
+						   <option>'.stripslashes($hotel['city']).'</option>
+						  ';
+					}    
+				   ?> 
+
 				  </select>
 				  
 				  <div>
