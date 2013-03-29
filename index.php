@@ -338,7 +338,9 @@
 
 	       });
 	       $("#room_type").click(function() {
-		     $("#room_type").load("getroomtype.php?choice=Fortuna%20Gate&citychoice=" + $("#city").val() );		    		    
+	       //$("#room_type").load("getroomtype.php?choice=Fortuna%20Gate&citychoice=" + $("#city").val() );		    		    
+
+		     $("#room_type").load("getroomtype.php?choice=" + $("hotel_name").val() );		    		    
 	       });
 	       
 	       
