@@ -6,7 +6,7 @@
     while($hotel = $db->fetch_assoc($hotel_query))
     {
      echo '<option>'
-     .stripslashes($hotel['city']).
+     .stripslashes($hotel['name']).
      '</option>';
     }    
 ?>
