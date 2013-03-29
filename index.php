@@ -333,13 +333,15 @@
 	    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	    <script>
+
+	       var value = 
+
 	       $("#city").change(function() {
 		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());
 	       });
 	       
-	       
-	       
-	       $("#room_type").click(function() {
+	       	       
+	       $($("#hotel_name").val().replace(new RegExp(" ","g"), "%20")).change(function() {
 	       //$("#room_type").load("getroomtype.php?choice=Fortuna%20Gate&citychoice=" + $("#city").val() );		    		    
 		    var value = $("#hotel_name").val();
 		    value = value.replace(new RegExp(" ","g"), "%20"); 
