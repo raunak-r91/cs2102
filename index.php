@@ -232,6 +232,19 @@
 				  
 				  <strong> Hotel Name </strong>
 				  <select type="text" id="hotel_name" class="input-medium" style="margin-left:50px;">
+				   <?php include'db.php';
+    
+					$hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
+					$hotel = $db->fetch_assoc($hotel_query);
+					
+					$hotelname_query = $db->query("SELECT name FROM `Hotel` where city = '$hotel'");
+					while($hotelname = $db->fetch_assoc($hotelname_query))
+					{
+					 echo '<option>'
+					 .stripslashes($hotelname['name']).
+					 '</option>';
+					}    
+				   ?> 
 				    
 
 					 <!-- <option>New York</option>
@@ -328,8 +341,6 @@
 	       
 						  $(document).ready(function(){
 							  $('.carousel').carousel();
-						         $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());		    
-
 						  });
 	      
 						  $("#singleslogan").click(function () 
