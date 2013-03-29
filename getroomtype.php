@@ -1,9 +1,6 @@
 <?php include'db.php';
 
     $choice = mysql_real_escape_string($_GET['choice']);
-     echo '<option>'
-     .$choice.
-     '</option>';
     $citychoice = mysql_real_escape_string($_GET['citychoice']);
     
     if ($choice == '') {
@@ -11,6 +8,11 @@
        $hotel = $db->fetch_assoc($hotel_query);
         $choice = $hotel['hotel_name'];
     }
+    
+         echo '<option>'
+     .$choice.
+     '</option>';
+
 
     $hotel_query = $db->query("SELECT distinct type FROM `Room` where hotel_name = '$choice' and hotel_city = '$citychoice'");
     while($hotel = $db->fetch_assoc($hotel_query))
