@@ -72,6 +72,7 @@
     </head>
   
     <body>
+     <?php include'db.php'; ?>
     <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -213,7 +214,7 @@
 				  <select type="text" class="input-medium" id="city" style="margin-left:50px;">
 				   
 				   <!-- database city -->
-				   <?php include'db.php';
+				   <?php
     
 					$hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
 					while($hotel = $db->fetch_assoc($hotel_query))
@@ -234,7 +235,7 @@
 				  <strong> Hotel Name </strong>
 				  <select type="text" id="hotel_name" class="input-medium" style="margin-left:50px;">
 				   
-				   <?php include'db.php';
+				   <?php
     
 					$hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
 					while($hotel = $db->fetch_assoc($hotel_query))
