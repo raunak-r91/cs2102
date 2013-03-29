@@ -73,6 +73,14 @@
   
     <body>
      <?php include'db.php'; ?>
+     
+     <?php
+     function enterinsql($user_id, $bookid, $hotelname, $country, $city, $number, $arrivdata, $returndate) {
+	$db->query("INSERT into `Booking` values ('$user_id', '$bookid', '$hotelname', '$country', '$city', '$number', '$arrivdata', '$returndate'));  
+     }
+     ?>
+     
+     
     <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -320,7 +328,9 @@
 			  <br/>
 			  <br/>
 			  <br/>
-	      <button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;"><strong>Book Now!</strong></button>
+	      <button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;" onclick="enterinsql()">
+	       <strong>Book Now!</strong>
+	      </button>
 			  <label id="errormsg" style="color:red; font-size: 12px; margin-left: -50px;" ></label>
 			  </div>			
 	     
@@ -349,6 +359,8 @@
 	       });
 	       
 	       
+	       
+	       
 						  $(document).ready(function(){
 							  $('.carousel').carousel();
 						  });
@@ -373,8 +385,10 @@
 						  else if(((($("#datepicker2").val()==""))))
 						  document.getElementById('errormsg').innerHTML="*Please fill in your departure date";
 						  
-						  else
-						  document.getElementById('errormsg').innerHTML="";
+						  else {
+						       document.getElementById('errormsg').innerHTML="";
+						       <?php enterinsql('ishaans', '123456', 'Fortuna Gate', 'India', 'Mumbai', 101, '2013-04-1', '2013-04-4'); ?>
+						  }
 						  });
 	    </script>
 						  
