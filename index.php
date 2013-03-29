@@ -385,10 +385,10 @@
 						  else if(((($("#datepicker2").val()==""))))
 						  document.getElementById('errormsg').innerHTML="*Please fill in your departure date";
 						  
-						  else {
-						       document.getElementById('errormsg').innerHTML="";
-						       <?php enterinsql('ishaans', '123456', 'Fortuna Gate', 'India', 'Mumbai', 101, '2013-04-1', '2013-04-4'); ?>
-						  }
+						  else 
+						       //document.getElementById('errormsg').innerHTML="";
+						       <?php enterinsql('ishaans', '123456', 'Fortuna Gate', 'India', 'Mumbai', 101, '2013-04-1', '2013-04-4'); ?>;
+						  
 						  });
 	    </script>
 						  
