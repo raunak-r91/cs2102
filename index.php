@@ -339,7 +339,7 @@
 	       });
 	       
 	       	       
-	       $($("#hotel_name").val().replace(new RegExp(" ","g"), "%20")).change(function() {
+	       $("#hotel_name").click(function() {
 	       //$("#room_type").load("getroomtype.php?choice=Fortuna%20Gate&citychoice=" + $("#city").val() );		    		    
 		    var value = $("#hotel_name").val();
 		    value = value.replace(new RegExp(" ","g"), "%20"); 
