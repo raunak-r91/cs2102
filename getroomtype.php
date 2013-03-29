@@ -3,11 +3,12 @@
     $choice = mysql_real_escape_string($_GET['choice']);
    // $citychoice = 'Mumbai';
    // $citychoice = mysql_real_escape_string($_GET['citychoice']);
+    echo '$choice';
     $hotel_query = $db->query("SELECT type FROM `Room` where hotel_name = '$choice' and hotel_city = 'Mumbai');//'$citychoice'");
     while($hotel = $db->fetch_assoc($hotel_query))
     {
-     echo '<option>'
-     .stripslashes($hotel['type']).
-     '</option>';
+     //echo '<option>'
+     //.stripslashes($hotel['type']).
+     //'</option>';
     }    
 ?>
