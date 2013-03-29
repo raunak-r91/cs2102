@@ -1,6 +1,11 @@
 <?php include'db.php';
-    
-    $choice = str_replace("%20%", " ", mysql_real_escape_string($_GET['choice']));
+
+    $choice = mysql_real_escape_string($_GET['choice']);
+
+     echo '<option>'
+     .$choice.
+     '</option>';    
+    //$choice = str_replace("%20%", " ", mysql_real_escape_string($_GET['choice']));
     
     $citychoice = mysql_real_escape_string($_GET['citychoice']);
     $hotel_query = $db->query("SELECT type FROM `Room` where hotel_name = '$choice' and hotel_city = '$citychoice'");
