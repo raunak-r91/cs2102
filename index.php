@@ -237,7 +237,7 @@
 					$hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
 					$hotel = $db->fetch_assoc($hotel_query);
 					$hotelcity = $hotel['city'];
-					$hotelname_query = $db->query("SELECT name FROM `Hotel` where city = '$hotelcity'");
+					$hotelname_query = $db->query("SELECT name FROM `Hotel` where city = 'Delhi'");
 					while($hotelname = $db->fetch_assoc($hotelname_query))
 					{
 					 echo '<option>'
