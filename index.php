@@ -295,11 +295,11 @@
 			  <div class="span4">    
 			  <br/>
 			  <strong> Room Type </strong>
-				  <input type="text" id="room_type" class="input-medium" style="margin-left:65px;">
+				  <select type="text" id="room_type" class="input-medium" style="margin-left:65px;">
 					  <!-- <option>Single Room</option>
 					  <option>Double Room</option>
 					  <option>Luxury Suite</option> -->
-				  </input>
+				  </select>
 			   
 			  <div>
 			  <div>
