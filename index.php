@@ -233,7 +233,23 @@
 				  
 				  <strong> Hotel Name </strong>
 				  <select type="text" id="hotel_name" class="input-medium" style="margin-left:50px;">
-				   
+				  
+				   <?php
+    
+					$hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
+					$hotel = $db->fetch_assoc($hotel_query);
+
+					$choice = $hotel['city'];
+
+		    			$hotel_query = $db->query("SELECT name FROM `Hotel` where city = '$choice'");
+					while($hotel = $db->fetch_assoc($hotel_query))
+					{
+					 echo '<option>'
+					 .stripslashes($hotel['name']).
+					 '</option>';
+					}    
+				   ?> 
+ 
 				  </select>
 				  
 				  <div>
@@ -279,10 +295,10 @@
 			  <div class="span4">    
 			  <br/>
 			  <strong> Room Type </strong>
-				  <select type="text" class="input-medium" style="margin-left:65px;">
-					  <option>Single Room</option>
+				  <select type="text" id="room_type" class="input-medium" style="margin-left:65px;">
+					  <!-- <option>Single Room</option>
 					  <option>Double Room</option>
-					  <option>Luxury Suite</option>
+					  <option>Luxury Suite</option> -->
 				  </select>
 			   
 			  <div>
@@ -317,10 +333,12 @@
 	    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	    <script>
-	       $("#city").select(function() {
+	       $("#city").change(function() {
 		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());		    
 	       });
-	       
+	       $("#hotel_name").change(function() {
+		  $("#room_type").load("getroomtype.php?choice=" + $("#hotel_name").val() + "&citychoice=" + $("#city").val());		    
+	       });
 	       
 						  $(document).ready(function(){
 							  $('.carousel').carousel();
