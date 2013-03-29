@@ -328,6 +328,8 @@
 	       
 						  $(document).ready(function(){
 							  $('.carousel').carousel();
+						         $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());		    
+
 						  });
 	      
 						  $("#singleslogan").click(function () 
