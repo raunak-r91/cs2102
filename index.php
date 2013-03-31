@@ -214,7 +214,7 @@
 		  <br/>
 				  
 				  <strong> City </strong>
-				  <select type="text" class="input-medium" id="city" style="margin-left:50px;">
+				  <select type="text" class="input-medium" name="city" id="city" style="margin-left:50px;">
 				   
 				   <!-- database city -->
 				   <?php
@@ -233,7 +233,7 @@
 				  </select>
 				  
 				  <strong> Hotel Name </strong>
-				  <select type="text" id="hotel_name" class="input-medium" style="margin-left:50px;">
+				  <select type="text" id="hotel_name" name="hotel_name" class="input-medium" style="margin-left:50px;">
 				  
 				   <?php
     
