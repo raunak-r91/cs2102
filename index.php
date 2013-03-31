@@ -254,7 +254,7 @@
 				  </select>
 				  
 				  <div>
-				  <strong> Arrive <input type="text" id="datepicker" class="input-medium" style="margin-left:20px;"/></strong>
+				  <strong> Arrive <input type="text" name="arriveDate" id="datepicker" class="input-medium" style="margin-left:20px;"/></strong>
 				  <script>
 				  $(function() {
 				  $( "#datepicker" ).datepicker({minDate: 0});
@@ -263,7 +263,7 @@
 				  </div>
 				  
 				  <div>
-			      <strong> Depart <input type="text" id="datepicker2" class="input-medium" style="margin-left:16px;"/></strong>
+			      <strong> Depart <input type="text" name="departDate" id="datepicker2" class="input-medium" style="margin-left:16px;"/></strong>
 				  <script>
 				  $(function() {
 				  $( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
@@ -272,7 +272,7 @@
 				  </div>
 				  <div>
 				  <strong> Rooms </strong>
-				  <select type="text" class="input-small" style="margin-left:81px;">
+				  <select type="text" name="roomNum" class="input-small" style="margin-left:81px;">
 					  <option>1</option>
 					  <option>2</option>
 					  <option>3</option>
@@ -282,7 +282,7 @@
 				  </div>
 				  <div>
 				  <strong> Persons per room </strong>
-				  <select type="text" class="input-small" style="margin-left:4px;">
+				  <select type="text" name="numAdult" class="input-small" style="margin-left:4px;">
 					  <option>1</option>
 					  <option>2</option>
 					  <option>3</option>
