@@ -10,6 +10,6 @@ $departDate = date_create_from_format('j/m/Y', $_GET['departDate']);
 echo date_format($departDate, 'Y-m-d');
 
 	$db->query("INSERT into `Booking` (`guest_id`, `booking_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`)
-                   values ('ishaans', '10105', '$hotelname', 'India', '$city', 101, '2013-04-3', '2013-04-5')");  
+                   values ('ishaans', '10100', '$hotelname', 'India', '$city', 101, $arriveDate->format('Y-m-d'), $departDate->format('Y-m-d'))");  
 
 ?>
