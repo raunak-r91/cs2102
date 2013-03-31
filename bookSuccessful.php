@@ -5,6 +5,6 @@ $number = $_GET['roomNum'];
 $arriveDate = $_GET['arriveDate'];
 $departDate = $_GET['departDate'];
 
-echo $arriveDate;
-
+$date = date_create_from_format('j/M/   Y', $arriveDate);
+echo date_format($date, 'Y-m-d');
 ?>
