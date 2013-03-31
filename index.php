@@ -321,7 +321,7 @@
 			  <br/>
 			  <br/>
 			  <br/>
-	      <button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;>
+	      <button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;">
 	       <strong>Book Now!</strong>
 	      </button>
 			  <label id="errormsg" style="color:red; font-size: 12px; margin-left: -50px;" ></label>
@@ -379,9 +379,7 @@
 						  document.getElementById('errormsg').innerHTML="*Please fill in your departure date";
 						  
 						  else 
-						       document.getElementById('errormsg').innerHTML="";
-						       //<?php enterinsql('ishaans', '123456', 'Fortuna Gate', 'India', 'Mumbai', 101, '2013-04-1', '2013-04-4'); ?>;
-						  
+						       document.getElementById('errormsg').innerHTML="";						  
 						  });
 	    </script>
 						  
