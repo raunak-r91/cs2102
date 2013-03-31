@@ -321,9 +321,11 @@
 		    <br/>
 		    <br/>
 		    <br/>
-		    <button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;">
+		    <input type="submit" value="Book Now!" style="margin-left: -50px; font-size: 24px; width: 100px;">
+
+		    <!--<button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;">
 		    <strong>Book Now!</strong>
-		    </button>
+		    </button> -->
 		     <label id="errormsg" style="color:red; font-size: 12px; margin-left: -50px;" ></label>
 		     </div>			
 	  </form>
