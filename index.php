@@ -209,7 +209,7 @@
 				  </blockquote>
 				  
 			  </div>
-		<form>	  
+	  <form name="bookingDetails" action="bookSuccessful.php" method="get">	  
 	      <div class="span3">    
 		  <br/>
 				  
