@@ -74,11 +74,6 @@
     <body>
      <?php include'db.php'; ?>
      
-     <!--<?php
-     function enterinsql($user_id, $bookid, $hotelname, $country, $city, $number, $arrivdata, $returndate) {
-	$db->query("INSERT into `Booking` values ('$user_id', '$bookid', '$hotelname', '$country', '$city', '$number', '$arrivdata', '$returndate')");  
-     }
-     ?>-->
      
      
     <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
