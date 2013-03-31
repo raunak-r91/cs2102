@@ -1,5 +1,8 @@
 <?php include'db.php';
     
+    
+     echo '<option>TEST</option>';
+    
     $choice = mysql_real_escape_string($_GET['choice']);
 
     $hotel_query = $db->query("SELECT name FROM `Hotel` where city = '$choice'");
