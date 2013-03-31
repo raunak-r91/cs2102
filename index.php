@@ -222,9 +222,7 @@
 					$hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
 					while($hotel = $db->fetch_assoc($hotel_query))
 					{
-					     echo '
-						   <option>'.stripslashes($hotel['city']).'</option>
-						  ';
+					     echo '<option>'.stripslashes($hotel['city']).'</option>';
 					}
 				   ?> 
 
@@ -323,7 +321,7 @@
 			  <br/>
 			  <br/>
 			  <br/>
-	      <button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;" onclick="enterinsql()">
+	      <button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;">
 	       <strong>Book Now!</strong>
 	      </button>
 			  <label id="errormsg" style="color:red; font-size: 12px; margin-left: -50px;" ></label>
