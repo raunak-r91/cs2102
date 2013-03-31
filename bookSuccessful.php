@@ -1,10 +1,13 @@
-<?php
+<?php include'db.php';
 $city = $_GET['city'];
 $hotelname = $_GET['hotel_name'];
 $number = $_GET['roomNum'];
-$arriveDate = $_GET['arriveDate'];
-$departDate = $_GET['departDate'];
+$arriveDate = date_create_from_format('j/m/Y', $_GET['arriveDate']);
+echo date_format($arriveDate, 'Y-m-d');
 
-$date = date_create_from_format('j/m/Y', $arriveDate);
-echo date_format($date, 'Y-m-d');
+$departDate = date_create_from_format('j/m/Y', $_GET['departDate']);
+echo date_format($departDate, 'Y-m-d');
+
+	$db->query("INSERT into `Booking` values ('ishaans', '10101', '$hotelname', 'India', '$city', '$number', 'date_format($arriveDate, 'Y-m-d')', 'date_format($departDate, 'Y-m-d')')");  
+
 ?>
