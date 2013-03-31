@@ -209,7 +209,7 @@
 				  </blockquote>
 				  
 			  </div>
-		<form></form>	  
+		<form>	  
 	      <div class="span3">    
 		  <br/>
 				  
@@ -321,7 +321,7 @@
 		    <br/>
 		    <br/>
 		    <br/>
-		    <input type="submit" value="Book Now!" style="margin-left: -50px; font-size: 24px; width: 100px;">
+		    <input type="submit" id="booknow" value="Book Now!" style="margin-left: -50px; font-size: 24px; width: 100px;">
 
 		    <!--<button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;">
 		    <strong>Book Now!</strong>
