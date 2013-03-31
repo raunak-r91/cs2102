@@ -3,6 +3,7 @@ $city = $_GET['city'];
 $hotelname = $_GET['hotel_name'];
 $number = $_GET['roomNum'];
 $arriveDate = date_create_from_format('j/m/Y', $_GET['arriveDate']);
+echo $hotelname;
 echo date_format($arriveDate, 'Y-m-d');
 
 $departDate = date_create_from_format('j/m/Y', $_GET['departDate']);
