@@ -209,7 +209,7 @@
 				  </blockquote>
 				  
 			  </div>
-			  
+		<form></form>	  
 	      <div class="span3">    
 		  <br/>
 				  
@@ -293,40 +293,40 @@
 				  
 			  </div>	 
 			  
-			  <div class="span4">    
-			  <br/>
-			  <strong> Room Type </strong>
-				  <select type="text" id="room_type" class="input-medium" style="margin-left:65px;">
-					  <!-- <option>Single Room</option>
-					  <option>Double Room</option>
-					  <option>Luxury Suite</option> -->
-				  </select>
-			   
-			  <div>
-			  <div>
-			  <!-- Carousel items -->
-			  
-			  <div class="active item"><img src="img/room3.jpg" id="single" alt=""><h6 id="singleslogan">Luxury Suite</h6></div>
-			  <!--<div class="item"><img src="img/room2.jpg" alt=""><h6>Double Room</h6></div>
-			  <div class="item"><img src="img/room3.jpg" alt=""><h6>Luxury Suite</h6></div>-->
-			  
-			  <!-- Carousel nav -->
-			  
-			  </div>
-		      </div>           
-			  </div><!--/span-->
-			  
-			  <div class="span1">
-			  <br/>
-			  <br/>
-			  <br/>
-			  <br/>
-	      <button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;">
-	       <strong>Book Now!</strong>
-	      </button>
-			  <label id="errormsg" style="color:red; font-size: 12px; margin-left: -50px;" ></label>
-			  </div>			
-	     
+	       <div class="span4">    
+		    <br/>
+		    <strong> Room Type </strong>
+			    <select type="text" id="room_type" class="input-medium" style="margin-left:65px;">
+				    <!-- <option>Single Room</option>
+				    <option>Double Room</option>
+				    <option>Luxury Suite</option> -->
+			    </select>
+		     
+		    <div>
+		    <div>
+		    <!-- Carousel items -->
+		    
+		    <div class="active item"><img src="img/room3.jpg" id="single" alt=""><h6 id="singleslogan">Luxury Suite</h6></div>
+		    <!--<div class="item"><img src="img/room2.jpg" alt=""><h6>Double Room</h6></div>
+		    <div class="item"><img src="img/room3.jpg" alt=""><h6>Luxury Suite</h6></div>-->
+		    
+		    <!-- Carousel nav -->
+		    
+		    </div>
+		</div>           
+		    </div><!--/span-->
+		    
+	       <div class="span1">
+		    <br/>
+		    <br/>
+		    <br/>
+		    <br/>
+		    <button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;">
+		    <strong>Book Now!</strong>
+		    </button>
+		     <label id="errormsg" style="color:red; font-size: 12px; margin-left: -50px;" ></label>
+		     </div>			
+	  </form>
 	    </div><!--/row-->
 	  </div><!--/span-->
 		  
