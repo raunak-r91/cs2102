@@ -5,6 +5,6 @@ $number = $_GET['roomNum'];
 $arriveDate = $_GET['arriveDate'];
 $departDate = $_GET['departDate'];
 
-echo $arriveDate;
+echo '$arriveDate';
 
 ?>
