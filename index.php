@@ -272,7 +272,7 @@
 				  </div>
 				  <div>
 				  <strong> Rooms </strong>
-				  <select type="text" name="roomNum" class="input-small" style="margin-left:81px;">
+				  <select type="text" name="roomNum" id="roomNum" class="input-small" style="margin-left:81px;">
 					  <option>1</option>
 					  <option>2</option>
 					  <option>3</option>
@@ -282,7 +282,7 @@
 				  </div>
 				  <div>
 				  <strong> Persons per room </strong>
-				  <select type="text" name="numAdult" class="input-small" style="margin-left:4px;">
+				  <select type="text" name="numAdult" id="numAdult" class="input-small" style="margin-left:4px;">
 					  <option>1</option>
 					  <option>2</option>
 					  <option>3</option>
