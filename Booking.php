@@ -180,11 +180,24 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 					<br/>
 					<strong style="margin-left:20px"> Choose Hotel Name </strong>
-					<select type="text" class="input-medium" style="margin-left:60px;">
-					<option>x</option>
-					<option>y</option>
-					<option>z</option>
-					<option>w</option>
+					<select type="text" name="hotel_name" id="hotel_name" class="input-medium" style="margin-left:60px;">
+					<?php
+    
+					    $hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
+					    $hotel = $db->fetch_assoc($hotel_query);
+    
+					    $choice = $hotel['city'];
+    
+					    $hotel_query = $db->query("SELECT name FROM `Hotel` where city = '$choice'");
+					    while($hotel = $db->fetch_assoc($hotel_query))
+					    {
+					     echo '<option>'
+					     .stripslashes($hotel['name']).
+					     '</option>';
+					    }    
+					?> 
+ 
+
 					</select>
 					
 					<div>
@@ -258,6 +271,22 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
       <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	  <script src="chosen/chosen.jquery.js" type="text/javascript"></script>
 	  <script type="text/javascript">
+	    
+	    $("#city").change(function() {
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());
+		    
+		     $("#room_type").load("getroomtype.php?choice=&citychoice=" + $("#city").val());		    		    
+	       });
+	       
+	       	       
+	    $("#hotel_name").click(function() {
+		 var value = $("#hotel_name").val();
+		 value = value.replace(new RegExp(" ","g"), "%20"); 
+
+		  $("#room_type").load("getroomtype.php?choice=" + value + "&citychoice=" + $("#city").val());		    		    
+	    });
+	       
+	       
 						$(document).ready(function()
 						{
 								     
