@@ -91,7 +91,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -102,35 +102,18 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
           
           <div class="nav-collapse collapse">
 			<ul class="nav  pull-right">
-				<li>
-				<form class="navbar-search">
-				<input type="text" class="search-query" placeholder="Search">
-				</form>
-			    </li>
-				<li class="divider-vertical"></li>
-				<li class="divider-vertical"></li>
+				
+				
 				<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
 				<li class="divider-vertical"></li>
 				<li class="divider-vertical"></li>
-				<li>
-				<div class="btn-group">
-				<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
-				English
-				<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu">
-				<!-- dropdown menu links -->
-				</ul>
-				</div>
-				</li>
-			
+				
 				</li>  
             </ul>			
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
-
     <div class="container-fluid">
       <div class="row-fluid">
 
@@ -138,22 +121,19 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		<img src="img/logo8.jpg" id="logo">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-			  <li class="nav-header"><i class="icon-home"></i> HOME</li>
-			  <li><a href="Hotel Renaissance.html">Homepage</a></li>
-              <li class="nav-header"><i class="icon-globe"></i> LOCATIONS</li>
-              <li><a href="#">New York</a></li>
-              <li><a href="#">Singapore</a></li>
-              <li><a href="#">Dubai</a></li>
-              <li><a href="#">Paris</a></li>
-              <li class="nav-header"><i class="icon-calendar"></i> PLAN EVENTS</li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Weddings</a></li>
-              <li><a href="#">Family Getaways</a></li>
-              <li class="nav-header"><i class="icon-tags"></i> BOOKINGS</li>
-              <li class="active"><a href="Booking.html">Book Here</a></li>
-			  <li><a href="Modify.html">Modify Your Booking</a></li>
-              <li class="nav-header"><i class="icon-comment"></i> CONTACT US</li>
-              <li><a href="#">Contact Details</a></li>     			  
+			  <li class="nav-header" style="font-size:18px"><i class="icon-home"></i> HOME</li>
+			  <br/><li style="font-size:18px"><a href="Hotel Renaissance.html">Homepage</a></li>
+              <br/>
+			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
+              <br/><li><a href="Booking.html" style="font-size:18px">Book Here</a></li>
+			  <br/><li><a href="View.html" style="font-size:18px">View Your Booking</a></li>
+			  <br/><li class="active" ><a href="Modify.html" style="font-size:18px">Modify Your Booking</a></li>
+			  <br/><li><a href="Cancel.html" style="font-size:18px">Cancel Your Booking</a></li>
+			  <br/>
+			  <br/>
+			  <br/>
+			  <li><a href="Booking.html"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>
+                			  
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -165,21 +145,94 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  <br/>
 		  <br/>
 		  <br/>
-		  <br/>
-		  <div>
-		            
-					<h3 style="margin-left:20px">Login Here</h3></div>
-					<h5 style="margin-left:20px">You need to log into you account for bookings and modifications.</h5>
-					<br/>
-		            <div class="row-fluid" style="margin-left:20px">
-						<form class="form-signin">
-						<input style="width:200px;" type="text" class="input-block-level" placeholder="Email address">
-						<br/><input style="width:200px;" type="password" class="input-block-level" placeholder="Password">
-						<br/><button class="btn btn-primary" type="submit">Login</button>
-						</form>
-                    </div><!--/span-->		
-					<h5 style="margin-left:20px">In case you do not have an account already <a href="Signup.html"">Signup</a>.</h5>
+		  
+		  <div><h3 style="margin-left:20px">Modify Your Booking</h3></div>
+		  <h5 style="margin-left:20px">Here are your booking details which you can modify.</h5>
+		  <h5 style="margin-left:20px">We will check if your modifications are possible from our end.</h5>
+		            <div class="row-fluid">
 					
+					<strong style="margin-left:20px"> Choose Location </strong>
+					<select type="text" class="input-medium" style="margin-left:79px;">
+					<option>New York</option>
+					<option>Singapore</option>
+					<option>Dubai</option>
+					<option>Paris</option>
+					</select>
+					
+					<br/>
+					<strong style="margin-left:20px"> Choose Hotel Name </strong>
+					<select type="text" class="input-medium" style="margin-left:60px;">
+					<option>x</option>
+					<option>y</option>
+					<option>z</option>
+					<option>w</option>
+					</select>
+					
+					
+					<div>
+					<strong style="margin-left:20px"> Choose Arrival date <input type="text" id="datepicker" class="input-medium" style="margin-left:58px;"/></strong>
+					<script>
+					$(function() 
+					{
+					$( "#datepicker" ).datepicker({minDate: 0});
+					});
+					
+					</script>
+					</div>
+					
+					<div>
+					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:32px;"/></strong>
+					<script>
+					$(function() {
+					$( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
+					});
+					</script>
+					</div>
+					
+					<div>
+					<strong style="margin-left:20px"> Type Of Room </strong>
+					<select type="text" class="input-medium" style="margin-left:100px;width:200px;">
+					<option>Standard Single Room</option>
+					<option>Standard Double Room</option>
+					<option>Superior Single Room</option>
+					<option>Superior Double Room</option>
+					</select>
+					<div>
+					
+					<div>
+					<strong style="margin-left:20px"> Number Of Rooms </strong>
+					<select type="text" class="input-small" style="margin-left:71px;">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					</select>
+					</div>
+					
+					<div>
+					<strong style="margin-left:20px"> Number Of Adults Per Room </strong>
+					<select type="text" class="input-small" style="margin-left:4px;">
+					<option>1</option>
+					<option>2</option>
+					</select>
+					</div>
+					
+					<div>
+					<strong style="margin-left:20px"> Number Of Kids Per Room </strong>
+					<select type="text" class="input-small" style="margin-left:17px;">
+					<option>0</option>
+					<option>1</option>
+					<option>2</option>
+					</select>
+					</div>
+					
+					<br/>
+					<br/>
+					<br/>
+					<div style="margin-left:20px">
+					<a href="Login.html"><button type="submit" class="btn btn-primary">Modify Now!</button></a>
+					<a href="Hotel Renaissance.html"><button type="button" class="btn">Back</button></a>
+					</div>
+					<h5 style="margin-left:20px">In case you would like to cancel your booking click <a href="Cancel.html"">Cancel Booking</a>.</h5>
         </div><!--/hererow-->
 
       <hr>

@@ -74,11 +74,6 @@
     <body>
      <?php include'db.php'; ?>
      
-     <?php
-     function enterinsql($user_id, $bookid, $hotelname, $country, $city, $number, $arrivdata, $returndate) {
-	$db->query("INSERT into `Booking` values ('$user_id', '$bookid', '$hotelname', '$country', '$city', '$number', '$arrivdata', '$returndate')");  
-     }
-     ?>
      
      
     <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
@@ -214,12 +209,12 @@
 				  </blockquote>
 				  
 			  </div>
-			  
+	  <form name="bookingDetails" action="bookSuccessful.php" method="get">	  
 	      <div class="span3">    
 		  <br/>
 				  
 				  <strong> City </strong>
-				  <select type="text" class="input-medium" id="city" style="margin-left:50px;">
+				  <select type="text" class="input-medium" name="city" id="city" style="margin-left:50px;">
 				   
 				   <!-- database city -->
 				   <?php
@@ -227,9 +222,7 @@
 					$hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
 					while($hotel = $db->fetch_assoc($hotel_query))
 					{
-					     echo '
-						   <option>'.stripslashes($hotel['city']).'</option>
-						  ';
+					     echo '<option>'.stripslashes($hotel['city']).'</option>';
 					}
 				   ?> 
 
@@ -240,7 +233,7 @@
 				  </select>
 				  
 				  <strong> Hotel Name </strong>
-				  <select type="text" id="hotel_name" class="input-medium" style="margin-left:50px;">
+				  <select type="text" id="hotel_name" name="hotel_name" class="input-medium" style="margin-left:50px;">
 				  
 				   <?php
     
@@ -261,7 +254,7 @@
 				  </select>
 				  
 				  <div>
-				  <strong> Arrive <input type="text" id="datepicker" class="input-medium" style="margin-left:20px;"/></strong>
+				  <strong> Arrive <input type="text" name="arriveDate" id="datepicker" class="input-medium" style="margin-left:20px;"/></strong>
 				  <script>
 				  $(function() {
 				  $( "#datepicker" ).datepicker({minDate: 0});
@@ -270,7 +263,7 @@
 				  </div>
 				  
 				  <div>
-			      <strong> Depart <input type="text" id="datepicker2" class="input-medium" style="margin-left:16px;"/></strong>
+			      <strong> Depart <input type="text" name="departDate" id="datepicker2" class="input-medium" style="margin-left:16px;"/></strong>
 				  <script>
 				  $(function() {
 				  $( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
@@ -279,7 +272,7 @@
 				  </div>
 				  <div>
 				  <strong> Rooms </strong>
-				  <select type="text" class="input-small" style="margin-left:81px;">
+				  <select type="text" name="roomNum" id="roomNum" class="input-small" style="margin-left:81px;">
 					  <option>1</option>
 					  <option>2</option>
 					  <option>3</option>
@@ -289,7 +282,7 @@
 				  </div>
 				  <div>
 				  <strong> Persons per room </strong>
-				  <select type="text" class="input-small" style="margin-left:4px;">
+				  <select type="text" name="numAdult" id="numAdult" class="input-small" style="margin-left:4px;">
 					  <option>1</option>
 					  <option>2</option>
 					  <option>3</option>
@@ -300,40 +293,42 @@
 				  
 			  </div>	 
 			  
-			  <div class="span4">    
-			  <br/>
-			  <strong> Room Type </strong>
-				  <select type="text" id="room_type" class="input-medium" style="margin-left:65px;">
-					  <!-- <option>Single Room</option>
-					  <option>Double Room</option>
-					  <option>Luxury Suite</option> -->
-				  </select>
-			   
-			  <div>
-			  <div>
-			  <!-- Carousel items -->
-			  
-			  <div class="active item"><img src="img/room3.jpg" id="single" alt=""><h6 id="singleslogan">Luxury Suite</h6></div>
-			  <!--<div class="item"><img src="img/room2.jpg" alt=""><h6>Double Room</h6></div>
-			  <div class="item"><img src="img/room3.jpg" alt=""><h6>Luxury Suite</h6></div>-->
-			  
-			  <!-- Carousel nav -->
-			  
-			  </div>
-		      </div>           
-			  </div><!--/span-->
-			  
-			  <div class="span1">
-			  <br/>
-			  <br/>
-			  <br/>
-			  <br/>
-	      <button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;" onclick="enterinsql()">
-	       <strong>Book Now!</strong>
-	      </button>
-			  <label id="errormsg" style="color:red; font-size: 12px; margin-left: -50px;" ></label>
-			  </div>			
-	     
+	       <div class="span4">    
+		    <br/>
+		    <strong> Room Type </strong>
+			    <select type="text" name="room_type" id="room_type" class="input-medium" style="margin-left:65px;">
+				    <!-- <option>Single Room</option>
+				    <option>Double Room</option>
+				    <option>Luxury Suite</option> -->
+			    </select>
+		     
+		    <div>
+		    <div>
+		    <!-- Carousel items -->
+		    
+		    <div class="active item"><img src="img/room3.jpg" id="single" alt=""><h6 id="singleslogan">Luxury Suite</h6></div>
+		    <!--<div class="item"><img src="img/room2.jpg" alt=""><h6>Double Room</h6></div>
+		    <div class="item"><img src="img/room3.jpg" alt=""><h6>Luxury Suite</h6></div>-->
+		    
+		    <!-- Carousel nav -->
+		    
+		    </div>
+		</div>           
+		    </div><!--/span-->
+		    
+	       <div class="span1">
+		    <br/>
+		    <br/>
+		    <br/>
+		    <br/>
+		    <input type="submit" id="booknow" value="Book Now!" style="margin-left: -50px; font-size: 24px; width: 100px;">
+
+		    <!--<button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: -50px; font-size: 24px; width: 100px;">
+		    <strong>Book Now!</strong>
+		    </button> -->
+		     <label id="errormsg" style="color:red; font-size: 12px; margin-left: -50px;" ></label>
+		     </div>			
+	  </form>
 	    </div><!--/row-->
 	  </div><!--/span-->
 		  
@@ -386,9 +381,7 @@
 						  document.getElementById('errormsg').innerHTML="*Please fill in your departure date";
 						  
 						  else 
-						       //document.getElementById('errormsg').innerHTML="";
-						       <?php enterinsql('ishaans', '123456', 'Fortuna Gate', 'India', 'Mumbai', 101, '2013-04-1', '2013-04-4'); ?>;
-						  
+						       document.getElementById('errormsg').innerHTML="";						  
 						  });
 	    </script>
 						  
