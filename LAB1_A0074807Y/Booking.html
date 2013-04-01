@@ -91,7 +91,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -102,58 +102,38 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
           
           <div class="nav-collapse collapse">
 			<ul class="nav  pull-right">
-				<li>
-				<form class="navbar-search">
-				<input type="text" class="search-query" placeholder="Search">
-				</form>
-			    </li>
-				<li class="divider-vertical"></li>
-				<li class="divider-vertical"></li>
+				
+				
 				<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
 				<li class="divider-vertical"></li>
 				<li class="divider-vertical"></li>
-				<li>
-				<div class="btn-group">
-				<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
-				English
-				<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu">
-				<!-- dropdown menu links -->
-				</ul>
-				</div>
-				</li>
-			
+				
 				</li>  
             </ul>			
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
-
     <div class="container-fluid">
       <div class="row-fluid">
 
-        <div class="span3">
+       <div class="span3">
 		<img src="img/logo8.jpg" id="logo">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-			  <li class="nav-header"><i class="icon-home"></i> HOME</li>
-			  <li><a href="Hotel Renaissance.html">Homepage</a></li>
-              <li class="nav-header"><i class="icon-globe"></i> LOCATIONS</li>
-              <li><a href="#">New York</a></li>
-              <li><a href="#">Singapore</a></li>
-              <li><a href="#">Dubai</a></li>
-              <li><a href="#">Paris</a></li>
-              <li class="nav-header"><i class="icon-calendar"></i> PLAN EVENTS</li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Weddings</a></li>
-              <li><a href="#">Family Getaways</a></li>
-              <li class="nav-header"><i class="icon-tags"></i> BOOKINGS</li>
-              <li class="active"><a href="Booking.html">Book Here</a></li>
-			  <li><a href="Modify.html">Modify Your Booking</a></li>
-              <li class="nav-header"><i class="icon-comment"></i> CONTACT US</li>
-              <li><a href="#">Contact Details</a></li>     			  
+			  <li class="nav-header" style="font-size:18px"><i class="icon-home"></i> HOME</li>
+			  <br/><li style="font-size:18px"><a href="Hotel Renaissance.html">Homepage</a></li>
+              <br/>
+			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
+              <br/><li class="active" ><a href="Booking.html" style="font-size:18px">Book Here</a></li>
+			  <br/><li><a href="View.html" style="font-size:18px">View Your Booking</a></li>
+			  <br/><li><a href="Modify.html" style="font-size:18px">Modify Your Booking</a></li>
+			  <br/><li><a href="Cancel.html" style="font-size:18px">Cancel Your Booking</a></li>
+			  <br/>
+			  <br/>
+			  <br/>
+			  <li><a href="Booking.html"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>
+                			  
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -191,6 +171,15 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					<option>Singapore</option>
 					<option>Dubai</option>
 					<option>Paris</option>
+					</select>
+					
+					<br/>
+					<strong style="margin-left:20px"> Choose Hotel Name </strong>
+					<select type="text" class="input-medium" style="margin-left:60px;">
+					<option>x</option>
+					<option>y</option>
+					<option>z</option>
+					<option>w</option>
 					</select>
 					
 					<div>
