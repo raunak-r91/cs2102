@@ -222,11 +222,11 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 					<div>
 					<strong style="margin-left:20px"> Type Of Room </strong>
-					<select type="text" class="input-medium" style="margin-left:100px;width:200px;">
-					<option>Standard Single Room</option>
+					<select type="text" name="room_type" id="room_type" class="input-medium" style="margin-left:100px;width:200px;">
+					<!-- <option>Standard Single Room</option>
 					<option>Standard Double Room</option>
 					<option>Superior Single Room</option>
-					<option>Superior Double Room</option>
+					<option>Superior Double Room</option> -->
 					</select>
 					<div>
 					
