@@ -87,6 +87,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   </head>
 
   <body>
+  <?php include'db.php'; ?>
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -166,11 +167,15 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
                     </div><!--/span-->		
 					
 					<strong style="margin-left:20px"> Choose Location </strong>
-					<select type="text" class="input-medium" style="margin-left:79px;">
-					<option>New York</option>
-					<option>Singapore</option>
-					<option>Dubai</option>
-					<option>Paris</option>
+					<select type="text" name="city" id="city" class="input-medium" style="margin-left:79px;">
+					<?php
+    
+					  $hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
+					  while($hotel = $db->fetch_assoc($hotel_query))
+					  {
+					       echo '<option>'.stripslashes($hotel['city']).'</option>';
+					  }
+					   ?> 
 					</select>
 					
 					<br/>
