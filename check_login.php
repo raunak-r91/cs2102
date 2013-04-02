@@ -10,14 +10,14 @@ session_start();
 $myusername=$_POST['myusername']; 
 $mypassword=$_POST['mypassword']; 
 
-$host="local"; // Host name
+$host="localhost"; // Host name
 $username="root"; // Mysql username 
 $password="root"; // Mysql password 
-$db_name="geekster_db"; // Database name 
-$tbl_name="profile"; // Table name 
+$db_name="CS2102"; // Database name 
+$tbl_name="Guest"; // Table name 
 
 // Connect to server and select database.
-$connect = mysql_connect('localhost', 'root', 'bitnami');
+$connect = mysql_connect($host, $username, $password);
 if (!$connect) 
 {
      //echo 'error!';
@@ -27,7 +27,7 @@ else
 {
     //echo 'Successful Connection!';
 }
-$db_connect = mysql_select_db('geekster_db', $connect);
+$db_connect = mysql_select_db($db_name, $connect);
 if (!$db_connect)
 {
     //echo 'Error';
@@ -40,7 +40,7 @@ $myusername = stripslashes($myusername);
 $mypassword = stripslashes($mypassword);
 $myusername = mysql_real_escape_string($myusername);
 $mypassword = mysql_real_escape_string($mypassword);
-$sql="SELECT * FROM $tbl_name WHERE email='$myusername' and password='$mypassword'";
+$sql="SELECT * FROM $tbl_name WHERE user_id='$myusername' and password='$mypassword'";
 $result=mysql_query($sql);
 
 //Check that user has entered values for all fields
