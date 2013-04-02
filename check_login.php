@@ -46,7 +46,7 @@ $result=mysql_query($sql);
 //Check that user has entered values for all fields
 if($myusername=="" || $mypassword=="")
 {
-	header("Location: login.php?errormsg=Missing values! Please enter values for all fields");
+	header("Location: login.html?errormsg=Missing values! Please enter values for all fields");
 	exit();
 	
 }
