@@ -158,7 +158,7 @@
 	      <br/>
 	      <br/>
 	      <br/>
-	      <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+	      <form action="bookSuccessful.php" method="post">
 		  <div><h3 style="margin-left:20px">Book Your Room Here</h3></div>
 		  <div class="row-fluid">
 			<div class="input-append span4">
@@ -338,15 +338,7 @@
 						
 
     </div><!--/.fluid-container-->
-  
-  <?php
-  if (isset($_POST['submit'])) {
-    echo$_POST['city'];
-  // form not submitted
-  }
-  ?>
-
-   
+     
 
   </body>
 </html>
