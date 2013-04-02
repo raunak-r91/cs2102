@@ -87,6 +87,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   </head>
 
   <body>
+    <?php inclue'db.php'; ?>
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -149,22 +150,23 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  <br/>
 		  <div>
 		            
-					<h3 style="margin-left:20px">Signup</h3></div>
-					<h5 style="margin-left:20px">You need to signup with us for bookings and modifications.</h5>
-					<br/>
+		  <h3 style="margin-left:20px">Signup</h3></div>
+		  <h5 style="margin-left:20px">You need to signup with us for bookings and modifications.</h5>
+		  <br/>
+		  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid" style="margin-left:20px">
-						<strong style="margin-left:20px"> Name </strong><input style="width:200px;margin-left:100px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Email ID </strong><input style="width:200px;margin-left:83px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Address </strong><input style="width:200px;margin-left:80px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Phone Number </strong><input style="width:200px;margin-left:34px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Nationality </strong><input style="width:200px;margin-left:67px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Passport Number </strong><input style="width:200px;margin-left:19px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Choose A User ID </strong><input style="width:200px;margin-left:17px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Choose A Password </strong><input style="width:200px;" type="text" class="input-block-level">
+						<strong style="margin-left:20px"> Name </strong><input name="name" style="width:200px;margin-left:100px" type="text" class="input-block-level">
+						<br/><strong style="margin-left:20px"> Email ID </strong><input name="email"style="width:200px;margin-left:83px" type="text" class="input-block-level">
+						<br/><strong style="margin-left:20px"> Address </strong><input name="address" style="width:200px;margin-left:80px" type="text" class="input-block-level">
+						<br/><strong style="margin-left:20px"> Phone Number </strong><input name="phone" style="width:200px;margin-left:34px" type="text" class="input-block-level">
+						<br/><strong style="margin-left:20px"> Nationality </strong><input name="nationality" style="width:200px;margin-left:67px" type="text" class="input-block-level">
+						<br/><strong style="margin-left:20px"> Passport Number </strong><input name="passport" style="width:200px;margin-left:19px" type="text" class="input-block-level">
+						<br/><strong style="margin-left:20px"> Choose A User ID </strong><input name="userID" style="width:200px;margin-left:17px" type="text" class="input-block-level">
+						<br/><strong style="margin-left:20px"> Choose A Password </strong><input name="password" style="width:200px;" type="text" class="input-block-level">
 						
-                    </div><!--/span-->		
-					<br/><button style="margin-left:40px" class="btn btn-primary" type="submit">Signup</button>
-					
+                    </div><!--/span-->
+					<br/><button style="margin-left:40px" name="submit" class="btn btn-primary" type="submit">Signup</button>
+		  </form>	
         </div><!--/hererow-->
 
       <hr>
@@ -215,7 +217,21 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 
     </div><!--/.fluid-container-->
 
-   
+    <?php
+    if (isset($_POST['submit'])) {
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$address = $_POST['address'];
+	$phone = $_POST['phone'];
+	$nationality = $_POST['nationality'];
+	$userid = $_POST['userID'];
+	$password = $_POST['password'];
+	$hotelname = $_GET['hotel_name'];
+
+	$db->query("INSERT into `Guest` (`user_id`, `password`, `name`, `phone_number`, `address`, `email`, `passport`, `nationality`)
+                   values ('$userid', '$password', '$name', '$phone', '$address', '$email', '$passport', '$nationality')");        
+    }
+   ?>
 
   </body>
 </html>
