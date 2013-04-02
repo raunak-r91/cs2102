@@ -260,7 +260,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		      <div style="margin-left:20px">
 		      <!--<a href="Login.html"></a>-->
 		      <button name="submit" type="submit" class="btn btn-primary">Book Now!</button>
-		      <a href="Hotel Renaissance.html"><button type="button" class="btn">Cancel</button></a>
+		      <a href="index.php"><button type="button" class="btn">Cancel</button></a>
 		      </div>		
 		  </div><!--/hererow-->
 	  </form>
