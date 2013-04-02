@@ -86,7 +86,7 @@
 				
 					<?php 
 					if(isset($_SESSION['username'])) {
-						echo '<li>Hi, '.$_SESSION['username'].'</li>' ;
+						echo '<li style="color:white">Hi, '.$_SESSION['username'].'</li>' ;
 					}
 					else {
 						echo '<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
