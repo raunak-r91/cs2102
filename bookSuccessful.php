@@ -12,7 +12,7 @@ $arriveDate = $arriveDate->format('Y-m-d');
 $departDate = DateTime::createFromFormat('m/j/Y', $_GET['departDate']);
 $departDate = $departDate->format('Y-m-d');
 
-	$db->query("INSERT into `Booking` (`guest_id`, `booking_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`)
-                   values ('userid', , '$hotelname', 'India', '$city', 101, '$arriveDate', '$departDate')");  
+	$db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`)
+                   values ('userid', '$hotelname', 'India', '$city', 105, '$arriveDate', '$departDate')");  
 
 ?>
