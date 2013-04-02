@@ -58,13 +58,13 @@ $count=mysql_num_rows($result);
 if($count==1)
 {
 	// Register $myusername, $mypassword and redirect to file "login_success.php"
-	mysql_query("UPDATE profile SET loginstatus=0 WHERE email<>'$myusername'");
-	mysql_query("UPDATE profile SET loginstatus=1 WHERE email='$myusername'");
-	session_register("myusername");
-	session_register("mypassword"); 
-	$_SESSION['user'] = $myusername;
-	setcookie("user", $_SESSION['user'], time()+36000, "/"); //Expire in 10 hours
-	header("Location: newsfeed.php");
+// 	mysql_query("UPDATE profile SET loginstatus=0 WHERE email<>'$myusername'");
+// 	mysql_query("UPDATE profile SET loginstatus=1 WHERE email='$myusername'");
+// 	session_register("myusername");
+// 	session_register("mypassword"); 
+	$_SESSION['username'] = $myusername;
+// 	setcookie("user", $_SESSION['user'], time()+36000, "/"); //Expire in 10 hours
+	header("Location: index.php");
 	//echo "Success!";
 	//echo $result;
 }

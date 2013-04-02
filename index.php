@@ -5,6 +5,10 @@ MATRIC NUMBER : A0074807Y
 WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 -->
 
+<?php
+session_start(); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -88,12 +92,17 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
           <div class="nav-collapse collapse">
 			<ul class="nav  pull-right">
 				
-				
-				<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
-				<li class="divider-vertical"></li>
-				<li class="divider-vertical"></li>
-				
-				</li>  
+				<?php 
+					if(isset(_SESSION['username'])) {
+						echo('<li>Hi, '._SESSION['username'].'</li>');
+					}
+					else {
+						echo('<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
+								<li class="divider-vertical"></li>
+								<li class="divider-vertical"></li>');
+					}
+				?>
+				 
             </ul>			
           </div><!--/.nav-collapse -->
         </div>
