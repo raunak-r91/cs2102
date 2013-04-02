@@ -158,9 +158,15 @@
 	      <br/>
 	      <br/>
 	      <br/>
-	      <form action="bookSuccessful.php" method="get">
 		  <div><h3 style="margin-left:20px">Book Your Room Here</h3></div>
-		  <div class="row-fluid">
+		  <?php
+		  if (isset($message)) {
+		    echo '<h4>'.$message.'</h4>';
+		  }
+		  ?>
+		 	      <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
+
+		       <div class="row-fluid">
 			<div class="input-append span4">
 			      <br/>
 			  <div class="side-by-side clearfix" style="margin-left:20px">				
@@ -339,6 +345,26 @@
 
     </div><!--/.fluid-container-->
      
+ <?php
+ if (isset($_POST['submit'])) {
+  $userid = $_SESSION['username'];
+  $city = $_GET['city'];
+  $hotelname = $_GET['hotel_name'];
+  $number = $_GET['numRooms'];
+  $arriveDate = DateTime::createFromFormat('m/j/Y', $_GET['arriveDate']);
+  $arriveDate = $arriveDate->format('Y-m-d');
+  
+  $departDate = DateTime::createFromFormat('m/j/Y', $_GET['departDate']);
+  $departDate = $departDate->format('Y-m-d');
+  
+  $db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`)
+		     values ('$userid', '$hotelname', 'India', '$city', 105, '$arriveDate', '$departDate')");
+  
+  $result = $db->query("Select max(`booking_id`) from `Booking` where guest_id = '$userid'");
+  $message = 'Congratulations, your booking is successul! Please note your Booking Id - '.$result['booking_id'].' for future references';
+  }
+  ?>s
+
 
   </body>
 </html>
