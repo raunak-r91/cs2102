@@ -158,7 +158,7 @@
 	      <br/>
 	      <br/>
 	      <br/>
-	      <form action="bookSuccessful.php" method="post">
+	      <form action="bookSuccessful.php" method="get">
 		  <div><h3 style="margin-left:20px">Book Your Room Here</h3></div>
 		  <div class="row-fluid">
 			<div class="input-append span4">
