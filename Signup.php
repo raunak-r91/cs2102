@@ -141,27 +141,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
         </div><!--/span-->
 	
         <div class="span9">
-	  
-	  <?php
-    if (isset($_POST['submit'])) {
-      echo 'reached';
-	$name = $_POST['name'];
-	$email = $_POST['email'];
-	$address = $_POST['address'];
-	$phone = $_POST['phone'];
-	$nationality = $_POST['nationality'];
-	$userid = $_POST['userID'];
-	$password = $_POST['password'];
-	$hotelname = $_GET['hotel_name'];
-
-	$result = $db->query("INSERT into `Guest` (`user_id`, `password`, `name`, `phone_number`, `address`, `email`, `passport`, `nationality`)
-                   values ('$userid', '$password', '$name', '$phone', '$address', '$email', '$passport', '$nationality')");
-	
-	if ($result) {
-	  echo '<h5 style="margin-left:20px">Congratulations, your account with id'.$userid.'has been created</h5>';
-	}
-    }
-   ?>
 		  <br/>
 		  <br/>
 		  <br/>
@@ -170,7 +149,25 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  <br/>
 		  <br/>
 		  <div>
-		            
+		   <?php
+		  if (isset($_POST['submit'])) {
+		      $name = $_POST['name'];
+		      $email = $_POST['email'];
+		      $address = $_POST['address'];
+		      $phone = $_POST['phone'];
+		      $nationality = $_POST['nationality'];
+		      $userid = $_POST['userID'];
+		      $password = $_POST['password'];
+		      $hotelname = $_GET['hotel_name'];
+	      
+		      $result = $db->query("INSERT into `Guest` (`user_id`, `password`, `name`, `phone_number`, `address`, `email`, `passport`, `nationality`)
+				 values ('$userid', '$password', '$name', '$phone', '$address', '$email', '$passport', '$nationality')");
+		      
+		      if ($result) {
+			echo '<h5 style="margin-left:20px">Congratulations, your account with id '.$userid.' has been created</h5>';
+		      }
+		  }
+		  ?>
 		  <h3 style="margin-left:20px">Signup</h3></div>
 		  <h5 style="margin-left:20px">You need to signup with us for bookings and modifications.</h5>
 		  <br/>
@@ -183,7 +180,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						<br/><strong style="margin-left:20px"> Nationality </strong><input name="nationality" style="width:200px;margin-left:67px" type="text" class="input-block-level">
 						<br/><strong style="margin-left:20px"> Passport Number </strong><input name="passport" style="width:200px;margin-left:19px" type="text" class="input-block-level">
 						<br/><strong style="margin-left:20px"> Choose A User ID </strong><input name="userID" style="width:200px;margin-left:17px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Choose A Password </strong><input name="password" style="width:200px;" type="text" class="input-block-level">
+						<br/><strong style="margin-left:20px"> Choose A Password </strong><input name="password" style="width:200px;" type="password" class="input-block-level">
 						
                     </div><!--/span-->
 					<br/><button style="margin-left:40px" name="submit" class="btn btn-primary" type="submit">Signup</button>
