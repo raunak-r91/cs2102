@@ -1,9 +1,4 @@
-<!--
-LAB ASSIGNMENT 1 - CS3240
-NAME : MADHU MAITHRI PARVATANENI
-MATRIC NUMBER : A0074807Y
-WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
--->
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,7 +82,15 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   </head>
 
   <body>
-  <?php include'db.php'; ?>
+  <?php include'db.php';
+  
+      if(!isset($_SESSION['username'])) {
+	header("Location: Login.html?from=booking");
+      }
+
+  ?>
+  
+  
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -103,13 +106,21 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	  
 	  <div class="nav-collapse collapse">
 			<ul class="nav  pull-right">
+			  			      <?php 
+			      if(isset($_SESSION['username'])) {
+				      echo '<li style="color:white">Hi, '.$_SESSION['username'].'</li> 
+				      <li class="divider-vertical"></li>
+				      <li class="divider-vertical"></li>';
+
+			      }
+			      else {
+				      echo '<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
+						      <li class="divider-vertical"></li>
+						      <li class="divider-vertical"></li>';
+			      }
+				?>		
+		      	
 				
-				
-				<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
-				<li class="divider-vertical"></li>
-				<li class="divider-vertical"></li>
-				
-				</li>  
 	    </ul>			
 	  </div><!--/.nav-collapse -->
 	</div>

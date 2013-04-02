@@ -64,8 +64,7 @@ if($count==1)
 // 	session_register("mypassword"); 
 	$_SESSION['username'] = $myusername;
 // 	setcookie("user", $_SESSION['user'], time()+36000, "/"); //Expire in 10 hours
-	header("Location: index.php");
-	//echo "Success!";
+	echo "Login successful!";
 	//echo $result;
 }
 else
