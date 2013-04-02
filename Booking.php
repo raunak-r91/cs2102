@@ -18,20 +18,20 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
    
     <style type="text/css">
       body {
-        padding-top: 60px;
-        padding-bottom: 40px;
+	padding-top: 60px;
+	padding-bottom: 40px;
       }
       .sidebar-nav {
-        padding: 9px 0;
+	padding: 9px 0;
       }
 
       @media (max-width: 980px) {
-        /* Enable use of floated navbar text */
-        .navbar-text.pull-right {
-          float: none;
-          padding-left: 5px;
-          padding-right: 5px;
-        }
+	/* Enable use of floated navbar text */
+	.navbar-text.pull-right {
+	  float: none;
+	  padding-left: 5px;
+	  padding-right: 5px;
+	}
       }
 	  
 	 .jumbotron
@@ -82,8 +82,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="../assets/ico/favicon.png">
+		    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+				   <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
   <body>
@@ -94,14 +94,14 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 
      <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container-fluid">
-          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          
-          <div class="nav-collapse collapse">
+	<div class="container-fluid">
+	  <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+	  </button>
+	  
+	  <div class="nav-collapse collapse">
 			<ul class="nav  pull-right">
 				
 				
@@ -110,9 +110,9 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 				<li class="divider-vertical"></li>
 				
 				</li>  
-            </ul>			
-          </div><!--/.nav-collapse -->
-        </div>
+	    </ul>			
+	  </div><!--/.nav-collapse -->
+	</div>
       </div>
     </div>
     <div class="container-fluid">
@@ -120,13 +120,13 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 
        <div class="span3">
 		<img src="img/logo8.jpg" id="logo">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
+	  <div class="well sidebar-nav">
+	    <ul class="nav nav-list">
 			  <li class="nav-header" style="font-size:18px"><i class="icon-home"></i> HOME</li>
 			  <br/><li style="font-size:18px"><a href="Hotel Renaissance.html">Homepage</a></li>
-              <br/>
+	      <br/>
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
-              <br/><li class="active" ><a href="Booking.html" style="font-size:18px">Book Here</a></li>
+	      <br/><li class="active" ><a href="Booking.html" style="font-size:18px">Book Here</a></li>
 			  <br/><li><a href="View.html" style="font-size:18px">View Your Booking</a></li>
 			  <br/><li><a href="Modify.html" style="font-size:18px">Modify Your Booking</a></li>
 			  <br/><li><a href="Cancel.html" style="font-size:18px">Cancel Your Booking</a></li>
@@ -134,138 +134,136 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 			  <br/>
 			  <br/>
 			  <li><a href="Booking.html"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>
-                			  
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
+					  
+	    </ul>
+	  </div><!--/.well -->
+	</div><!--/span-->
 		
-        <div class="span9">
-		  <br/>
-		  <br/>
-		  <br/>
-		  <br/>
-		  <br/>
-		  <br/>
-		  <br/>
+	<div class="span9">
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <br/>
+	      <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		  <div><h3 style="margin-left:20px">Book Your Room Here</h3></div>
-		            <div class="row-fluid">
-					<div class="input-append span4">
-					<br/>
-						<div class="side-by-side clearfix" style="margin-left:20px">				
-									<select id="form_field" data-placeholder="Which are the facilities you would like? (Optional to Choose)" style="width: 430px;height: 400px" multiple class="chzn-select" tabindex="8">
-									<option value=""></option>
-                                    <optgroup>
-                                        <option value="pool">Swimming Pool</option>
-                                        <option value="gym">Fitness Club</option>
-                                        <option value="restaurant">Restaurant</option>
-                                        <option value="wifi">Wi-Fi</option>
-                                    </optgroup>
-							      </select>
-							<button style="height: 29px; display:inline" id="loadbtn" type="button" class="btn btn-primary">Ok</button>
-						</div>
-					</div>
-                    </div><!--/span-->		
-					
-					<strong style="margin-left:20px"> Choose Location </strong>
-					<select type="text" name="city" id="city" class="input-medium" style="margin-left:79px;">
-					<?php
-    
-					  $hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
-					  while($hotel = $db->fetch_assoc($hotel_query))
-					  {
-					       echo '<option>'.stripslashes($hotel['city']).'</option>';
-					  }
-					   ?> 
-					</select>
-					
-					<br/>
-					<strong style="margin-left:20px"> Choose Hotel Name </strong>
-					<select type="text" name="hotel_name" id="hotel_name" class="input-medium" style="margin-left:60px;">
-					<?php
-    
-					    $hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
-					    $hotel = $db->fetch_assoc($hotel_query);
-    
-					    $choice = $hotel['city'];
-    
-					    $hotel_query = $db->query("SELECT name FROM `Hotel` where city = '$choice'");
-					    while($hotel = $db->fetch_assoc($hotel_query))
-					    {
-					     echo '<option>'
-					     .stripslashes($hotel['name']).
-					     '</option>';
-					    }    
-					?> 
- 
+		  <div class="row-fluid">
+			<div class="input-append span4">
+			      <br/>
+			  <div class="side-by-side clearfix" style="margin-left:20px">				
+			    <select id="form_field" data-placeholder="Which are the facilities you would like? (Optional to Choose)" style="width: 430px;height: 400px" multiple class="chzn-select" tabindex="8">
+			    <option value=""></option>
+			      <optgroup>
+				  <option value="pool">Swimming Pool</option>
+				  <option value="gym">Fitness Club</option>
+				  <option value="restaurant">Restaurant</option>
+				  <option value="wifi">Wi-Fi</option>
+			      </optgroup>
+			      </select>
+				  <button style="height: 29px; display:inline" id="loadbtn" type="button" class="btn btn-primary">Ok</button>
+			    </div>
+			</div>
+		  </div><!--/span-->		
+			      
+		  <strong style="margin-left:20px"> Choose Location </strong>
+		  <select type="text" name="city" id="city" class="input-medium" style="margin-left:79px;">
+		  <?php
 
-					</select>
-					
-					<div>
-					<strong style="margin-left:20px"> Choose Arrival date <input type="text" id="datepicker" class="input-medium" style="margin-left:58px;"/></strong>
-					<script>
-					$(function() 
-					{
-					$( "#datepicker" ).datepicker({minDate: 0});
-					});
-					
-					</script>
-					</div>
-					
-					<div>
-					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:32px;"/></strong>
-					<script>
-					$(function() {
-					$( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
-					});
-					</script>
-					</div>
-					
-					<div>
-					<strong style="margin-left:20px"> Type Of Room </strong>
-					<select type="text" name="room_type" id="room_type" class="input-medium" style="margin-left:100px;width:200px;">
-					<!-- <option>Standard Single Room</option>
-					<option>Standard Double Room</option>
-					<option>Superior Single Room</option>
-					<option>Superior Double Room</option> -->
-					</select>
-					<div>
-					
-					<div>
-					<strong style="margin-left:20px"> Number Of Rooms </strong>
-					<select type="text" class="input-small" style="margin-left:71px;">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
-					</select>
-					</div>
-					
-					<div>
-					<strong style="margin-left:20px"> Number Of Adults Per Room </strong>
-					<select type="text" class="input-small" style="margin-left:4px;">
-					<option>1</option>
-					<option>2</option>
-					</select>
-					</div>
-					
-					<div>
-					<strong style="margin-left:20px"> Number Of Kids Per Room </strong>
-					<select type="text" class="input-small" style="margin-left:17px;">
-					<option>0</option>
-					<option>1</option>
-					<option>2</option>
-					</select>
-					</div>
-					
-					<br/>
-					<br/>
-					<br/>
-					<div style="margin-left:20px">
-					<a href="Login.html"><button type="submit" class="btn btn-primary">Book Now!</button></a>
-					<a href="Hotel Renaissance.html"><button type="button" class="btn">Cancel</button></a>
-					</div>
-					
-        </div><!--/hererow-->
+		    $hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
+		    while($hotel = $db->fetch_assoc($hotel_query))
+		    {
+			 echo '<option>'.stripslashes($hotel['city']).'</option>';
+		    }
+		     ?> 
+		  </select>
+			      
+		  <br/>
+		  <strong style="margin-left:20px"> Choose Hotel Name </strong>
+		  <select type="text" name="hotel_name" id="hotel_name" class="input-medium" style="margin-left:60px;">
+		  <?php
 
+		      $hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
+		      $hotel = $db->fetch_assoc($hotel_query);
+
+		      $choice = $hotel['city'];
+
+		      $hotel_query = $db->query("SELECT name FROM `Hotel` where city = '$choice'");
+		      while($hotel = $db->fetch_assoc($hotel_query))
+		      {
+		       echo '<option>'
+		       .stripslashes($hotel['name']).
+		       '</option>';
+		      }    
+		  ?> 
+		  </select>
+			      
+		  <div>
+		  <strong style="margin-left:20px"> Choose Arrival date <input type="text" name="arriveDate" id="datepicker" class="input-medium" style="margin-left:58px;"/></strong>
+		  <script>
+		  $(function() 
+		  {
+		  $( "#datepicker" ).datepicker({minDate: 0});
+		  });
+		  
+		  </script>
+		  </div>
+			      
+		  <div>
+		  <strong style="margin-left:20px"> Choose Departure Date <input type="text" name="departDate" id="datepicker2" class="input-medium" style="margin-left:32px;"/></strong>
+		  <script>
+		  $(function() {
+		  $( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
+		  });
+		  </script>
+		  </div>
+		  
+		  <div>
+		  <strong style="margin-left:20px"> Type Of Room </strong>
+		  <select type="text" name="room_type" id="room_type" class="input-medium" style="margin-left:100px;width:200px;">
+		  <!-- <option>Standard Single Room</option>
+		  <option>Standard Double Room</option>
+		  <option>Superior Single Room</option>
+		  <option>Superior Double Room</option> -->
+		  </select>
+		  <div>
+		      <div>
+		      <strong style="margin-left:20px"> Number Of Rooms </strong>
+		      <select type="text" name="numRooms"class="input-small" style="margin-left:71px;">
+		      <option>1</option>
+		      <option>2</option>
+		      <option>3</option>
+		      </select>
+		      </div>
+		      
+		      <div>
+		      <strong style="margin-left:20px"> Number Of Adults Per Room </strong>
+		      <select type="text" name="numAdults" class="input-small" style="margin-left:4px;">
+		      <option>1</option>
+		      <option>2</option>
+		      </select>
+		      </div>
+		      
+		      <div>
+		      <strong style="margin-left:20px"> Number Of Kids Per Room </strong>
+		      <select type="text" name="numKids" class="input-small" style="margin-left:17px;">
+		      <option>0</option>
+		      <option>1</option>
+		      <option>2</option>
+		      </select>
+		      </div>
+		      
+		      <br/>
+		      <br/>
+		      <br/>
+		      <div style="margin-left:20px">
+		      <!--<a href="Login.html"></a>-->
+		      <button name="submit" type="submit" class="btn btn-primary">Book Now!</button>
+		      <a href="Hotel Renaissance.html"><button type="button" class="btn">Cancel</button></a>
+		      </div>		
+		  </div><!--/hererow-->
+	  </form>
       <hr>
 	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
       <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
@@ -278,7 +276,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		     $("#room_type").load("getroomtype.php?choice=&citychoice=" + $("#city").val());		    		    
 	       });
 	       
-	       	       
+		       
 	    $("#hotel_name").click(function() {
 		 var value = $("#hotel_name").val();
 		 value = value.replace(new RegExp(" ","g"), "%20"); 
@@ -292,7 +290,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 								     
 						});
 						$(".chzn-select").chosen();
-                                     $(".chzn-select-deselect").chosen({ allow_single_deselect: true });
+				     $(".chzn-select-deselect").chosen({ allow_single_deselect: true });
 						$("#singleslogan").click(function () 
 						{
 						if($('#single').is(":visible"))
@@ -329,6 +327,12 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						
 
     </div><!--/.fluid-container-->
+  
+  <?php
+  if (isset($_POST['submit'])) {
+    echo$_POST['city'];
+  // form not submitted
+  ?>
 
    
 
