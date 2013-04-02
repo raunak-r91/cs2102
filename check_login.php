@@ -7,8 +7,8 @@ session_start();
 }*/
   
 // username and password sent from form 
-$myusername=$_POST['myusername']; 
-$mypassword=$_POST['mypassword']; 
+$myusername=$_POST["myusername"]; 
+$mypassword=$_POST["mypassword"]; 
 
 $host="localhost"; // Host name
 $username="root"; // Mysql username 
@@ -46,7 +46,7 @@ $result=mysql_query($sql);
 //Check that user has entered values for all fields
 if($myusername=="" || $mypassword=="")
 {
-	header("Location: login.html?errormsg=Missing values! Please enter values for all fields");
+	header("Location: Login.html?errormsg=Missing values! Please enter values for all fields");
 	exit();
 	
 }
