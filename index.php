@@ -85,8 +85,8 @@
 			<ul class="nav  pull-right">
 				
 					<?php 
-					if(isset(_SESSION['username'])) {
-						echo '<li>Hi, '._SESSION['username'].'</li>' ;
+					if(isset($_SESSION['username'])) {
+						echo '<li>Hi, '.$_SESSION['username'].'</li>' ;
 					}
 					else {
 						echo '<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
