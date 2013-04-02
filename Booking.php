@@ -89,7 +89,25 @@
       }
 
   ?>
+  <?php
+ if (isset($_POST['submit'])) {
+  $userid = $_SESSION['username'];
+  $city = $_POST['city'];
+  $hotelname = $_POST['hotel_name'];
+  $number = $_POST['numRooms'];
+  $arriveDate = DateTime::createFromFormat('m/j/Y', $_POST['arriveDate']);
+  $arriveDate = $arriveDate->format('Y-m-d');
   
+  $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
+  $departDate = $departDate->format('Y-m-d');
+  
+  $db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`)
+		     values ('$userid', '$hotelname', 'India', '$city', 500, '$arriveDate', '$departDate')");
+  
+  $_SESSION['registered'] = true; 
+  }
+  ?>
+
   
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -159,13 +177,18 @@
 	      <br/>
 	      <br/>
 		  <div><h3 style="margin-left:20px">Book Your Room Here</h3></div>
-		  <?php
-		  if (isset($message)) {
-		    echo '<h4>'.$message.'</h4>';
-		  }
-		  ?>
+		  
 		      <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
-
+		      
+		      <?php
+		      if (isset($_SESSION['registered'])) {
+			$userid = $_SESSION['username'];
+			  $result = $db->query("Select max(`booking_id`) from `Booking` where guest_id = '$userid'");
+			$message = 'Congratulations, your booking is successul! Please note your Booking Id - '.$result['booking_id'].' for future references';
+			echo '<h4 name="message">'.$message.'</h4>';
+			unset($_SESSION['registered']); 
+		      }
+		      ?>
 		       <div class="row-fluid">
 			<div class="input-append span4">
 			      <br/>
@@ -345,26 +368,7 @@
 
     </div><!--/.fluid-container-->
      
- <?php
- if (isset($_POST['submit'])) {
-  $userid = $_SESSION['username'];
-  $city = $_POST['city'];
-  $hotelname = $_POST['hotel_name'];
-  $number = $_POST['numRooms'];
-  $arriveDate = DateTime::createFromFormat('m/j/Y', $_POST['arriveDate']);
-  $arriveDate = $arriveDate->format('Y-m-d');
-  
-  $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
-  $departDate = $departDate->format('Y-m-d');
-  
-  $db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`)
-		     values ('$userid', '$hotelname', 'India', '$city', 105, '$arriveDate', '$departDate')");
-  
-  $result = $db->query("Select max(`booking_id`) from `Booking` where guest_id = '$userid'");
-  $message = 'Congratulations, your booking is successul! Please note your Booking Id - '.$result['booking_id'].' for future references';
-  }
-  ?>
-
+ 
 
   </body>
 </html>
