@@ -139,9 +139,29 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
-			  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 	
         <div class="span9">
+	  
+	  <?php
+    if (isset($_POST['submit'])) {
+      echo 'reached';
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+	$address = $_POST['address'];
+	$phone = $_POST['phone'];
+	$nationality = $_POST['nationality'];
+	$userid = $_POST['userID'];
+	$password = $_POST['password'];
+	$hotelname = $_GET['hotel_name'];
+
+	$result = $db->query("INSERT into `Guest` (`user_id`, `password`, `name`, `phone_number`, `address`, `email`, `passport`, `nationality`)
+                   values ('$userid', '$password', '$name', '$phone', '$address', '$email', '$passport', '$nationality')");
+	
+	if ($result) {
+	  echo '<h5 style="margin-left:20px">Congratulations, your account with id'.$userid.'has been created</h5>';
+	}
+    }
+   ?>
 		  <br/>
 		  <br/>
 		  <br/>
@@ -154,6 +174,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  <h3 style="margin-left:20px">Signup</h3></div>
 		  <h5 style="margin-left:20px">You need to signup with us for bookings and modifications.</h5>
 		  <br/>
+		  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid" style="margin-left:20px">
 						<strong style="margin-left:20px"> Name </strong><input name="name" style="width:200px;margin-left:100px" type="text" class="input-block-level">
 						<br/><strong style="margin-left:20px"> Email ID </strong><input name="email"style="width:200px;margin-left:83px" type="text" class="input-block-level">
@@ -166,8 +187,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						
                     </div><!--/span-->
 					<br/><button style="margin-left:40px" name="submit" class="btn btn-primary" type="submit">Signup</button>
-        </div><!--/hererow-->
-		  </form>	
+        		  </form>	
+      </div><!--/hererow-->
 
       <hr>
 	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -217,22 +238,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 
     </div><!--/.fluid-container-->
 
-    <?php
-    if (isset($_POST['submit'])) {
-      echo 'reached';
-	$name = $_POST['name'];
-	$email = $_POST['email'];
-	$address = $_POST['address'];
-	$phone = $_POST['phone'];
-	$nationality = $_POST['nationality'];
-	$userid = $_POST['userID'];
-	$password = $_POST['password'];
-	$hotelname = $_GET['hotel_name'];
-
-	$db->query("INSERT into `Guest` (`user_id`, `password`, `name`, `phone_number`, `address`, `email`, `passport`, `nationality`)
-                   values ('$userid', '$password', '$name', '$phone', '$address', '$email', '$passport', '$nationality')");        
-    }
-   ?>
+    
 
   </body>
 </html>
