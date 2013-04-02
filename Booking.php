@@ -123,7 +123,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	  <div class="well sidebar-nav">
 	    <ul class="nav nav-list">
 			  <li class="nav-header" style="font-size:18px"><i class="icon-home"></i> HOME</li>
-			  <br/><li style="font-size:18px"><a href="index.html">Homepage</a></li>
+			  <br/><li style="font-size:18px"><a href="index.php">Homepage</a></li>
 	      <br/>
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
 	      <br/><li class="active" ><a href="Booking.php" style="font-size:18px">Book Here</a></li>
@@ -133,7 +133,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 			  <br/>
 			  <br/>
 			  <br/>
-			  <li><a href="Booking.html"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>
+			  <li><a href="Booking.php"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>
 					  
 	    </ul>
 	  </div><!--/.well -->
