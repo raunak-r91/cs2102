@@ -87,7 +87,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   </head>
 
   <body>
-    <?php inclue'db.php'; ?>
+    <?php include'db.php'; ?>
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -139,7 +139,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
-		
+			  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+	
         <div class="span9">
 		  <br/>
 		  <br/>
@@ -153,7 +154,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  <h3 style="margin-left:20px">Signup</h3></div>
 		  <h5 style="margin-left:20px">You need to signup with us for bookings and modifications.</h5>
 		  <br/>
-		  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid" style="margin-left:20px">
 						<strong style="margin-left:20px"> Name </strong><input name="name" style="width:200px;margin-left:100px" type="text" class="input-block-level">
 						<br/><strong style="margin-left:20px"> Email ID </strong><input name="email"style="width:200px;margin-left:83px" type="text" class="input-block-level">
@@ -166,8 +166,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						
                     </div><!--/span-->
 					<br/><button style="margin-left:40px" name="submit" class="btn btn-primary" type="submit">Signup</button>
-		  </form>	
         </div><!--/hererow-->
+		  </form>	
 
       <hr>
 	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -219,6 +219,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 
     <?php
     if (isset($_POST['submit'])) {
+      echo 'reached';
 	$name = $_POST['name'];
 	$email = $_POST['email'];
 	$address = $_POST['address'];
