@@ -183,8 +183,10 @@
 		      <?php
 		      if (isset($_SESSION['registered'])) {
 			$userid = $_SESSION['username'];
-			  $result = $db->query("Select max(`booking_id`) as 'booking_id' from `Booking` where guest_id = '$userid'");
-			$message = 'Congratulations, your booking is successul! Please note your Booking Id - '.$result['booking_id'].' for future references';
+			  $booking_query = $db->query("Select max(`booking_id`) as 'booking_id' from `Booking` where guest_id = '$userid'");
+			  $booking = $db->fetch_assoc($booking_query);
+
+			$message = 'Congratulations, your booking is successul! Please note your Booking Id - '.$booking['booking_id'].' for future references';
 			echo '<h4 name="message">'.$message.'</h4>';
 			unset($_SESSION['registered']); 
 		      }
