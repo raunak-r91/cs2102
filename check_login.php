@@ -71,7 +71,7 @@ if($count==1)
 else
 {
 	//echo "Wrong Username or Password";
-	header("Location: login.php?errormsg=Invalid username or password! Please login again");
+	header("Location: Login.html?errormsg=Invalid username or password! Please login again");
 	exit();
 }
 
