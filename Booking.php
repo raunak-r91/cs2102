@@ -102,7 +102,7 @@
   $departDate = $departDate->format('Y-m-d');
   
   $db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`)
-		     values ('$userid', '$hotelname', 'India', '$city', 500, '$arriveDate', '$departDate')");
+		     values ('$userid', '$hotelname', 'India', '$city', 501, '$arriveDate', '$departDate')");
   
   $_SESSION['registered'] = true; 
   }
