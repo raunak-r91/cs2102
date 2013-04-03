@@ -1,10 +1,13 @@
 <?php session_start(); ?>
+<<<<<<< HEAD
 <!--
 LAB ASSIGNMENT 1 - CS3240
 NAME : MADHU MAITHRI PARVATANENI
 MATRIC NUMBER : A0074807Y
 WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 -->
+=======
+>>>>>>> 8c1a30688697bd2510e0e835cf0d81b30131fb30
 
 <!DOCTYPE html>
 <html lang="en">
@@ -88,7 +91,33 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   </head>
 
   <body>
-  <?php include'db.php'; ?>
+  <?php include'db.php';
+  
+      if(!isset($_SESSION['username'])) {
+	header("Location: Login.html?from=booking");
+      }
+
+  ?>
+  <?php
+ if (isset($_POST['submit'])) {
+  $userid = $_SESSION['username'];
+  $city = $_POST['city'];
+  $hotelname = $_POST['hotel_name'];
+  $number = $_POST['numRooms'];
+  $arriveDate = DateTime::createFromFormat('m/j/Y', $_POST['arriveDate']);
+  $arriveDate = $arriveDate->format('Y-m-d');
+  
+  $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
+  $departDate = $departDate->format('Y-m-d');
+  
+  $db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`)
+		     values ('$userid', '$hotelname', 'India', '$city', 501, '$arriveDate', '$departDate')");
+  
+  $_SESSION['registered'] = true; 
+  }
+  ?>
+
+  
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -104,6 +133,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	  
 	  <div class="nav-collapse collapse">
 			<ul class="nav  pull-right">
+<<<<<<< HEAD
 				<?php 
 					if(isset($_SESSION['username'])) {
 						echo '<li style="color:white;font-size:20px;margin-top:10px;">Hi '.$_SESSION['username'].' !</li>' ;
@@ -119,6 +149,23 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					}
 				?>
 				</li>  
+=======
+			  			      <?php 
+			      if(isset($_SESSION['username'])) {
+				      echo '<li style="color:white">Hi, '.$_SESSION['username'].'</li> 
+				      <li class="divider-vertical"></li>
+				      <li class="divider-vertical"></li>';
+
+			      }
+			      else {
+				      echo '<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
+						      <li class="divider-vertical"></li>
+						      <li class="divider-vertical"></li>';
+			      }
+				?>		
+		      	
+				
+>>>>>>> 8c1a30688697bd2510e0e835cf0d81b30131fb30
 	    </ul>			
 	  </div><!--/.nav-collapse -->
 	</div>
@@ -136,9 +183,15 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	      <br/>
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
 	      <br/><li class="active" ><a href="Booking.php" style="font-size:18px">Book Here</a></li>
+<<<<<<< HEAD
 			  <br/><li><a href="View.php" style="font-size:18px">View Your Booking</a></li>
 			  <br/><li><a href="modify.php" style="font-size:18px">Modify Your Booking</a></li>
 			  <br/><li><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
+=======
+			  <br/><li><a href="View.html" style="font-size:18px">View Your Booking</a></li>
+			  <br/><li><a href="modify.html" style="font-size:18px">Modify Your Booking</a></li>
+			  <br/><li><a href="Cancel.html" style="font-size:18px">Cancel Your Booking</a></li>
+>>>>>>> 8c1a30688697bd2510e0e835cf0d81b30131fb30
 			  <br/>
 			  <br/>
 			  <br/>
@@ -156,9 +209,22 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	      <br/>
 	      <br/>
 	      <br/>
-	      <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		  <div><h3 style="margin-left:20px">Book Your Room Here</h3></div>
-		  <div class="row-fluid">
+		  
+		      <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
+		      
+		      <?php
+		      if (isset($_SESSION['registered'])) {
+			$userid = $_SESSION['username'];
+			  $booking_query = $db->query("Select max(`booking_id`) as 'booking_id' from `Booking` where guest_id = '$userid'");
+			  $booking = $db->fetch_assoc($booking_query);
+
+			$message = 'Congratulations, your booking is successul! Please note your Booking Id - '.$booking['booking_id'].' for future references';
+			echo '<h4 name="message">'.$message.'</h4>';
+			unset($_SESSION['registered']); 
+		      }
+		      ?>
+		       <div class="row-fluid">
 			<div class="input-append span4">
 			      <br/>
 			  <div class="side-by-side clearfix" style="margin-left:20px">				
@@ -336,15 +402,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						
 
     </div><!--/.fluid-container-->
-  
-  <?php
-  if (isset($_POST['submit'])) {
-    echo$_POST['city'];
-  // form not submitted
-  }
-  ?>
-
-   
+     
+ 
 
   </body>
 </html>

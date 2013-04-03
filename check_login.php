@@ -68,8 +68,12 @@ if($count==1)
     header("Location: index.php");
 	//exit(1);
 // 	setcookie("user", $_SESSION['user'], time()+36000, "/"); //Expire in 10 hours
+<<<<<<< HEAD
 	//header("Location:");
 	//echo "Success!";
+=======
+	echo "Login successful!";
+>>>>>>> 8c1a30688697bd2510e0e835cf0d81b30131fb30
 	//echo $result;
 }
 else
