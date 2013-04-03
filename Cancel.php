@@ -1,4 +1,10 @@
 <?php session_start(); ?>
+<!--
+LAB ASSIGNMENT 1 - CS3240
+NAME : MADHU MAITHRI PARVATANENI
+MATRIC NUMBER : A0074807Y
+WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
+-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,8 +46,21 @@
 	 width:300px;
 	 height:123px;
 	 }
+	 
+	 
+	.clearfix:after 
+	{
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+	overflow: hidden;
+	visibility: hidden;
+	}
+
 	
     </style>
+    <link href="chosen/chosen.css" rel="stylesheet"/>  
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
 	
@@ -51,6 +70,8 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+	<script type="text/javascript" src="js/jquery-1.7.1.js"></script>
+	<script type="text/javascript" src="js/jquerymx-3.2.custom.js"></script>
 	<link rel="stylesheet" href="/resources/demos/style.css" />
 	
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -67,7 +88,6 @@
   </head>
 
   <body>
-  <?php include 'db.php'; ?>
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -98,127 +118,143 @@
 								<li class="divider-vertical"></li>';
 					}
 				?>
- 				
+				
+				</li>  
             </ul>			
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
-
+	
     <div class="container-fluid">
       <div class="row-fluid">
 
-        <div class="span3">
+       <div class="span3">
 		<img src="img/logo8.jpg" id="logo">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
 			  <li class="nav-header" style="font-size:18px"><i class="icon-home"></i> HOME</li>
-			  <br/><li class="active" style="font-size:18px"><a href="index.php">Homepage</a></li>
+			  <br/><li style="font-size:18px"><a href="index.php">Homepage</a></li>
               <br/>
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
               <br/><li><a href="Booking.php" style="font-size:18px">Book Here</a></li>
 			  <br/><li><a href="View.php" style="font-size:18px">View Your Booking</a></li>
 			  <br/><li><a href="Modify.php" style="font-size:18px">Modify Your Booking</a></li>
-			  <br/><li><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
+			  <br/><li class="active" ><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
 			  <br/>
 			  <br/>
 			  <br/>
-			  <li><form><a href="Booking.php"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></form></li>
+			  <li><a href="Booking.php"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>
                 			  
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
 		
         <div class="span9">
-		<div class="jumbotron">
-		<div class="container"> 
-							<div id="myCarousel" class="carousel slide">
-								<div class="carousel-inner">
-									<div class="item">
-										<img src="img/H2.jpg" alt="">
-										<div class="carousel-caption span4 pull-left">
-											<h4>Majesty Towers, Renaissance Dubai</h4>
-										</div>
-									</div>
-									<div class="item">
-										<img src="img/H1.jpg" alt="">
-										<div class="carousel-caption span4 pull-left">
-											<h4>The Lobby, Renaissance Singapore</h4>
-										</div>
-									</div>
-									<div class="item">
-										<img src="img/H3.jpg" alt="">
-										<div class="carousel-caption span4 pull-left">
-											<h4>Rhode Lounge, Renaissance New York</h4>
-										</div>
-									</div>
-									<div class="item">
-										<img src="img/H4.jpg" alt="">
-										<div class="carousel-caption span4 pull-left">
-											<h4>Shiro Lounge, Renaissance Dubai</h4>
-										</div>
-									</div>
-									<div class="item active">
-										<img src="img/H7.jpg" alt="">
-										<div class="carousel-caption span4 pull-left">
-											<h4>The Alp Towers, Renaissance Paris</h4>
-										</div>
-									</div>
-									<div class="item">
-										<img src="img/H8.jpg" alt="">
-										<div class="carousel-caption span4 pull-left">
-											<h4>Waterfront, Renaissance Singapore</h4>
-										</div>
-									</div>
-								</div> <!-- /.carousel-inner --> 
-								<!-- Carousel nav -->
-								<a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-								<a class="right carousel-control" style="margin-right:20px" href="#myCarousel" data-slide="next">&rsaquo;</a>
-							</div><!-- /.carousel -->
-							</div>
-						
-       
-      </div>
-         
-          <div class="row-fluid">
-			<div class="span4">
-				<br/>
-				<blockquote class="well">
-				<p style="font-size: 32px; font-family:Georgia;">Renaissance provides 7-star luxury and service for the price of a 4-star.</p>
-				<small>Sidney Gosel, <cite title="Source Title">The New York Times</cite></small>
-				</blockquote>	
-			</div>
-			
-			 
-			<div class="span3">    
-             <br/>
-			 <div class="active item"><img src="img/room2.jpg" id="single" alt="" style="margin-left:-20px;"><h6 id="singleslogan">Standard Double Bed</h6></div>
-			 </div>	
-			 <div class="span3">    
-             <br/>
-			 <div class="active item"><img src="img/room3.jpg" id="single" alt="" style="margin-left:-40px;"><h6 id="singleslogan">Superior Double Bed</h6></div>
-			 </div>	
-			
-			<div class="span2" style="margin-left:-25px;width:220px;">
-			<br/>
-				<blockquote class="well">
-				<p style="font-size: 26px; font-family:Georgia;">Voted Best in Hospitality by the HMA in 2013.</p>
-				</blockquote>
-			</div>			
-            
-          </div><!--/row-->
-        </div><!--/span-->
-		
-      </div><!--/row-->
+		  <br/>
+		  <br/>
+		  <br/>
+		  <br/>
+		  <br/>
+		  <br/>
+		  <br/>
+		  <div><h3 style="margin-left:20px">Cancel Your Booking</h3></div>
+		  <h5 style="margin-left:20px">Here are your booking details which you can modify.</h5>
+		  <h5 style="margin-left:20px">Please confirm if you like to go ahead with your cancellation.</h5>
+		            <div class="row-fluid">
+					
+					<strong style="margin-left:20px"> Your Location </strong>
+					<select type="text" class="input-medium" style="margin-left:99px;" disabled>
+					<option>New York</option>
+					<option>Singapore</option>
+					<option>Dubai</option>
+					<option>Paris</option>
+					</select>
+					
+					<br/>
+					<strong style="margin-left:20px"> Choose Hotel Name </strong>
+					<select type="text" class="input-medium" style="margin-left:60px;" disabled>
+					<option>x</option>
+					<option>y</option>
+					<option>z</option>
+					<option>w</option>
+					</select>
+					
+					<div>
+					<strong style="margin-left:20px"> Choose Arrival date <input type="text" id="datepicker" class="input-medium" style="margin-left:58px;" disabled></input></strong>
+					<script>
+					$(function() 
+					{
+					$( "#datepicker" ).datepicker({minDate: 0});
+					});
+					</script>
+					</div>
+					
+					<div>
+					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:32px;" disabled></input></strong>
+					<script>
+					$(function() {
+					$( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
+					});
+					</script>
+					</div>
+					
+					<div>
+					<strong style="margin-left:20px"> Type Of Room </strong>
+					<select type="text" class="input-medium" style="margin-left:100px;width:200px;" disabled>
+					<option>Standard Single Room</option>
+					<option>Standard Double Room</option>
+					<option>Superior Single Room</option>
+					<option>Superior Double Room</option>
+					</select>
+					<div>
+					
+					<div>
+					<strong style="margin-left:20px"> Number Of Rooms </strong>
+					<select type="text" class="input-small" style="margin-left:71px;" disabled>
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					</select>
+					</div>
+					
+					<div>
+					<strong style="margin-left:20px"> Number Of Adults Per Room </strong>
+					<select type="text" class="input-small" style="margin-left:4px;" disabled>
+					<option>1</option>
+					<option>2</option>
+					</select>
+					</div>
+					
+					<div>
+					<strong style="margin-left:20px"> Number Of Kids Per Room </strong>
+					<select type="text" class="input-small" style="margin-left:17px;" disabled>
+					<option>0</option>
+					<option>1</option>
+					<option>2</option>
+					</select>
+					</div>
+					
+					<br/>
+					<br/>
+					<br/>
+					<div style="margin-left:20px">
+					<a href="Login.php"><button type="submit" class="btn btn-primary">Confirm Cancellation</button></a>
+					<a href="index.php"><button type="button" class="btn">Back</button></a>
+					</div>
+        </div><!--/hererow-->
 
       <hr>
 	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
       <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-	  <script>
-						$(document).ready(function(){
-							$('.carousel').carousel();
+	  <script src="chosen/chosen.jquery.js" type="text/javascript"></script>
+	  <script type="text/javascript">
+						$(document).ready(function()
+						{
+								     
 						});
-	    
+						$(".chzn-select").chosen();
+                                     $(".chzn-select-deselect").chosen({ allow_single_deselect: true });
 						$("#singleslogan").click(function () 
 						{
 						if($('#single').is(":visible"))
@@ -242,13 +278,17 @@
 						else
 						document.getElementById('errormsg').innerHTML="";
 						});
+						
+						$("#datepicker2").focus(function () 
+						{
+							var date = $("#datepicker").datepicker('getDate');
+							if (date){
+							date.setDate(date.getDate() + 1);
+							$( "#datepicker2" ).datepicker( "option", "minDate", date );
+							}
+						});
 	  </script>
 						
-						
-
-      <footer>
-        <p>&copy; Company 2013</p>
-      </footer>
 
     </div><!--/.fluid-container-->
 
