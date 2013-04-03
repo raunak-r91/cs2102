@@ -104,10 +104,20 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
           <div class="nav-collapse collapse">
 			<ul class="nav  pull-right">
 				
-				
-				<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
-				<li class="divider-vertical"></li>
-				<li class="divider-vertical"></li>
+				<?php 
+					if(isset($_SESSION['username'])) {
+						echo '<li style="color:white;font-size:20px;margin-top:10px;">Hi '.$_SESSION['username'].' !</li>' ;
+						echo '<li class="divider-vertical"></li>
+							  <li class="divider-vertical"></li>' ;
+					    echo '<li><a href="logout.php" style="color:white"><i class="icon-lock icon-white"></i> Logout</a></li>';
+					}
+					else 
+					{
+						echo '<li><a href="Login.php" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
+								<li class="divider-vertical"></li>
+								<li class="divider-vertical"></li>';
+					}
+				?>
 				
 				</li>  
             </ul>			
@@ -127,14 +137,14 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 			  <br/><li style="font-size:18px"><a href="index.php">Homepage</a></li>
               <br/>
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
-              <br/><li><a href="Login.html" style="font-size:18px">Book Here</a></li>
-			  <br/><li><a href="View.html" style="font-size:18px">View Your Booking</a></li>
-			  <br/><li><a href="Modify.html" style="font-size:18px">Modify Your Booking</a></li>
-			  <br/><li class="active" ><a href="Cancel.html" style="font-size:18px">Cancel Your Booking</a></li>
+              <br/><li><a href="Booking.php" style="font-size:18px">Book Here</a></li>
+			  <br/><li><a href="View.php" style="font-size:18px">View Your Booking</a></li>
+			  <br/><li><a href="Modify.php" style="font-size:18px">Modify Your Booking</a></li>
+			  <br/><li class="active" ><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
 			  <br/>
 			  <br/>
 			  <br/>
-			  <li><a href="Login.html"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>
+			  <li><a href="Booking.php"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>
                 			  
             </ul>
           </div><!--/.well -->
@@ -177,7 +187,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					{
 					$( "#datepicker" ).datepicker({minDate: 0});
 					});
-					
 					</script>
 					</div>
 					
@@ -230,8 +239,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					<br/>
 					<br/>
 					<div style="margin-left:20px">
-					<a href="Login.html"><button type="submit" class="btn btn-primary">Confirm Cancellation</button></a>
-					<a href="Hotel Renaissance.html"><button type="button" class="btn">Back</button></a>
+					<a href="Login.php"><button type="submit" class="btn btn-primary">Confirm Cancellation</button></a>
+					<a href="index.php"><button type="button" class="btn">Back</button></a>
 					</div>
         </div><!--/hererow-->
 

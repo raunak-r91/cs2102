@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!--
 LAB ASSIGNMENT 1 - CS3240
 NAME : MADHU MAITHRI PARVATANENI
@@ -103,12 +104,20 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	  
 	  <div class="nav-collapse collapse">
 			<ul class="nav  pull-right">
-				
-				
-				<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
-				<li class="divider-vertical"></li>
-				<li class="divider-vertical"></li>
-				
+				<?php 
+					if(isset($_SESSION['username'])) {
+						echo '<li style="color:white;font-size:20px;margin-top:10px;">Hi '.$_SESSION['username'].' !</li>' ;
+						echo '<li class="divider-vertical"></li>
+							  <li class="divider-vertical"></li>' ;
+					    echo '<li><a href="logout.php" style="color:white"><i class="icon-lock icon-white"></i> Logout</a></li>';
+					}
+					else 
+					{
+						echo '<li><a href="Login.php" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
+								<li class="divider-vertical"></li>
+								<li class="divider-vertical"></li>';
+					}
+				?>
 				</li>  
 	    </ul>			
 	  </div><!--/.nav-collapse -->
@@ -127,9 +136,9 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	      <br/>
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
 	      <br/><li class="active" ><a href="Booking.php" style="font-size:18px">Book Here</a></li>
-			  <br/><li><a href="View.html" style="font-size:18px">View Your Booking</a></li>
-			  <br/><li><a href="Modify.html" style="font-size:18px">Modify Your Booking</a></li>
-			  <br/><li><a href="Cancel.html" style="font-size:18px">Cancel Your Booking</a></li>
+			  <br/><li><a href="View.php" style="font-size:18px">View Your Booking</a></li>
+			  <br/><li><a href="modify.php" style="font-size:18px">Modify Your Booking</a></li>
+			  <br/><li><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
 			  <br/>
 			  <br/>
 			  <br/>
@@ -169,8 +178,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 			      
 		  <strong style="margin-left:20px"> Choose Location </strong>
 		  <select type="text" name="city" id="city" class="input-medium" style="margin-left:79px;">
+		  
 		  <?php
-
 		    $hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
 		    while($hotel = $db->fetch_assoc($hotel_query))
 		    {
@@ -260,7 +269,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		      <div style="margin-left:20px">
 		      <!--<a href="Login.html"></a>-->
 		      <button name="submit" type="submit" class="btn btn-primary">Book Now!</button>
-		      <a href="Hotel Renaissance.html"><button type="button" class="btn">Cancel</button></a>
+		      <a href="index.php"><button type="button" class="btn">Cancel</button></a>
 		      </div>		
 		  </div><!--/hererow-->
 	  </form>

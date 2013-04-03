@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <!--
 LAB ASSIGNMENT 1 - CS3240
 NAME : MADHU MAITHRI PARVATANENI
@@ -7,6 +7,9 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 -->
 
 <!DOCTYPE html>
+<?php 
+session_start(); 	
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -92,7 +95,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
           <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -103,38 +106,47 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
           
           <div class="nav-collapse collapse">
 			<ul class="nav  pull-right">
+				<?php 
+					if(isset($_SESSION['username'])) 
+					{
+						echo '<li style="color:white;font-size:20px;margin-top:10px;">Hi '.$_SESSION['username'].' !</li>' ;
+						echo '<li class="divider-vertical"></li>
+							  <li class="divider-vertical"></li>' ;
+					    echo '<li><a href="logout.php" style="color:white"><i class="icon-lock icon-white"></i> Logout</a></li>';
+					}
+					else 
+					{
+						echo '<li><a href="Login.php" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
+								<li class="divider-vertical"></li>
+								<li class="divider-vertical"></li>';
+					}
+				?>
 				
-				
-				<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
-				<li class="divider-vertical"></li>
-				<li class="divider-vertical"></li>
-				
-				</li>  
             </ul>			
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
-	
     <div class="container-fluid">
       <div class="row-fluid">
 
-       <div class="span3">
+        <div class="span3">
 		<img src="img/logo8.jpg" id="logo">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
 			  <li class="nav-header" style="font-size:18px"><i class="icon-home"></i> HOME</li>
+			  
 			  <br/><li style="font-size:18px"><a href="index.php">Homepage</a></li>
               <br/>
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
-              <br/><li><a href="Login.html" style="font-size:18px">Book Here</a></li>
-			  <br/><li><a href="View.html" style="font-size:18px">View Your Booking</a></li>
-			  <br/><li><a href="Modify.html" style="font-size:18px">Modify Your Booking</a></li>
-			  <br/><li class="active" ><a href="Cancel.html" style="font-size:18px">Cancel Your Booking</a></li>
+              <br/><li><a href="Booking.php" style="font-size:18px">Book Here</a></li>
+			  <br/><li><a href="View.php" style="font-size:18px">View Your Booking</a></li>
+			  <br/><li class="active" ><a href="Modify.php" style="font-size:18px">Modify Your Booking</a></li>
+			  <br/><li><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
 			  <br/>
 			  <br/>
 			  <br/>
-			  <li><a href="Login.html"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>
+			  <li><a href="Booking.php"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>
                 			  
             </ul>
           </div><!--/.well -->
@@ -147,14 +159,14 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  <br/>
 		  <br/>
 		  <br/>
-		  <br/>
-		  <div><h3 style="margin-left:20px">Cancel Your Booking</h3></div>
+		  
+		  <div><h3 style="margin-left:20px">Modify Your Booking</h3></div>
 		  <h5 style="margin-left:20px">Here are your booking details which you can modify.</h5>
-		  <h5 style="margin-left:20px">Please confirm if you like to go ahead with your cancellation.</h5>
+		  <h5 style="margin-left:20px">We will check if your modifications are possible from our end.</h5>
 		            <div class="row-fluid">
 					
-					<strong style="margin-left:20px"> Your Location </strong>
-					<select type="text" class="input-medium" style="margin-left:99px;" disabled>
+					<strong style="margin-left:20px"> Choose Location </strong>
+					<select type="text" class="input-medium" style="margin-left:79px;">
 					<option>New York</option>
 					<option>Singapore</option>
 					<option>Dubai</option>
@@ -163,15 +175,16 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 					<br/>
 					<strong style="margin-left:20px"> Choose Hotel Name </strong>
-					<select type="text" class="input-medium" style="margin-left:60px;" disabled>
+					<select type="text" class="input-medium" style="margin-left:60px;">
 					<option>x</option>
 					<option>y</option>
 					<option>z</option>
 					<option>w</option>
 					</select>
 					
+					
 					<div>
-					<strong style="margin-left:20px"> Choose Arrival date <input type="text" id="datepicker" class="input-medium" style="margin-left:58px;" disabled></input></strong>
+					<strong style="margin-left:20px"> Choose Arrival date <input type="text" id="datepicker" class="input-medium" style="margin-left:58px;"/></strong>
 					<script>
 					$(function() 
 					{
@@ -182,7 +195,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:32px;" disabled></input></strong>
+					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:32px;"/></strong>
 					<script>
 					$(function() {
 					$( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
@@ -192,7 +205,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 					<div>
 					<strong style="margin-left:20px"> Type Of Room </strong>
-					<select type="text" class="input-medium" style="margin-left:100px;width:200px;" disabled>
+					<select type="text" class="input-medium" style="margin-left:100px;width:200px;">
 					<option>Standard Single Room</option>
 					<option>Standard Double Room</option>
 					<option>Superior Single Room</option>
@@ -202,7 +215,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 					<div>
 					<strong style="margin-left:20px"> Number Of Rooms </strong>
-					<select type="text" class="input-small" style="margin-left:71px;" disabled>
+					<select type="text" class="input-small" style="margin-left:71px;">
 					<option>1</option>
 					<option>2</option>
 					<option>3</option>
@@ -211,7 +224,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 					<div>
 					<strong style="margin-left:20px"> Number Of Adults Per Room </strong>
-					<select type="text" class="input-small" style="margin-left:4px;" disabled>
+					<select type="text" class="input-small" style="margin-left:4px;">
 					<option>1</option>
 					<option>2</option>
 					</select>
@@ -219,7 +232,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 					<div>
 					<strong style="margin-left:20px"> Number Of Kids Per Room </strong>
-					<select type="text" class="input-small" style="margin-left:17px;" disabled>
+					<select type="text" class="input-small" style="margin-left:17px;">
 					<option>0</option>
 					<option>1</option>
 					<option>2</option>
@@ -229,10 +242,22 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					<br/>
 					<br/>
 					<br/>
+					
+				
 					<div style="margin-left:20px">
-					<a href="Login.html"><button type="submit" class="btn btn-primary">Confirm Cancellation</button></a>
-					<a href="Hotel Renaissance.html"><button type="button" class="btn">Back</button></a>
+					<!--<a href="Login.php"><button type="submit" class="btn btn-primary">Modify Now!</button></a>-->
+					<?php 
+					if(!isset($_SESSION['username'])) {
+						echo '<a href="Login.php"><button type="button" class="btn btn-primary">Modify Now!</button></a>';
+					}
+					else 
+					{
+						echo '<a href="index.php"><button type="submit" class="btn btn-primary">Modify Now!</button></a>';
+					}
+				    ?>
+					<a href="index.php"><button type="button" class="btn">Back</button></a>
 					</div>
+					<h5 style="margin-left:20px">In case you would like to cancel your booking click <a href="Cancel.html"">Cancel Booking</a>.</h5>
         </div><!--/hererow-->
 
       <hr>
