@@ -8,7 +8,6 @@ session_start();
   
 // username and password sent from form 
 $myusername=$_POST["myusername"]; 
-$name = 'fred';
 $mypassword=$_POST["mypassword"]; 
 
 $host="localhost"; // Host name
@@ -18,7 +17,7 @@ $db_name="CS2102"; // Database name
 $tbl_name="Guest"; // Table name 
 
 // Connect to server and select database.
-$connect = mysql_connect($host, $username, '');
+$connect = mysql_connect($host, $username, $password);
 if (!$connect) 
 {
      //echo 'error!';
@@ -26,7 +25,7 @@ if (!$connect)
 }
 else
 {
-   // echo 'Successful Connection!';
+    //echo 'Successful Connection!';
 }
 $db_connect = mysql_select_db($db_name, $connect);
 if (!$db_connect)
@@ -41,14 +40,15 @@ $myusername = stripslashes($myusername);
 $mypassword = stripslashes($mypassword);
 $myusername = mysql_real_escape_string($myusername);
 $mypassword = mysql_real_escape_string($mypassword);
-$sql=sprintf("SELECT name FROM $tbl_name WHERE email='$myusername' and password='$mypassword'", mysql_real_escape_string($name));
+$sql="SELECT * FROM $tbl_name WHERE user_id='$myusername' and password='$mypassword'";
 $result=mysql_query($sql);
 
 //Check that user has entered values for all fields
 if($myusername=="" || $mypassword=="")
 {
-	header("Location: Login.php?errormsg=Inavalid! Please try again.");
-	exit();	
+	header("Location: Login.html?errormsg=Missing values! Please enter values for all fields");
+	exit();
+	
 }
 
 // Mysql_num_row is counting table row
@@ -62,20 +62,16 @@ if($count==1)
 // 	mysql_query("UPDATE profile SET loginstatus=1 WHERE email='$myusername'");
 // 	session_register("myusername");
 // 	session_register("mypassword"); 
-	//$_SESSION['username'] = $myusername;
-	$row = mysql_fetch_assoc($result);
-	$_SESSION['username'] = $row['name'];
-    header("Location: index.php");
-	//exit(1);
+	$_SESSION['username'] = $myusername;
 // 	setcookie("user", $_SESSION['user'], time()+36000, "/"); //Expire in 10 hours
-	//header("Location:");
+	header("Location: index.php");
 	//echo "Success!";
 	//echo $result;
 }
 else
 {
 	//echo "Wrong Username or Password";
-	header("Location: Login.php?errormsg=Invalid username or password! Please login again");
+	header("Location: Login.html?errormsg=Invalid username or password! Please login again");
 	exit();
 }
 
