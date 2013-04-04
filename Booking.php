@@ -321,15 +321,16 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	    $("#loadbtn").click(function() {
 	      var options = $("#form_field option");
 	      var idx = options.index(options.filter(":selected"));
-	      
-	      var G=document.getElementsByTagName('optgroup');
+	      var temp = "";
+	      var G = document.getElementsByTagName('optgroup');
 	      var O = G[0].getElementsByTagName('option');
 	      var selValues = [];
-	      for(i = 0; i < G.length; i++){
+	      for(i = 0; i < O.length; i++){
 		      selValues.push(i);
+		      temp = temp + i;
 	      }
 	      
-		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facility=" + idx);
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facility=" + temp);
 	      
 	    });
 	    
