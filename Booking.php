@@ -325,7 +325,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	     for (i = 0;i < idx.length; i++) {
 		   returnval = "1";
 	      }
-	      
+	      returnval = $('#form_field')[0].selectedIndex;
 	      
 	      var G=document.getElementsByTagName('optgroup');
 	      var O = G[0].getElementsByTagName('option');
