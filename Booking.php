@@ -100,29 +100,27 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     $userid = $_SESSION['username'];
     $city = $_POST['city'];
     
-    $hotelname = $_POST['hotel_name'];
-    if($hotelname == "") {
+    if(empty($_POST['hotel_name'])) {
     	$_SESSION['message'] = "Please select Hotel. Remove facilities filter to view all hotels";
     	break;
     }
+    $hotelname = $_POST['hotel_name'];
     $roomType = $_POST['room_type'];
     $number = $_POST['numGuests'];
     
-    if(empty($_POST['arriveDate']))
-    	echo "All fields are required";
-    $arriveDate = DateTime::createFromFormat('m/j/Y', $_POST['arriveDate']);
-    $arriveDate = $arriveDate->format('Y-m-d');
-    if($arriveDate == "") {
+    if(empty($_POST['arriveDate'])) {
     	$_SESSION['message'] = "Please fill in your arrival date";
     	break;
     }
+    $arriveDate = DateTime::createFromFormat('m/j/Y',);
+    $arriveDate = $arriveDate->format('Y-m-d');
     
-    $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
-    $departDate = $departDate->format('Y-m-d');
-    if($departDate == "") {
-    	$_SESSION['message'] = "Please fill in your departure date";
+	if(empty($_POST['departDate'])) {
+		$_SESSION['message'] = "Please fill in your departure date";
     	break;
     }
+    $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
+    $departDate = $departDate->format('Y-m-d');    	
     
     $check_query = $db->query("SELECT *
     FROM `Room` r
