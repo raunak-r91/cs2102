@@ -326,8 +326,9 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	      var O = G[0].getElementsByTagName('option');
 	      var selValues = [];
 	      for(i = 0; i < O.length; i++){
-		      selValues.push(i);
-		      temp = temp + i;
+		    if (O[i].selected) {
+		        temp = temp + i;
+		    }
 	      }
 	      
 		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facility=" + temp);
