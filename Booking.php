@@ -406,8 +406,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						
 						$("#booknow").click(function () 
 						{
-						if($("#hotel_name").val()=="")
-							document.getElementById('errormsg').innerHTML="*Please select Hotel. Remove filters to view all hotels";
+
 							
 						if(($("#datepicker").val()=="") && ($("#datepicker2").val()==""))
 							document.getElementById('errormsg').innerHTML="*Please fill in your arrival and departure dates";
