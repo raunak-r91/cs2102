@@ -127,8 +127,11 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	$number = intval($number);
       $db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`, `guests`)
                    values ('$userid', '$hotelname', 'India', '$city', $roomnumber, '$arriveDate', '$departDate', $number)");
+      $_SESSION['registered'] = true;
     }
-    $_SESSION['registered'] = true; 
+    else {
+      $_SESSION['registered'] = false;
+    }
   }
   ?>
 
@@ -213,8 +216,12 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 			  $booking = $db->fetch_assoc($booking_query);
 
 			$message = 'Congratulations, your booking is successul!<br/>Please note your Booking Id - '.$booking['booking_id'].' for future references';
-			echo '<h4 name="message">'.$message.'</h4>';
+			echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
 			unset($_SESSION['registered']); 
+		      }
+		      else {
+			$message = 'Sorry, All the rooms are full!<br/>Please select another room type';
+			echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
 		      }
 		      ?>
 		       <div class="row-fluid">
