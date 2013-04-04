@@ -99,12 +99,25 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
  if (isset($_POST['submit'])) {
     $userid = $_SESSION['username'];
     $city = $_POST['city'];
+    if(!isset($_POST['hotel_name'])) {
+    	$_SESSION['message'] = "Please select Hotel. Remove facilities filter to view all hotels";
+    	break;
+    }
     $hotelname = $_POST['hotel_name'];
     $roomType = $_POST['room_type'];
     $number = $_POST['numGuests'];
+    
+    if(!isset($_POST['arriveDate'])) {
+    	$_SESSION['message'] = "Please fill in your arrival date";
+    	break;
+    }
     $arriveDate = DateTime::createFromFormat('m/j/Y', $_POST['arriveDate']);
     $arriveDate = $arriveDate->format('Y-m-d');
     
+    if(!isset($_POST['departDate'])) {
+    	$_SESSION['message'] = "Please fill in your departure date";
+    	break;
+    }
     $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
     $departDate = $departDate->format('Y-m-d');
     
@@ -207,24 +220,28 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	      <br/>
 		  <div><h3 style="margin-left:20px">Book Your Room Here</h3></div>
 		  
-		      <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
+		  <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
 		      
 		      <?php
-			if (isset($_SESSION['registered'])) {
-			  if ($_SESSION['registered']==true ) {
-			  $userid = $_SESSION['username'];
-			    $booking_query = $db->query("Select max(`booking_id`) as 'booking_id' from `Booking` where guest_id = '$userid'");
-			    $booking = $db->fetch_assoc($booking_query);
+		      if (isset($_SESSION['message'])) {
+		      	echo '<h4 name="message"><font color = "red">'.$_SESSION['message'].'</font></h4>';
+			  	unset($_SESSION['message']);
+			  } 
+			  else if (isset($_SESSION['registered'])) {
+			 	 if ($_SESSION['registered']==true ) {
+			 	  $userid = $_SESSION['username'];
+			  	  $booking_query = $db->query("Select max(`booking_id`) as 'booking_id' from `Booking` where guest_id = '$userid'");
+			  	  $booking = $db->fetch_assoc($booking_query);
   
-			  $message = 'Congratulations, your booking is successul!<br/>Please note your Booking Id - '.$booking['booking_id'].' for future references';
-			  echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
-			  unset($_SESSION['registered']); 
-			}
-			else {
-			  $message = 'Sorry, All the rooms are full!<br/>Please select another room type';
-			  echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
-			  unset($_SESSION['registered']); 
-			}
+			  	  $message = 'Congratulations, your booking is successul!<br/>Please note your Booking Id - '.$booking['booking_id'].' for future references';
+			  	  echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
+			      unset($_SESSION['registered']); 
+				}
+				else {
+			  		$message = 'Sorry, All the rooms are full!<br/>Please select another room type';
+			  		echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
+			  		unset($_SESSION['registered']); 
+				}
 		      }
 		      ?>
 		       <div class="row-fluid">
@@ -335,7 +352,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		      <br/>
 		      <div style="margin-left:20px">
 		      <!--<a href="Login.html"></a>-->
-		      <button name="submit" type="submit" class="btn btn-primary">Book Now!</button>
+		      <button name="submit" id="booknow" type="submit" class="btn btn-primary">Book Now!</button>
 		      <a href="index.php"><button type="button" class="btn">Cancel</button></a>
 		      </div>		
 		  </div><!--/hererow-->
