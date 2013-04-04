@@ -108,8 +108,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     $roomType = $_POST['room_type'];
     $number = $_POST['numGuests'];
     
-    if(!isset($_POST['arriveDate']))
-    	echo '1';
+    if(empty($_POST['arriveDate']))
+    	echo "All fields are required";
     $arriveDate = DateTime::createFromFormat('m/j/Y', $_POST['arriveDate']);
     $arriveDate = $arriveDate->format('Y-m-d');
     if($arriveDate == "") {
