@@ -321,7 +321,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	    $("#loadbtn").click(function() {
 	      var options = $("#form_field option");
 	      var idx = options.index(options.filter(":selected"));
-	      var returnval = $('#form_field').selectedIndex;
+	      var returnval = $('#form_field').attr('selectedIndex');
 	      
 	      var G=document.getElementsByTagName('optgroup');
 	      var O = G[0].getElementsByTagName('option');
