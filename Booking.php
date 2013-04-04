@@ -320,10 +320,11 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	    
 	    $("#loadbtn").click(function() {
 	      var G=sel.getElementByTagName('optgroup');
+	      var O = G.getElementsByTagName('option')
 	      var selValues = [];
 	      var returnval = "";
-	      for(i = 0; i < G.length; i++){
-		  if(G.options[i].selected){
+	      for(i = 0; i < O.length; i++){
+		  if(O[i].selected){
 		      selValues.push(i);
 		      returnval = returnval + i;
 		  }
