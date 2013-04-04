@@ -110,6 +110,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     
     $arriveDate = DateTime::createFromFormat('m/j/Y', $_POST['arriveDate']);
     $arriveDate = $arriveDate->format('Y-m-d');
+    echo $arriveDate;
     if($arriveDate == "") {
     	$_SESSION['message'] = "Please fill in your arrival date";
     	break;
