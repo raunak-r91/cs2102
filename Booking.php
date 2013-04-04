@@ -319,8 +319,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	  <script type="text/javascript">
 	    
 	    $("#loadbtn").click(function() {
-	      var G=sel.getElementByTagName('optgroup');
-	      var O = G.getElementsByTagName('option')
+	      var G=sel.getElementsByTagName('optgroup');
+	      var O = G[0].getElementsByTagName('option')
 	      var selValues = [];
 	      var returnval = "";
 	      for(i = 0; i < O.length; i++){
@@ -331,7 +331,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	      }
 	      
 	      
-		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facilty=" + setValues);
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facilty=" + returnval);
 	      
 	    });
 	    
