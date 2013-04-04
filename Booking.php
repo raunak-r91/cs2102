@@ -108,9 +108,10 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     $roomType = $_POST['room_type'];
     $number = $_POST['numGuests'];
     
+    if(!isset($_POST['arriveDate']))
+    	echo '1';
     $arriveDate = DateTime::createFromFormat('m/j/Y', $_POST['arriveDate']);
     $arriveDate = $arriveDate->format('Y-m-d');
-    echo $arriveDate;
     if($arriveDate == "") {
     	$_SESSION['message'] = "Please fill in your arrival date";
     	break;
