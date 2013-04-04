@@ -165,7 +165,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
 	      <br/><li class="active" ><a href="Booking.php" style="font-size:18px">Book Here</a></li>
 			  <br/><li><a href="View.php" style="font-size:18px">View Your Booking</a></li>
-			  <br/><li><a href="modify.php" style="font-size:18px">Modify Your Booking</a></li>
+			  <br/><li><a href="Modify.php" style="font-size:18px">Modify Your Booking</a></li>
 			  <br/><li><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
 			  <br/>
 			  <br/>
