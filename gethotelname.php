@@ -7,16 +7,16 @@
     $query = "SELECT name FROM `Hotel` where city = '$choice'";
     
     if (strpos($facility,'0') !== false) {
-        $query = $query."and swimming_pool = 1";
+        $query = $query." and swimming_pool = 1 ";
     }
     if (strpos($facility,'1') !== false) {
-        $query = $query."and gym = 1";
+        $query = $query." and gym = 1 ";
     }
     if (strpos($facility,'2') !== false) {
-        $query = $query."and restaurant = 1";
+        $query = $query." and restaurant = 1 ";
     }
     if (strpos($facility,'3') !== false) {
-        $query = $query."and wifi = 1";
+        $query = $query." and wifi = 1 ";
     }
     
     $hotel_query = $db->query($query);
