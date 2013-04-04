@@ -324,10 +324,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	      var selValues = [];
 	      var returnval = "";
 	      for(i = 0; i < O.length; i++){
-		  if(O[i].selected){
 		      selValues.push(i);
 		      returnval = returnval + i;
-		  }
 	      }
 	      
 	      
