@@ -40,7 +40,7 @@ $myusername = stripslashes($myusername);
 $mypassword = stripslashes($mypassword);
 $myusername = mysql_real_escape_string($myusername);
 $mypassword = mysql_real_escape_string($mypassword);
-$sql=sprintf("SELECT name FROM $tbl_name WHERE user_id='$myusername' and password='$mypassword'", mysql_real_escape_string($name));
+$sql=sprintf("SELECT user_id FROM $tbl_name WHERE user_id='$myusername' and password='$mypassword'", mysql_real_escape_string($name));
 $result=mysql_query($sql);
 
 //Check that user has entered values for all fields
