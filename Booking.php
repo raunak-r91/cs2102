@@ -203,7 +203,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 			<div class="input-append span4">
 			      <br/>
 			  <div class="side-by-side clearfix" style="margin-left:20px">				
-			    <select id="form_field" data-placeholder="Which are the facilities you would like? (Optional to Choose)" style="width: 430px;height: 400px" multiple class="chzn-select" tabindex="8">
+			    <select id="form_field" name="facility[]" data-placeholder="Which are the facilities you would like	? (Optional to Choose)" style="width: 430px;height: 400px" multiple class="chzn-select" tabindex="8">
 			    <option value=""></option>
 			      <optgroup>
 				  <option value="pool">Swimming Pool</option>
@@ -212,7 +212,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 				  <option value="wifi">Wi-Fi</option>
 			      </optgroup>
 			      </select>
-				  <button style="height: 29px; display:inline" id="loadbtn" type="button" class="btn btn-primary">Ok</button>
+				  <button name="faciltybtn" style="height: 29px; display:inline" id="loadbtn" type="button" class="btn btn-primary" onclick="filterFacility()">Ok</button>
 			    </div>
 			</div>
 		  </div><!--/span-->		
@@ -318,6 +318,15 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	  <script src="chosen/chosen.jquery.js" type="text/javascript"></script>
 	  <script type="text/javascript">
 	    
+	    function filterFacility() {
+	      
+	             var select = $('select#form_field');
+		    var selectedItem= select.find(':selected');
+		      var selectedVal = selectedItem[0].val();
+		    $("#form_field").load("test.php?choice=" + selectedVal);
+
+	      
+	    }
 	    $("#city").change(function() {
 		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());
 		    
@@ -332,6 +341,13 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  $("#room_type").load("getroomtype.php?choice=" + value + "&citychoice=" + $("#city").val());		    		    
 	    });
 	       
+	       
+	    $("select").find("option:selected").each(function(){
+	      var value = $("#hotel_name").val();
+		value = value.replace(new RegExp(" ","g"), "%20"); 
+       
+		 $("#room_type").load("getroomtype.php?choice=" + value + "&citychoice=" + $("#city").val());		    		    
+	    });
 	       
 						$(document).ready(function()
 						{
