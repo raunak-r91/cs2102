@@ -212,7 +212,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 				  <option value="wifi">Wi-Fi</option>
 			      </optgroup>
 			      </select>
-				  <button name="faciltybtn" style="height: 29px; display:inline" id="loadbtn" type="button" class="btn btn-primary" onclick="filterFacility()">Ok</button>
+				  <button name="faciltybtn" style="height: 29px; display:inline" id="loadbtn" type="button" class="btn btn-primary">Ok</button>
 			    </div>
 			</div>
 		  </div><!--/span-->		
@@ -318,15 +318,14 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	  <script src="chosen/chosen.jquery.js" type="text/javascript"></script>
 	  <script type="text/javascript">
 	    
-	    function filterFacility() {
-	      
+	    $("#loadbtn").click(function() {
 	             var select = $('select#form_field');
 		    var selectedItem= select.find(':selected');
 		      var selectedVal = selectedItem[0].val();
 		    $("#form_field").load("test.php?choice=" + selectedVal);
-
 	      
-	    }
+	    });
+	    
 	    $("#city").change(function() {
 		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());
 		    
