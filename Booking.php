@@ -319,15 +319,20 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	  <script type="text/javascript">
 	    
 	    $("#loadbtn").click(function() {
+	      var options = $("#form_field option");
+	      var idx = options.index(options.filter(":selected"));
+	      for (i = 0;i < idx.length; i++) {
+		   returnval = "1";
+	      }
+	      
+	      
 	      var G=document.getElementsByTagName('optgroup');
 	      var O = G[0].getElementsByTagName('option');
 	      var selValues = [];
 	      var returnval = "";
 	      for(i = 0; i < G.length; i++){
 		      selValues.push(i);
-		      returnval = "1";
 	      }
-	      
 	      
 		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facilty=" + returnval);
 	      
