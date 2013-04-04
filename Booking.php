@@ -322,7 +322,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	             var select = $('select#form_field');
 		    var selectedItem= select.find(':selected');
 		      var selectedVal = selectedItem[0].val();
-		    $("#form_field").load("test.php?choice=" + selectedVal);
+		  $("#hotel_name").load("gethotelname.php?choice=" + selectedVal);
 	      
 	    });
 	    
