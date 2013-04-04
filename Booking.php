@@ -408,17 +408,17 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						{
 
 							
-						if(($("#datepicker").val()=="") && ($("#datepicker2").val()==""))
-							document.getElementById('errormsg').innerHTML="*Please fill in your arrival and departure dates";
-						
-						else if($("#datepicker").val()=="")
-							document.getElementById('errormsg').innerHTML="*Please fill in your arrival date";
-						
-						else if($("#datepicker2").val()=="")
-							document.getElementById('errormsg').innerHTML="*Please fill in your departure date";
-						
-						else
-							document.getElementById('errormsg').innerHTML="";
+						if((($("#datepicker").val()=="")) && (($("#datepicker2").val()=="")))
+						document.getElementById('errormsg').innerHTML="*Please fill in your arrival and departure dates";
+ 						
+						else if((($("#datepicker").val()=="")))
+						document.getElementById('errormsg').innerHTML="*Please fill in your arrival date";
+ 						
+						else if(((($("#datepicker2").val()==""))))
+						document.getElementById('errormsg').innerHTML="*Please fill in your departure date";
+ 						
+ 						else
+						document.getElementById('errormsg').innerHTML="";
 							
 						});
 						
