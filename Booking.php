@@ -340,9 +340,9 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		        temp = temp + i;
 		    }
 	      }
-		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facilty=" + temp);
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facility=" + temp);
 		    
-		     $("#room_type").load("getroomtype.php?choice=&citychoice=" + $("#city").val());		    		    
+		  $("#room_type").load("getroomtype.php?choice=&citychoice=" + $("#city").val());		    		    
 	       });
 	       
 		       
