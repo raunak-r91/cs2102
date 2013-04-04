@@ -1,0 +1,103 @@
+1. Admin login
+------------------------------------------------
+SELECT COUNT(*)
+FROM `Guest`
+WHERE `user_id` LIKE phpvariable
+AND `password` LIKE phpvariable 
+
+2. View all bookings
+------------------------------------------------
+SELECT * FROM `Booking` 
+
+3. View bookings by guest_id
+------------------------------------------------
+SELECT * 
+FROM  `Booking` 
+WHERE  `guest_id` LIKE  'phpvariable'
+
+
+4. View bookings by hotel
+------------------------------------------------
+SELECT * 
+FROM  `Booking` 
+WHERE  `hotel_name` LIKE  'phpvariable'
+AND  `hotel_country` LIKE  'phpvariable'
+AND  `hotel_city` LIKE  'phpvariable'
+
+5. View bookings by date
+------------------------------------------------
+SELECT * 
+FROM  `Booking` 
+WHERE  `arrival` >=  'phpvariable_arrivaldate'
+AND  `departure` <=  'phpvariable_departuredate'
+
+6. View bookings by room
+------------------------------------------------
+SELECT * 
+FROM  `Booking` 
+WHERE  `hotel_name` LIKE  'phpvariable'
+AND  `hotel_country` LIKE  'phpvariable'
+AND  `hotel_city` LIKE  'phpvariable'
+AND `room_number` = 'phpvariable'
+
+7. View guest information by guest_id
+------------------------------------------------
+SELECT *
+FROM `Guest`
+WHERE `user_id` LIKE 'phpvariable'
+
+8. Modify bookings
+------------------------------------------------
+Same as user.
+
+9. Cancel bookings
+------------------------------------------------
+DELETE FROM `Booking` b
+WHERE b.`booking_id` = 'phpvariable'
+
+10. View total bookings in a particular hotel 
+------------------------------------------------
+SELECT COUNT(*)
+FROM `Booking`
+WHERE  `hotel_name` LIKE  'phpvariable'
+AND  `hotel_country` LIKE  'phpvariable'
+AND  `hotel_city` LIKE  'phpvariable'
+
+11. Insert new hotel
+------------------------------------------------
+INSERT INTO `Hotel` (
+`name` ,
+`country` ,
+`city` ,
+`address` ,
+`phone_number` ,
+`email` ,
+`swimming_pool` ,
+`gym` ,
+`restaurant` ,
+`wifi`
+)
+VALUES (
+'phpname',  'phpcountry',  'phpcity',  'phpaddress',  'phpphone',  'phpemail',  'phpswimmingpool',  'phpgym',  'phprestaurant',  'phpwifi'
+);
+
+12. Insert new room
+------------------------------------------------
+INSERT INTO `Room` (
+`number` ,
+`type` ,
+`price` ,
+`hotel_name` ,
+`hotel_country` ,
+`hotel_city` ,
+`capacity` ,
+)
+VALUES (
+'phpnumber' , 
+'phptype' ,
+'phpprice' ,
+'phphotel_name' ,
+'phphotel_country' ,
+'phphotel_city' ,
+'phpcapacity' ,
+);
