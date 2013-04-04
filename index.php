@@ -84,7 +84,6 @@
           <div class="nav-collapse collapse">
 			<ul class="nav  pull-right">
 				
-<<<<<<< HEAD
 				<?php 
 					if(isset($_SESSION['username'])) {
 						echo '<li style="color:white;font-size:20px;margin-top:10px;">Hi '.$_SESSION['username'].' !</li>' ;
@@ -98,18 +97,7 @@
 								<li class="divider-vertical"></li>
 								<li class="divider-vertical"></li>';
 					}
-=======
-			      <?php 
-			      if(isset($_SESSION['username'])) {
-				      echo '<li style="color:white">Hi, '.$_SESSION['username'].'</li>' ;
-			      }
-			      else {
-				      echo '<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
-						      <li class="divider-vertical"></li>
-						      <li class="divider-vertical"></li>';
-			      }
->>>>>>> 8c1a30688697bd2510e0e835cf0d81b30131fb30
-				?>
+			      ?>					
  				
             </ul>			
           </div><!--/.nav-collapse -->
@@ -129,16 +117,10 @@
               <br/>
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
               <br/><li><a href="Booking.php" style="font-size:18px">Book Here</a></li>
-<<<<<<< HEAD
 			  <br/><li><a href="View.php" style="font-size:18px">View Your Booking</a></li>
 			  <br/><li><a href="Modify.php" style="font-size:18px">Modify Your Booking</a></li>
 			  <br/><li><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
-=======
-			  <br/><li><a href="View.html" style="font-size:18px">View Your Booking</a></li>
-			  <br/><li><a href="modify.html" style="font-size:18px">Modify Your Booking</a></li>
-			  <br/><li><a href="Cancel.html" style="font-size:18px">Cancel Your Booking</a></li>
->>>>>>> 8c1a30688697bd2510e0e835cf0d81b30131fb30
-			  <br/>
+	  		  <br/>
 			  <br/>
 			  <br/>
 			  <li><form><a href="Booking.php"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></form></li>
