@@ -97,18 +97,18 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   ?>
   <?php
  if (isset($_POST['submit'])) {
-  $userid = $_SESSION['username'];
-  $city = $_POST['city'];
-  $hotelname = $_POST['hotel_name'];
-  $number = $_POST['numRooms'];
-  $arriveDate = DateTime::createFromFormat('m/j/Y', $_POST['arriveDate']);
-  $arriveDate = $arriveDate->format('Y-m-d');
-  
-  $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
-  $departDate = $departDate->format('Y-m-d');
-  
-  $db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`)
-		     values ('$userid', '$hotelname', 'India', '$city', 501, '$arriveDate', '$departDate')");
+    $userid = $_SESSION['username'];
+    $city = $_POST['city'];
+    $hotelname = $_POST['hotel_name'];
+    $numberGuests = $_POST['numGuests'];
+    $arriveDate = DateTime::createFromFormat('m/j/Y', $_POST['arriveDate']);
+    $arriveDate = $arriveDate->format('Y-m-d');
+    
+    $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
+    $departDate = $departDate->format('Y-m-d');
+    
+    $db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`, `guests`)
+		       values ('$userid', '$hotelname', 'India', '$city', 501, '$arriveDate', '$departDate', `$numberGuests`)");
   
   $_SESSION['registered'] = true; 
   }
@@ -194,7 +194,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 			  $booking_query = $db->query("Select max(`booking_id`) as 'booking_id' from `Booking` where guest_id = '$userid'");
 			  $booking = $db->fetch_assoc($booking_query);
 
-			$message = 'Congratulations, your booking is successul! Please note your Booking Id - '.$booking['booking_id'].' for future references';
+			$message = 'Congratulations, your booking is successul!<br/>Please note your Booking Id - '.$booking['booking_id'].' for future references';
 			echo '<h4 name="message">'.$message.'</h4>';
 			unset($_SESSION['registered']); 
 		      }
@@ -278,31 +278,29 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  <option>Superior Double Room</option> -->
 		  </select>
 		  <div>
-		      <div>
+		      <!--<div>
 		      <strong style="margin-left:20px"> Number Of Rooms </strong>
 		      <select type="text" name="numRooms"class="input-small" style="margin-left:71px;">
 		      <option>1</option>
 		      <option>2</option>
 		      <option>3</option>
 		      </select>
-		      </div>
+		      </div> -->
 		      
 		      <div>
-		      <strong style="margin-left:20px"> Number Of Adults Per Room </strong>
-		      <select type="text" name="numAdults" class="input-small" style="margin-left:4px;">
+		      <strong style="margin-left:20px"> Number Of Guests </strong>
+		      <select type="text" name="numGuests" class="input-small" style="margin-left:4px;">
 		      <option>1</option>
 		      <option>2</option>
+		      <option>3</option>
+		      <option>4</option>
+		      <option>5</option>
+		      <option>6</option>
+		      <option>7</option>
+		      <option>8</option>
 		      </select>
 		      </div>
 		      
-		      <div>
-		      <strong style="margin-left:20px"> Number Of Kids Per Room </strong>
-		      <select type="text" name="numKids" class="input-small" style="margin-left:17px;">
-		      <option>0</option>
-		      <option>1</option>
-		      <option>2</option>
-		      </select>
-		      </div>
 		      
 		      <br/>
 		      <br/>
