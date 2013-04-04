@@ -1,0 +1,107 @@
+////////Guest Register
+
+//Check if ID is available 
+// if return 0 then data can be inserted
+SELECT COUNT(*) 
+FROM  `Guest` g
+WHERE  g.`user_id` LIKE  '[value]'
+
+//Inserting data:
+INSERT INTO `Guest`(`user_id`, `password`, `name`, `phone_number`, `address`, `email`, `passport`, `nationality`) VALUES ([value-1],[value-2],[value-3],[value-4],[value-5],[value-6],[value-7],[value-8])
+
+////////User login
+
+//Check ID and password 
+// if return 0 then user id or password is wrong, reenter, else login and display options
+SELECT COUNT(*) 
+FROM  `Guest` g 
+WHERE  g.`user_id` LIKE  '[idvalue]'
+AND  g.`password` LIKE  '[pwdvalue]'
+
+////////User Search for Room and Book
+
+//Display matching rooms based on search criteria (criteria are compulsory) ( do we display room or just show availability? )
+//when facilities are not filled
+SELECT *
+FROM `Room` r
+WHERE r.`hotel_name` LIKE '[hotelvalue]' AND r.`hotel_country` LIKE '[countryvalue]' AND r.`hotel_city` LIKE '[cityvalue]' AND r.`type` LIKE '[type]' AND r.`capacity` >= '[numguest]'
+AND r.`number` NOT IN (
+        SELECT b.`room_number`
+        FROM `Booking` b
+        WHERE '[arrivaldate]' BETWEEN b.`arrival` AND b.`departure`
+    OR '[departuredate]' BETWEEN b.`arrival` AND b.`departure`
+    or b.`arrival` BETWEEN '[arrivaldate]' AND '[departuredate]'
+    or b.`departure` BETWEEN '[arrivaldate]' AND '[departuredate]'
+)
+
+//when facilities filled
+SELECT *
+FROM `Room` r, `Hotel` h
+WHERE r.`hotel_name` LIKE '[hotelvalue]' AND h.`swimming_pool` = '[poolnum]' AND h.`restaurant` = '[restnum]' AND h.`gym` = '[gymnum]' AND h.`name` LIKE r.`hotel_name` AND h.`country` LIKE r.`hotel_country` AND h.`city` LIKE r.`hotel_city` AND r.`hotel_country` LIKE '[countryvalue]' AND r.`hotel_city` LIKE '[cityvalue]' AND r.`type` LIKE '[type]' AND r.`number` NOT IN (
+        SELECT b.`room_number`
+        FROM `Booking` b
+        WHERE '[arrivaldate]' BETWEEN b.`arrival` AND b.`departure`
+    OR '[departuredate]' BETWEEN b.`arrival` AND b.`departure`
+    or b.`arrival` BETWEEN '[arrivaldate]' AND '[departuredate]'
+    or b.`departure` BETWEEN '[arrivaldate]' AND '[departuredate]'
+)
+
+//Make Booking 
+INSERT INTO  `CS2102`.`Booking` (
+`guest_id` ,
+`booking_id` ,
+`hotel_name` ,
+`hotel_country` ,
+`hotel_city` ,
+`room_number` ,
+`arrival` ,
+`departure` ,
+`guests`
+)
+VALUES (
+'[guestid]',  '[bookingid]',  '[hotel name]',  '[hotel country]',  '[hotel city]',  '[price]',  '[arrival]',  '[departure]',  '[numpeople]'
+);
+
+////////User Modify Booking 
+
+//login
+
+//show booking
+SELECT * 
+FROM  `Booking` b
+WHERE  b.`guest_id` LIKE  '[guestidvalue]'
+
+//choose booking ---> back to form
+SELECT * 
+FROM  `Booking` b
+WHERE  b.`guest_id` LIKE  '[guestidvalue]' AND b.`booking_id` = '[bookingidvalue]'
+
+//show new search results and availability
+
+//make booking
+
+//show booking
+SELECT * 
+FROM  `Booking` b
+WHERE  b.`guest_id` LIKE  '[guestidvalue]'
+
+////////Cancel Booking
+
+//login
+
+//show booking
+SELECT * 
+FROM  `Booking` b
+WHERE  b.`guest_id` LIKE  '[guestidvalue]'
+
+//choose booking 
+DELETE FROM `Booking` b
+WHERE b.`guest_id` LIKE '[guestidvalue]' AND b.`booking_id` = '[selectedbookingid]'
+
+//show booking
+SELECT * 
+FROM  `Booking` b
+WHERE  b.`guest_id` LIKE  '[guestidvalue]'
+
+
+
