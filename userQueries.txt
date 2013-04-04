@@ -95,8 +95,8 @@ FROM  `Booking` b
 WHERE  b.`guest_id` LIKE  '[guestidvalue]'
 
 //choose booking 
-DELETE FROM `Booking` b
-WHERE b.`guest_id` LIKE '[guestidvalue]' AND b.`booking_id` = '[selectedbookingid]'
+DELETE FROM `Booking`
+WHERE `guest_id` LIKE '[guestidvalue]' AND `booking_id` = '[selectedbookingid]'
 
 //show booking
 SELECT * 
