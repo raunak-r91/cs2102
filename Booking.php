@@ -322,12 +322,12 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	             var select = $('select#form_field');
 		    var selectedItem= select.find(':selected');
 		      var selectedVal = selectedItem[0].val();
-		  $("#hotel_name").load("gethotelname.php?choice=" + selectedVal);
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facilty=0");
 	      
 	    });
 	    
 	    $("#city").change(function() {
-		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facilty=");
 		    
 		     $("#room_type").load("getroomtype.php?choice=&citychoice=" + $("#city").val());		    		    
 	       });
