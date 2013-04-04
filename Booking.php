@@ -323,7 +323,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	      var O = G[0].getElementsByTagName('option')
 	      var selValues = [];
 	      var returnval = "";
-	      for(i = 0; i < O.length; i++){
+	      for(i = 0; i < G[0].length; i++){
 		      selValues.push(i);
 		      returnval = returnval + i;
 	      }
