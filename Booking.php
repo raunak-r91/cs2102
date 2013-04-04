@@ -352,7 +352,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		      <br/>
 		      <div style="margin-left:20px">
 		      <!--<a href="Login.html"></a>-->
-		      <button name="submit" id="booknow" type="submit" class="btn btn-primary">Book Now!</button>
+		      <button name="submit" type="submit" class="btn btn-primary">Book Now!</button>
 		      <a href="index.php"><button type="button" class="btn">Cancel</button></a>
 		      </div>		
 		  </div><!--/hererow-->
