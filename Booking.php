@@ -319,7 +319,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	  <script type="text/javascript">
 	    
 	    $("#loadbtn").click(function() {
-	      var G=sel.getElementsByTagName('optgroup');
+	      var G=document.getElementsByTagName('optgroup');
 	      var O = G[0].getElementsByTagName('option')
 	      var selValues = [];
 	      var returnval = "";
