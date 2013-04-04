@@ -223,6 +223,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 			else {
 			  $message = 'Sorry, All the rooms are full!<br/>Please select another room type';
 			  echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
+			  unset($_SESSION['registered']); 
 			}
 		      }
 		      ?>
