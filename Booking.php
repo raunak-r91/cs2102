@@ -325,7 +325,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	      var returnval = "";
 	      for(i = 0; i < G.length; i++){
 		      selValues.push(i);
-		      returnval = returnval + i;
+		      returnval = "1";
 	      }
 	      
 	      
