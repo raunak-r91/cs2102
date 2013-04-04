@@ -210,18 +210,20 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		      <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
 		      
 		      <?php
-		      if (isset($_SESSION['registered']) && isset($_POST['submit'])) {
-			$userid = $_SESSION['username'];
-			  $booking_query = $db->query("Select max(`booking_id`) as 'booking_id' from `Booking` where guest_id = '$userid'");
-			  $booking = $db->fetch_assoc($booking_query);
-
-			$message = 'Congratulations, your booking is successul!<br/>Please note your Booking Id - '.$booking['booking_id'].' for future references';
-			echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
-			unset($_SESSION['registered']); 
-		      }
-		      else {
-			$message = 'Sorry, All the rooms are full!<br/>Please select another room type';
-			echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
+		      if (isset($_POST['submit'])) {
+			if (isset($_SESSION['registered'])) {
+			  $userid = $_SESSION['username'];
+			    $booking_query = $db->query("Select max(`booking_id`) as 'booking_id' from `Booking` where guest_id = '$userid'");
+			    $booking = $db->fetch_assoc($booking_query);
+  
+			  $message = 'Congratulations, your booking is successul!<br/>Please note your Booking Id - '.$booking['booking_id'].' for future references';
+			  echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
+			  unset($_SESSION['registered']); 
+			}
+			else {
+			  $message = 'Sorry, All the rooms are full!<br/>Please select another room type';
+			  echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
+			}
 		      }
 		      ?>
 		       <div class="row-fluid">
