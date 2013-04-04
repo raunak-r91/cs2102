@@ -331,7 +331,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	      }
 	      
 	      
-		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facilty=" + returnval);
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facilty=" + setValues);
 	      
 	    });
 	    
