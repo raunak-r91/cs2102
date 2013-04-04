@@ -210,8 +210,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		      <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
 		      
 		      <?php
-		      if (isset($_POST['submit'])) {
 			if (isset($_SESSION['registered'])) {
+			  if ($_SESSION['registered']==true ) {
 			  $userid = $_SESSION['username'];
 			    $booking_query = $db->query("Select max(`booking_id`) as 'booking_id' from `Booking` where guest_id = '$userid'");
 			    $booking = $db->fetch_assoc($booking_query);
