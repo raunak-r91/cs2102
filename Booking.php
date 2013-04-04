@@ -323,10 +323,10 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	             var select = $('select#form_field');
 		    var selectedItem= select.find(':selected');
 		    
-		    var selO = document.getElementsById('form_field')[0];
+		    var selO = document.getElementById('form_field');
 		    var returnval = "";
 			var selValues = [];
-			for(i=0; i < selO.length; i++){
+			for(i = 0; i < selO.length; i++){
 			    if(selO.options[i].selected){
 				selValues.push(i);
 				returnval = returnval + i;

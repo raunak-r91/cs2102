@@ -1,8 +1,9 @@
 <?php include'db.php';
     
     $choice = mysql_real_escape_string($_GET['choice']);
+         
     $facility = mysql_real_escape_string($_GET['facility']);
-    
+    echo '<option>'.$facility.'</option>';
     $arr1 = str_split($facility);
 
     $query = "SELECT name FROM `Hotel` where city = '$choice'";
