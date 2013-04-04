@@ -203,7 +203,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 			<div class="input-append span4">
 			      <br/>
 			  <div class="side-by-side clearfix" style="margin-left:20px">				
-			    <select id="form_field" name="facility[]" data-placeholder="Which are the facilities you would like	? (Optional to Choose)" style="width: 430px;height: 400px" multiple class="chzn-select" tabindex="8">
+			    <select id="form_field" name="facility" data-placeholder="Which are the facilities you would like	? (Optional to Choose)" style="width: 430px;height: 400px" multiple class="chzn-select" tabindex="8">
 			    <option value=""></option>
 			      <optgroup>
 				  <option value="pool">Swimming Pool</option>
@@ -330,7 +330,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		      selValues.push(i);
 	      }
 	      
-		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facilty=" + returnval);
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facility=" + returnval);
 	      
 	    });
 	    
