@@ -37,7 +37,7 @@ AND r.`number` NOT IN (
 //when facilities filled
 SELECT *
 FROM `Room` r, `Hotel` h
-WHERE r.`hotel_name` LIKE '[hotelvalue]' AND h.`swimming_pool` = '[poolnum]' AND h.`restaurant` = '[restnum]' AND h.`gym` = '[gymnum]' AND h.`name` LIKE r.`hotel_name` AND h.`country` LIKE r.`hotel_country` AND h.`city` LIKE r.`hotel_city` AND r.`hotel_country` LIKE '[countryvalue]' AND r.`hotel_city` LIKE '[cityvalue]' AND r.`type` LIKE '[type]' AND r.`number` NOT IN (
+WHERE r.`hotel_name` LIKE '[hotelvalue]' AND h.`swimming_pool` >= '[poolnum]' AND h.`restaurant` >= '[restnum]' AND h.`gym` >= '[gymnum]' AND h.`name` LIKE r.`hotel_name` AND h.`country` LIKE r.`hotel_country` AND h.`city` LIKE r.`hotel_city` AND r.`hotel_country` LIKE '[countryvalue]' AND r.`hotel_city` LIKE '[cityvalue]' AND r.`type` LIKE '[type]' AND r.`number` NOT IN (
         SELECT b.`room_number`
         FROM `Booking` b
         WHERE '[arrivaldate]' BETWEEN b.`arrival` AND b.`departure`
