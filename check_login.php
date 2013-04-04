@@ -40,7 +40,7 @@ $myusername = stripslashes($myusername);
 $mypassword = stripslashes($mypassword);
 $myusername = mysql_real_escape_string($myusername);
 $mypassword = mysql_real_escape_string($mypassword);
-$sql=sprintf("SELECT user_id FROM $tbl_name WHERE user_id='$myusername' and password='$mypassword'", mysql_real_escape_string($name));
+$sql=sprintf("SELECT name FROM $tbl_name WHERE user_id='$myusername' and password='$mypassword'", mysql_real_escape_string($name));
 $result=mysql_query($sql);
 
 //Check that user has entered values for all fields
@@ -63,7 +63,7 @@ if($count==1)
 // 	session_register("mypassword"); 
 	//$_SESSION['username'] = $myusername;
 	$row = mysql_fetch_assoc($result);
-	$_SESSION['username'] = $row['user_id'];
+	$_SESSION['username'] = $myusername;
 	header("Location: index.php");
 	//exit(1);
 // 	setcookie("user", $_SESSION['user'], time()+36000, "/"); //Expire in 10 hours
