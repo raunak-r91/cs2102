@@ -3,8 +3,6 @@
     $choice = mysql_real_escape_string($_GET['choice']);
          
     $facility = mysql_real_escape_string($_GET['facility']);
-    echo '<option>'.$facility.'</option>';
-    $arr1 = str_split($facility);
 
     $query = "SELECT name FROM `Hotel` where city = '$choice'";
     
@@ -21,7 +19,7 @@
         $query = $query."and wifi = 1";
     }
     
-       $hotel_query = $db->query($query);
+    $hotel_query = $db->query($query);
         
     
     while($hotel = $db->fetch_assoc($hotel_query))

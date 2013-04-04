@@ -319,24 +319,28 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	  <script type="text/javascript">
 	    
 	    $("#loadbtn").click(function() {
-	      var options = $("#form_field option");
-	      var idx = options.index(options.filter(":selected"));
 	      var temp = "";
 	      var G = document.getElementsByTagName('optgroup');
 	      var O = G[0].getElementsByTagName('option');
-	      var selValues = [];
 	      for(i = 0; i < O.length; i++){
 		    if (O[i].selected) {
 		        temp = temp + i;
 		    }
-	      }
-	      
+	      }	      
 		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facility=" + temp);
 	      
 	    });
 	    
 	    $("#city").change(function() {
-		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facilty=");
+	      var temp = "";
+	      var G = document.getElementsByTagName('optgroup');
+	      var O = G[0].getElementsByTagName('option');
+	      for(i = 0; i < O.length; i++){
+		    if (O[i].selected) {
+		        temp = temp + i;
+		    }
+	      }
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facilty=" + temp);
 		    
 		     $("#room_type").load("getroomtype.php?choice=&citychoice=" + $("#city").val());		    		    
 	       });
