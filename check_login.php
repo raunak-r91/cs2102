@@ -63,7 +63,7 @@ if($count==1)
 // 	session_register("mypassword"); 
 	//$_SESSION['username'] = $myusername;
 	$row = mysql_fetch_assoc($result);
-	$_SESSION['username'] = $row['name'];
+	$_SESSION['username'] = $row['user_id'];
 	header("Location: index.php");
 	//exit(1);
 // 	setcookie("user", $_SESSION['user'], time()+36000, "/"); //Expire in 10 hours
