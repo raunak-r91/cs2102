@@ -203,29 +203,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						return false;
 						});
 						
-						$("#booknow").click(function () 
-						{
-						if((($("#datepicker").val()=="")) && (($("#datepicker2").val()=="")))
-						document.getElementById('errormsg').innerHTML="*Please fill in your arrival and departure dates";
-						
-						else if((($("#datepicker").val()=="")))
-						document.getElementById('errormsg').innerHTML="*Please fill in your arrival date";
-						
-						else if(((($("#datepicker2").val()==""))))
-						document.getElementById('errormsg').innerHTML="*Please fill in your departure date";
-						
-						else
-						document.getElementById('errormsg').innerHTML="";
-						});
-						
-						$("#datepicker2").focus(function () 
-						{
-							var date = $("#datepicker").datepicker('getDate');
-							if (date){
-							date.setDate(date.getDate() + 1);
-							$( "#datepicker2" ).datepicker( "option", "minDate", date );
-							}
-						});
 	  </script>
 						
 
