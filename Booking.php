@@ -405,17 +405,21 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						
 						$("#booknow").click(function () 
 						{
-						if((($("#datepicker").val()=="")) && (($("#datepicker2").val()=="")))
-						document.getElementById('errormsg').innerHTML="*Please fill in your arrival and departure dates";
+						if($("#hotel_name").val()=="")
+							document.getElementById('errormsg').innerHTML="*Please select Hotel. Remove filters to view all hotels";
+							
+						if(($("#datepicker").val()=="") && ($("#datepicker2").val()==""))
+							document.getElementById('errormsg').innerHTML="*Please fill in your arrival and departure dates";
 						
-						else if((($("#datepicker").val()=="")))
-						document.getElementById('errormsg').innerHTML="*Please fill in your arrival date";
+						else if($("#datepicker").val()=="")
+							document.getElementById('errormsg').innerHTML="*Please fill in your arrival date";
 						
-						else if(((($("#datepicker2").val()==""))))
-						document.getElementById('errormsg').innerHTML="*Please fill in your departure date";
+						else if($("#datepicker2").val()=="")
+							document.getElementById('errormsg').innerHTML="*Please fill in your departure date";
 						
 						else
-						document.getElementById('errormsg').innerHTML="";
+							document.getElementById('errormsg').innerHTML="";
+							
 						});
 						
 						$("#datepicker2").focus(function () 
