@@ -18,7 +18,7 @@ $db_name="CS2102"; // Database name
 $tbl_name="Guest"; // Table name 
 
 // Connect to server and select database.
-$connect = mysql_connect($host, $username, '');
+$connect = mysql_connect($host, $username, $password);
 if (!$connect) 
 {
      //echo 'error!';
