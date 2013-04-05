@@ -254,15 +254,15 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Choose Location </strong>
-					<select type="text" disabled class="input-medium" name="hotel_city" id="hotel_city" style="margin-left:79px;">
+					<strong style="margin-left:20px"> Location </strong>
+					<select type="text" disabled class="input-medium" name="hotel_city" id="hotel_city" style="margin-left:129px;">
 					
 					</select>
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Choose Hotel Name </strong>
-					<select type="text" disabled class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:60px;">
+					<strong style="margin-left:20px"> Hotel Name </strong>
+					<select type="text" disabled class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:100px;">
 			
 					</select>
 					</div>
