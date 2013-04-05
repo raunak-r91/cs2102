@@ -216,10 +216,10 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					?>
 					
 					<div>
-					<strong style="margin-left:20px"> Choose Booking ID </strong>
 					<?php
 					  $username = $_SESSION['username'];
 					  if ($username == 'admin') {
+					       echo '<strong style="margin-left:20px"> Chosen Booking ID </strong>';
 					      echo '<select type="text" disabled class="input-medium" name="bookingID" id="bookingID" style="margin-left:60px;width:200px;">';
 					    $bookingid = $_GET['bookingid'];
 					      echo '<option>'
@@ -239,6 +239,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					    </script>	    
 					  <?php }
 					  else {
+					    echo '<strong style="margin-left:20px"> Choose Booking ID </strong>';
 					    echo '<select type="text" class="input-medium" name="bookingID" id="bookingID" style="margin-left:60px;width:200px;">';
 					    echo '<option> Choose Booking ID </option>';
 					      $booking_query = $db->query("SELECT booking_id FROM `Booking` WHERE guest_id = '$username'");
@@ -262,7 +263,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 					<div>
 					<strong style="margin-left:20px"> Hotel Name </strong>
-					<select type="text" disabled class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:100px;">
+					<select type="text" disabled class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:110px;">
 			
 					</select>
 					</div>
