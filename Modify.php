@@ -94,16 +94,11 @@ session_start();
    <?php
  if (isset($_POST['modifybtn'])) {
    
-      $alltypesSet = !isset($_POST['allTypes']) || empty($_POST['allTypes']);
-      $departDateSet = !isset($_POST['departDate']) || empty($_POST['departDate']);
-      $arriveDateSet = !isset($_POST['arriveDate']) || empty($_POST['arriveDate']);
+      $alltypesSet = empty($_POST['allTypes']);
+      $departDateSet = empty($_POST['departDate']);
+      $arriveDateSet = empty($_POST['arriveDate']);
       
-       if ($alltypesSet || ($departDateSet || $arriveDateSet)) {
-	    $_SESSION['message'] = "Please enter the correct date or room type for modification";
-       }	
-	 
-       else {
-	   $bookingid = $_POST['bookingID'];
+      $bookingid = $_POST['bookingID'];
 	   
 	   $getroom_query = $db->query("SELECT * FROM `Booking` b WHERE b.`booking_id` = '$bookingid'");
 	   $getcurrentroom = mysql_fetch_assoc($getroom_query);
@@ -111,6 +106,47 @@ session_start();
 	   $city = $getcurrentroom['hotel_city'];
 	   $hotelname = $getcurrentroom['hotel_name'];
 	   $number = intval($getcurrentroom['guests']);
+	   $flag = true;
+      
+       if ($alltypesSet && ($departDateSet && $arriveDateSet)) {
+	    $_SESSION['message'] = "Please enter the correct date or room type for modification";
+	    $flag = false;
+       }
+       
+       else if (!arriveDateSet && !departDateSet) {
+	$arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
+	$arriveDate = $arriveDate->format('Y-m-d');
+	$departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
+	$departDate = $departDate->format('Y-m-d');    	
+	  if($arriveDate > $departDate) {
+	     $_SESSION['message'] = "The dates entered are incorrect";
+	     $flag = false;
+	  }
+	  
+
+       }
+       
+       else if(!arriveDateSet && departDateSet) {
+	  $arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
+	  $arriveDate = $arriveDate->format('Y-m-d');
+	  
+	  if ($arriveDate >  $getcurrentroom['arrival']) {
+	    $_SESSION['message'] = "The date entered is incorrect";
+	    $flag = false;
+	  }
+       }
+       
+       else if(arriveDateSet && !departDateSet) {
+	  $departDate = DateTime::createFromFormat('m/j/Y',$_POST['departDate']);
+	  $departDate = $departDate->format('Y-m-d');
+	  
+	  if ($departDate >  $getcurrentroom['departure']) {
+	    $_SESSION['message'] = "The date entered is incorrect";
+	    $flag = false;
+	  }
+       }
+       
+       if ($flag) {
 	   
 	   
 	   if ($arriveDateSet) {
@@ -150,9 +186,9 @@ session_start();
 			   OR '$departDate' BETWEEN b.`arrival` AND b.`departure`
 			   OR b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
 			   OR b.`departure` BETWEEN '$arriveDate' AND '$departDate')
-			  
+			   AND b.`room_number`<> '$currentroom'
 	   )");
-     // AND b.`room_number`<> '$currentroom'
+     
 	   $count=mysql_num_rows($check_query);
 	  if ($count >= 1) {
 	      $row = mysql_fetch_assoc($check_query);
