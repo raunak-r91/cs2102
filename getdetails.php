@@ -39,7 +39,7 @@
                 $arriveDate = $arriveDate->format('j/m/Y');
                 $departDate = DateTime::createFromFormat('Y-m-d', $hotel['departure']);
                 $departDate = $departDate->format('j/m/Y');
-                echo '<strong style="margin-left:20px"> Current Booking Dates </strong><input type="text" disabled class="input-medium" style="margin-left:30px" value="'.$arriveDate.'"></input> to <input type="text" disabled class="input-medium" value="'.$departDate .'"></input>';
+                echo '<strong style="margin-left:20px"> Current Booking Dates </strong><input type="text" disabled class="input-medium" style="margin-left:35px" value="'.$arriveDate.'"></input> to <input type="text" disabled class="input-medium" value="'.$departDate .'"></input>';
             }
             
             else if($choice == 'type') {
