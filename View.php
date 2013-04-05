@@ -88,6 +88,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   </head>
 
   <body>
+  <?php include'db.php'; ?>
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -166,11 +167,11 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 		            <div class="row-fluid" style="margin-left:20px">
 						<?php
-						$con=mysqli_connect("localhost", "root", "cs2102","CS2102");
-						$guest_id=$_SESSION['user_id'];
-						$booking_query = mysqli_query($con,"SELECT guest_id,booking_id FROM `Booking` WHERE guest_id='$guest_id'");
+						$guest_id = $_SESSION['user_id'];
+						$booking_query = $db->query("SELECT * FROM `Booking` WHERE guest_id = '$username'");						
+						//$booking_query = mysqli_query($con,"SELECT guest_id,booking_id FROM `Booking` WHERE guest_id='$guest_id'");
 						//$result=mysqli_query($booking_query);
-						$count=mysqli_num_rows($booking_query);
+						$count=mysql_num_rows($booking_query);
 						if($count==0)
 						{
 						echo '<h4> There are no bookings in your name currently.</h4>';
@@ -187,7 +188,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						<td style="width:200px; height: 30px" align="middle"><b> Book Option </b></td>
 						</tr>
 						</table>';
-						while($booking = mysqli_fetch_assoc($booking_query))
+						while($booking = mysql_fetch_assoc($booking_query))
 						{
 						
 						echo '<table border ="1">
