@@ -143,12 +143,15 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 
     	$count=mysql_num_rows($check_query);
 	    if ($count >= $numberOfRoomsNeeded) {
+	      while ($numberOfRoomsNeeded > 0) {
 	      	$row = mysql_fetch_assoc($check_query);
 			$roomnumber = intval($row['number']);
 			$number = intval($number);
 			$db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`, `guests`)
                    values ('$userid', '$hotelname', 'India', '$city', $roomnumber, '$arriveDate', '$departDate', $number)");
      		$_SESSION['registered'] = true;
+		$numberOfRoomsNeeded = $numberOfRoomsNeeded - 1;
+	      }
     	}
    		else {
      	    $_SESSION['registered'] = false;
