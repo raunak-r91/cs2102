@@ -90,6 +90,18 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   <body>
     <?php include'db.php';
     ?>
+    <?php
+    if(isset($_POST['cancelbtn'])) {
+      $bookingid = $_POST['bookingID'];
+      if($bookingid == "Choose Booking ID") {
+	$_SESSION['registered'] = false;
+      }
+      else {
+	$db->query("DELETE FROM `Booking` WHERE booking_id='$bookingid'");
+	$_SESSION['registered'] = true;
+      }
+    }
+  ?>
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -235,9 +247,9 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 					<br/>
 					<div style="margin-left:20px">
+					<a href="View.php"><button type="button" class="btn">Back</button></a>
 					<button type="submit" name="cancelbtn" class="btn btn-primary" onclick="return confirm('Are you sure you want to cancel this booking?');">Cancel</button>
 					<a href="Modify.php?bookingid=<?php echo $_GET['bookingid'];?>"><button type="submit" name="modifybtn" class="btn btn-primary" ">Modify</button></a>
-					<a href="View.php"><button type="button" class="btn">Back</button></a>
 					</div>
         </div><!--/hererow-->
 	</form>
