@@ -39,7 +39,7 @@
                 $arriveDate = $arriveDate->format('j/m/Y');
                 $departDate = DateTime::createFromFormat('Y-m-d', $hotel['departure']);
                 $departDate = $departDate->format('j/m/Y');
-                echo '<strong style="margin-left:20px"> Room Booked </strong><strong style="margin-left:59px;"> from: '.$arriveDate.' to:'.$departDate .'<br/>';
+                echo '<strong style="margin-left:20px"> Room Booked </strong><strong style="margin-left:59px;">'.$arriveDate.' to '.$departDate .'<br/>';
             }
             
             else if($choice == 'arrival') {

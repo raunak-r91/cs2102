@@ -201,7 +201,7 @@ session_start();
 					
 					<div id="booking_dates">
 		
-					</div>
+					</div> <br/>
 					
 					<div>
 					<strong style="margin-left:20px"> Modify Arrival Date <input type="text" id="datepicker" class="input-medium" style="margin-left:59px;"></strong>
