@@ -187,14 +187,18 @@ session_start();
 					<div>
 					<strong style="margin-left:20px"> Choose Location </strong>
 					<select type="text" class="input-medium" name="hotel_city" id="hotel_city" style="margin-left:79px;">
-					
+					<option>1</option>
+		      <option>2</option>
+		      <option>3</option>
 					</select>
 					</div>
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Hotel Name </strong>
 					<select type="text" class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:60px;">
-				    
+					<option>1</option>
+		      <option>2</option>
+		      <option>3</option>
 				      
 					</select>
 					</div>
@@ -222,7 +226,9 @@ session_start();
 					<div>
 					<strong style="margin-left:20px"> Type Of Room </strong>
 					<select type="text" class="input-medium" name="type" id="type" style="margin-left:100px;width:200px;">
-				    
+				    <option>1</option>
+		      <option>2</option>
+		      <option>3</option>
 					 
 					</select>
 					</div>
@@ -261,7 +267,7 @@ session_start();
 	  <script type="text/javascript">
 	    
 	    $("#bookingID").change(function() {
-						  document.write("test");
+						  
 						    var value = $("#bookingID").val();
 						    $("#hotel_city").load("getbookingdetails.php?id=" + value + "&choice=hotel_city");
 						    $("#hotel_name").load("getbookingdetails.php?id=" + value + "&choice=hotel_name");
