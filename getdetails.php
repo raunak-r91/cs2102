@@ -36,10 +36,10 @@
             }
             else if ($choice == 'dates') {
                $arriveDate = DateTime::createFromFormat('Y-m-d', $hotel['arrival']);
-                $arriveDate = $arriveDate->format('m/j/Y');
+                $arriveDate = $arriveDate->format('j/m/Y');
                 $departDate = DateTime::createFromFormat('Y-m-d', $hotel['departure']);
-                $departDate = $departDate->format('m/j/Y');
-                echo '<strong style="margin-left:20px"> Room Booked     from: '.$arriveDate.'      to:'.$departDate .'</strong>';
+                $departDate = $departDate->format('j/m/Y');
+                echo '<strong style="margin-left:20px"> Room Booked </strong><strong style="margin-left:59px;"> from: '.$arriveDate.' to:'.$departDate .'<br/>';
             }
             
             else if($choice == 'arrival') {
