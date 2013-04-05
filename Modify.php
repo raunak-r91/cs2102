@@ -169,8 +169,8 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Booking ID </strong>
-					<select type="text" class="input-medium" name="bookingID" id="bookingID" style="margin-left:80px;width:200px;">
-					 <option>Choose Booking ID</option>
+					<select type="text" class="input-medium" name="bookingID" id="bookingID" style="margin-left:79px;width:200px;">
+					 <option>BookingID</option>
 					 <?php
 					  $username = $_SESSION['username'];
 					  $booking_query = $db->query("SELECT booking_id FROM `Booking` WHERE guest_id = '$username'");
@@ -187,7 +187,7 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Location </strong>
-					<select type="text" disabled class="input-medium" name="hotel_city" id="hotel_city" style="margin-left:80px;">
+					<select type="text" disabled class="input-medium" name="hotel_city" id="hotel_city" style="margin-left:60px;">
 					
 					</select>
 					</div>
@@ -257,11 +257,11 @@ session_start();
 						    
 						  
 						    var value = $("#bookingID").val();
-						    if (value != "Choose Booking ID") {
+						
 						      $("#hotel_city").load("getdetails.php?id=" + value + "&choice=hotel_city");
 						      $("#hotel_name").load("getdetails.php?id=" + value + "&choice=hotel_name");
 						      $("#numGuests").load("getdetails.php?id=" + value + "&choice=number");
-						    }
+						    
 						    
 						    
 						});
