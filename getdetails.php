@@ -36,21 +36,17 @@
             }
             
             else if($choice == 'arrival') {
-                echo '<option>'
-                .stripslashes($hotel[$choice]).
-                '</option>';
+                echo $hotel[$choice];
             }
             
             else if($choice == 'departure') {
-                echo '<option>'
-                .stripslashes($hotel[$choice]).
-                '</option>';
+                echo $hotel[$choice];
             }
             
             else if($choice == 'type') {
                 $room_query = $db->query("SELECT r.type FROM `Room` r, `Booking` b where booking_id = '$bookingID' and r.number = b.room_number and r.hotel_name = b.hotel_name and r.hotel_country = b.hotel_country and r.hotel_city = b.hotel_city");
                 echo '<option>'
-                .stripslashes($hotel[$room_query]).
+                .stripslashes($room_query).
                 '</option>';
             }
             
