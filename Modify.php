@@ -103,14 +103,14 @@ session_start();
 //       }	
 //	 
 //       else {
-	   $city = $_POST['hotel_city'];
 	   $bookingid = $_POST['bookingID'];
-	   $hotelname = $_POST['hotel_name'];
-	   $number = $_POST['numGuests'];
 	   
 	   $getroom_query = $db->query("SELECT * FROM `Booking` b WHERE b.`booking_id` = '$bookingid'");
 	   $getcurrentroom = mysql_fetch_assoc($getroom_query);
 	   $currentroom = intval($getcurrentroom['room_number']);
+	   $city = $getcurrentroom['hotel_city'];
+	   $hotelname = $getcurrentroom['hotel_name'];
+	   $number = intval($getcurrentroom['guests']);
 	   
 	   
 	   if ($arriveDateSet) {
