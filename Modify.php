@@ -377,7 +377,7 @@ session_start();
 					<div>
 					<strong style="margin-left:20px"> Type Of Room </strong>
 					<select type="text" class="input-medium" name="allTypes" id="allTypes" style="margin-left:91px;width:200px;">
-					<option></option>
+					<option>" "</option>
 					</select>
 					</div>
 				    			
