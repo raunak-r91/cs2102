@@ -118,7 +118,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	    $roomType = $_POST['room_type'];
     	$number = $_POST['numGuests'];
     
-	    $arriveDate = DateTime::createFromFormat('m/j/Y',);
+	    $arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
    		$arriveDate = $arriveDate->format('Y-m-d');
     
 	    $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
