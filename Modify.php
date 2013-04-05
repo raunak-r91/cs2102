@@ -183,17 +183,21 @@ session_start();
 					 
 					</select>
 					</div>
+					
+					<div>
 					<strong style="margin-left:20px"> Choose Location </strong>
 					<select type="text" class="input-medium" id="hotel_city" style="margin-left:79px;">
 					
 					</select>
+					</div>
 					
+					<div>
 					<strong style="margin-left:20px"> Choose Hotel Name </strong>
 					<select type="text" class="input-medium" id="hotel_name" style="margin-left:60px;">
 				    
 				      
 					</select>
-					
+					</div>
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Arrival date <input type="text" id="datepicker" class="input-medium" style="margin-left:58px;"/></strong>
