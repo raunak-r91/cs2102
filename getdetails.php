@@ -39,11 +39,14 @@
                 $arriveDate = DateTime::createFromFormat('Y-m-d', $hotel[$choice]);
                 $arriveDate = $arriveDate->format('m/j/Y');
                 echo $arriveDate;
+                                echo 'test';
+
             }
             
             else if($choice == 'departure') {
                 $departDate = DateTime::createFromFormat('Y-m-d', $hotel[$choice]);
                 $departDate = $departDate->format('m/j/Y');
+                echo 'test';
                 echo $hotel[$departDate];
                 echo $departDate;
             }
@@ -51,7 +54,6 @@
             else if($choice == 'type') {
                 $room_query = $db->query("SELECT r.type as roomtype FROM `Room` r, `Booking` b where booking_id = '$bookingID' and r.number = b.room_number and r.hotel_name = b.hotel_name and r.hotel_country = b.hotel_country and r.hotel_city = b.hotel_city");
                 $room = $db->fetch_assoc($room_query);
-               echo '<option>test</option>';
                echo '<option>'
                 .stripslashes($room['roomtype']).
                 '</option>';
