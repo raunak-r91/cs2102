@@ -94,15 +94,15 @@ session_start();
    <?php
  if (isset($_POST['modifybtn'])) {
    
-      $alltypesSet = !isset($_POST['allTypes']);
+      $alltypesSet = !isset($_POST['allTypes']) || empty($_POST['allTypes']);
       $departDateSet = !isset($_POST['departDate']) || empty($_POST['departDate']);
       $arriveDateSet = !isset($_POST['arriveDate']) || empty($_POST['arriveDate']);
       
-//       if ($alltypesSet && ($departDateSet || $arriveDateSet)) {
-//	    $_SESSION['message'] = "Please enter the correct date or room type for modification";
-//       }	
-//	 
-//       else {
+       if ($alltypesSet || ($departDateSet || $arriveDateSet)) {
+	    $_SESSION['message'] = "Please enter the correct date or room type for modification";
+       }	
+	 
+       else {
 	   $bookingid = $_POST['bookingID'];
 	   
 	   $getroom_query = $db->query("SELECT * FROM `Booking` b WHERE b.`booking_id` = '$bookingid'");
@@ -161,11 +161,11 @@ session_start();
 	      $_SESSION['registered'] = true;
 	   }
 	  else {
-	    $_SESSION['message'] = "Please Select a Valid Booking ID";
+	    $_SESSION['message'] = "Please check the details entered below";
 	    $_SESSION['registered'] = false;
 	   }
        
-       //}
+       }
  }
  ?>
   
@@ -414,7 +414,6 @@ session_start();
 						      $("#numGuests").load("getdetails.php?id=" + value + "&choice=guests");
 						      $("#allTypes").load("getdetails.php?id=" + value + "&choice=allType");
 						      
-						      document.getElementById('allTypes').selectedIndex = -1;
 						    
 						});
 						
