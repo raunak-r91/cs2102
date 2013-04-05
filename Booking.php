@@ -126,7 +126,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     $roomnumber_result = mysql_fetch_assoc($roomquery);
     $capacity = intval($roomnumber_result['capacity']);
     $numberOfRoomsNeeded = intval($number)/$capacity;
-    if (intval($number)%$capacity) {
+    if (intval($number)%$capacity > 0) {
       $numberOfRoomsNeeded = $numberOfRoomsNeeded + 1;
     }
       $check_query = $db->query("SELECT *
