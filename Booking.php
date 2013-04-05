@@ -122,10 +122,10 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     
 	$departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
     	$departDate = $departDate->format('Y-m-d');    	
-    $roomquery = $db->query("SELECT distinct r.number as room_number FROM `Room` r WHERE r.`type` = '$roomType'");
-    $roomnumber_result = mysqli_fetch_assoc($roomquery);
-    $numberOfRoomsNeeded = $number/$roomnumber_result['room_number'];
-    if ($number%$roomnumber_result['room_number'] ) {
+    $roomquery = $db->query("SELECT distinct r.`number` as room_number FROM `Room` r WHERE r.`type` = '$roomType'");
+    $roomnumber_result = mysql_fetch_assoc($roomquery);
+    $numberOfRoomsNeeded = intval($number)/intval($roomnumber_result['room_number']);
+    if (intval($number)%intval($roomnumber_result['room_number'])) {
       $numberOfRoomsNeeded = $numberOfRoomsNeeded + 1;
     }
       $check_query = $db->query("SELECT *
