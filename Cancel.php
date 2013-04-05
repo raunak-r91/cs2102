@@ -96,8 +96,16 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   ?>
   
   <?php
-    $bookingid = $_POST['bookingID'];
-    $db->query("DELETE FROM `Booking` WHERE booking_id='$bookingid'");
+    if(isset($_POST['cancelbtn'])) {
+      $bookingid = $_POST['bookingID'];
+      if($bookingid == "Choose Booking ID") {
+	$_SESSION['registered'] = false;
+      }
+      else {
+	$db->query("DELETE FROM `Booking` WHERE booking_id='$bookingid'");
+	$_SESSION['registered'] = true;
+      }
+    }
   ?>
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -180,7 +188,20 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  
 		  <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid">
-			      
+					<?php
+					if (isset($_SESSION['registered'])) {
+					   if ($_SESSION['registered']==true ) {
+  					    $message = 'Your Booking Has been Cancelled';
+					    echo '<div><strong style="margin-left:20px"><font color = "red">'.$message.'</font></strong></div>';
+					    unset($_SESSION['registered']); 
+					    }
+					  else {
+					    $message = 'Please select a valid Booking ID';
+					    echo '<div><strong style="margin-left:20px"><font color = "red">'.$message.'</font></strong></div>';
+					    unset($_SESSION['registered']); 
+					  }
+					}
+					?>
 					<?php
 					  $username = $_SESSION['username'];
 					  if ($username == 'admin') {
@@ -265,7 +286,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					<br/>
 					<br/>
 					<div style="margin-left:20px">
-					<button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure you want to cancel this booking?');">Confirm Cancellation</button>
+					<button type="submit" name="cancelbtn" class="btn btn-primary" onclick="return confirm('Are you sure you want to cancel this booking?');">Confirm Cancellation</button>
 					<a href="index.php"><button type="button" class="btn">Back</button></a>
 					</div>
         </div><!--/hererow-->
