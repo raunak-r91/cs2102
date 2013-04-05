@@ -91,6 +91,81 @@ session_start();
 	header("Location: Login.html?from=modify");
       }
   ?>
+   <?php
+ if (isset($_POST['modifybtn'])) {
+   
+      $alltypesSet = !isset($_POST['allTypes']);
+      $departDateSet = !isset($_POST['departDate']) || empty($_POST['departDate']);
+      $arriveDateSet = !isset($_POST['arriveDate']) || empty($_POST['arriveDate']);
+      
+       if ($alltypesSet && ($departDateSet || $arriveDateSet)) {
+	    $_SESSION['message'] = "Please enter the correct date or room type for modification";
+       }	
+	 
+       else {
+	   $city = $_POST['hotel_city'];
+	   $bookingid = $_POST['bookingID'];
+	   $hotelname = $_POST['hotel_name'];
+	   $number = $_POST['numGuests'];
+	   
+	   $getroom_query = $db->query("SELECT * FROM `Booking` b WHERE b.`booking_id` = '$bookingid'");
+	   $getcurrentroom = mysql_fetch_assoc($getroom_query);
+	   $currentroom = intval($getcurrentroom['room_number']);
+	   
+	   
+	   if ($arriveDateSet) {
+	     $arriveDate = $getcurrentroom['arrival'];
+	   }
+	   else {
+	     $arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
+	     $arriveDate = $arriveDate->format('Y-m-d');
+	   }
+	   
+	  if ($departDateSet) {
+	     $departDate = $getcurrentroom['departure'];
+	   }
+	   else {
+	     $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
+	     $departDate = $departDate->format('Y-m-d');    	
+	   }
+	   
+	   if (isset($_POST['allTypes'])) {
+	   	   $roomType = $_POST['allTypes'];
+	   }
+	   else {
+	        $roomtype_query = $db->query("SELECT type FROM `Room` where hotel_name = '$hotelname' and hotel_city = '$city' and number = $currentroom");
+		$thisroomtype = $db->fetch_assoc($roomtype_query);
+		$roomType = $thisroomtype['departure'];
+	   }
+
+	   
+	       $check_query = $db->query("SELECT *
+	   FROM `Room` r
+	       WHERE r.`hotel_name` = '$hotelname' AND r.`hotel_country` = 'India' AND r.`hotel_city` = '$city' AND r.`type` = '$roomType' AND r.`capacity` >= '$number'
+	       AND r.`number` NOT IN (
+		       SELECT b.`room_number`
+		       FROM `Booking` b
+		       WHERE b.`hotel_name` = '$hotelname' AND b.`hotel_country` = 'India' AND b.`hotel_city` = '$city'
+			   AND ('$arriveDate' BETWEEN b.`arrival` AND b.`departure`
+			   OR '$departDate' BETWEEN b.`arrival` AND b.`departure`
+			   OR b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
+			   OR b.`departure` BETWEEN '$arriveDate' AND '$departDate')
+			   AND b.`room_number`<> '$currentroom'
+	   )");
+     
+	   $count=mysql_num_rows($check_query);
+	       if ($count >= 1) {
+		   $row = mysql_fetch_assoc($check_query);
+		   $roomnumber = intval($row['number']);
+		 $db->query("UPDATE `Booking` SET `room_number`= $roomnumber, `arrival`='$arriveDate',`departure`='$departDate' `WHERE `booking_id`='$bookingid'");
+		   $_SESSION['registered'] = true;
+	   }
+		   else {
+	       $_SESSION['registered'] = false;
+	   }
+       
+       }
+ ?>
   
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -205,6 +280,7 @@ session_start();
 							  $("#booking_dates").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=dates");
 							  $("#booked_room_type").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=type");
 							  $("#numGuests").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=guests");
+							   $("#allTypes").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=allType");
 					    });
 					    </script>	    
 					  <?php }
@@ -254,7 +330,7 @@ session_start();
 					</div> <br/>
 					
 					<div>
-					<strong style="margin-left:20px"> Modify Arrival Date <input type="text" id="datepicker" class="input-medium" style="margin-left:59px;"></strong>
+					<strong style="margin-left:20px"> Modify Arrival Date <input type="text" name="arriveDate" id="datepicker" class="input-medium" style="margin-left:59px;"></strong>
 					<script>
 					$(function() 
 					{
@@ -265,7 +341,7 @@ session_start();
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Modify Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:34px;"></strong>
+					<strong style="margin-left:20px"> Modify Departure Date <input type="text" name="departDate" id="datepicker2" class="input-medium" style="margin-left:34px;"></strong>
 					<script>
 					$(function() {
 					$( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
@@ -288,7 +364,7 @@ session_start();
 					
 				
 					<div style="margin-left:20px">
-					<a href="Login.php"><button type="submit" class="btn btn-primary">Modify Now!</button></a>
+					<button name="modifybtn" type="submit" class="btn btn-primary">Modify Now!</button>
 					<a href="index.php"><button type="button" class="btn">Back</button></a>
 					</div>
 					<h5 style="margin-left:20px">In case you would like to cancel your booking click <a href="Cancel.html"">Cancel Booking</a>.</h5>
