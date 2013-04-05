@@ -168,40 +168,42 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		            <div class="row-fluid" style="margin-left:20px">
 						<?php
 						$guest_id = $_SESSION['username'];
-						$booking_query = $db->query("SELECT * FROM `Booking` WHERE guest_id = '$guest_id'");						
-						//$booking_query = mysqli_query($con,"SELECT guest_id,booking_id FROM `Booking` WHERE guest_id='$guest_id'");
-						//$result=mysqli_query($booking_query);
-						$count=mysql_num_rows($booking_query);
-						if($count==0)
-						{
-						  echo '<h4> There are no bookings in your name currently.</h4>';
-						  echo '<br/><br/><a href="index.php"><button type="button" class="btn">Back to Home</button></a>';
-						}
-						else
-						{
-						echo '<table border ="1">
-						<tr>
-						<td style="width:200px; height: 30px" align="middle"><b> Guest Id </b></td>
-						<td style="width:200px; height: 30px" align="middle"><b> Booking Id </b></td>
-						<td style="width:200px; height: 30px" align="middle"><b> View Option </b></td>
-						<td style="width:200px; height: 30px" align="middle"><b> Modify Option </b></td>
-						<td style="width:200px; height: 30px" align="middle"><b> Book Option </b></td>
-						</tr>
-						</table>';
-						while($booking = mysql_fetch_assoc($booking_query))
-						{
-						
-						echo '<table border ="1">
-						<tr>
-						<td style="width:200px; height: 30px" align="middle">' .stripslashes($booking['guest_id']). '</td>
-						<td style="width:200px; height: 30px" align="middle">' .stripslashes($booking['booking_id']). '</td>
-						<td style="width:200px; height: 30px" align="middle"><a href="viewbooking.php"><button class= "btn">View Booking</button></a></td>
-						<td style="width:200px; height: 30px" align="middle"><a href="Modify.php"><button class= "btn">Modify Booking</button></a></td>
-						<td style="width:200px; height: 30px" align="middle"><a href="Cancel.php"><button class= "btn">Cancel Booking</button></a></td>
-						</tr>
-						</table>';
-						}    
-						echo '<br/><br/><a href="index.php"><button type="button" class="btn">Back to Home</button></a>';
+						if ($_SESSION['username']=='admin') {
+						      $booking_query = $db->query("SELECT * FROM `Booking`");						
+						      //$booking_query = mysqli_query($con,"SELECT guest_id,booking_id FROM `Booking` WHERE guest_id='$guest_id'");
+						      //$result=mysqli_query($booking_query);
+						      $count=mysql_num_rows($booking_query);
+						      if($count==0)
+						      {
+							echo '<h4> There are no bookings in your name currently.</h4>';
+							echo '<br/><br/><a href="index.php"><button type="button" class="btn">Back to Home</button></a>';
+						      }
+						      else
+						      {
+						      echo '<table border ="1">
+						      <tr>
+						      <td style="width:200px; height: 30px" align="middle"><b> Guest Id </b></td>
+						      <td style="width:200px; height: 30px" align="middle"><b> Booking Id </b></td>
+						      <td style="width:200px; height: 30px" align="middle"><b> View Option </b></td>
+						      <td style="width:200px; height: 30px" align="middle"><b> Modify Option </b></td>
+						      <td style="width:200px; height: 30px" align="middle"><b> Book Option </b></td>
+						      </tr>
+						      </table>';
+						      while($booking = mysql_fetch_assoc($booking_query))
+						      {
+						      
+						      echo '<table border ="1">
+						      <tr>
+						      <td style="width:200px; height: 30px" align="middle">' .stripslashes($booking['guest_id']). '</td>
+						      <td style="width:200px; height: 30px" align="middle">' .stripslashes($booking['booking_id']). '</td>
+						      <td style="width:200px; height: 30px" align="middle"><a href="viewbooking.php"><button class= "btn">View Booking</button></a></td>
+						      <td style="width:200px; height: 30px" align="middle"><a href="Modify.php"><button class= "btn">Modify Booking</button></a></td>
+						      <td style="width:200px; height: 30px" align="middle"><a href="Cancel.php"><button class= "btn">Cancel Booking</button></a></td>
+						      </tr>
+						      </table>';
+						      }    
+						      echo '<br/><br/><a href="index.php"><button type="button" class="btn">Back to Home</button></a>';
+						      }
 						}
 						?> 
                     </div><!--/span-->		
