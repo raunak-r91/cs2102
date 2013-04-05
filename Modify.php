@@ -262,7 +262,7 @@ session_start();
 		            <div class="row-fluid">
 			      <?php
 		      if (isset($_SESSION['message'])) {
-		      	echo '<h4 name="message"><font color = "red">'.$_SESSION['message'].'</font></h4>';
+		      	echo '<div><strong style="margin-left:20px"><font color = "red">'.$_SESSION['message'].'</font></strong></h4>';
 			  	unset($_SESSION['message']);
 			  } 
 			  else if (isset($_SESSION['registered'])) {
@@ -271,13 +271,13 @@ session_start();
 			  	  $booking_query = $db->query("Select max(`booking_id`) as 'booking_id' from `Booking` where guest_id = '$userid'");
 			  	  $booking = $db->fetch_assoc($booking_query);
   
-			  	  $message = 'Congratulations, your booking is successul!<br/>Please note your Booking Id - '.$booking['booking_id'].' for future references';
-			  	  echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
+			  	  $message = 'Congratulations, your booking is has been successfully updated! (Booking Id - '.$booking['booking_id'].')';
+			  	  echo '<div><strong style="margin-left:20px"><font color = "red">'.$message.'</font></strong></div>';
 			      unset($_SESSION['registered']); 
 				}
 				else {
 			  		$message = 'Sorry, All the rooms are full!<br/>Please select another room type';
-			  		echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
+			  		echo '<div><strong style="margin-left:20px"><font color = "red">'.$message.'</font></strong></div>';
 			  		unset($_SESSION['registered']); 
 				}
 		      }
