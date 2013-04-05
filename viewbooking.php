@@ -237,7 +237,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					<br/>
 					<br/>
 					<div style="margin-left:20px">
-					<button type="submit" name="cancelbtn" class="btn btn-primary" onclick="return confirm('Are you sure you want to cancel this booking?');">Confirm Cancellation</button>
 					<a href="index.php"><button type="button" class="btn">Back</button></a>
 					</div>
         </div><!--/hererow-->
