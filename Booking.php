@@ -137,7 +137,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     	)");
 
     	$count=mysql_num_rows($check_query);
-	    if ($count > 1) {
+	    if ($count >= 1) {
 	      	$row = mysql_fetch_assoc($check_query);
 			$roomnumber = intval($row['number']);
 			$number = intval($number);
