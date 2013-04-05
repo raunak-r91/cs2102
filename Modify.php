@@ -416,7 +416,7 @@ session_start();
 						    
 						  
 						    var value = $("#bookingID").val();
-						
+						    value = value.replace(new RegExp(" ","g"), "%20"); 
 						      $("#hotel_city").load("getdetails.php?id=" + value + "&choice=hotel_city");
 						      $("#hotel_name").load("getdetails.php?id=" + value + "&choice=hotel_name");
 						      $("#booking_dates").load("getdetails.php?id=" + value + "&choice=dates");

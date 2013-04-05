@@ -2,7 +2,7 @@
     $bookingID = $_GET['id'];
     $choice = $_GET['choice'];
     
-    if($bookingID == "BookingID") {
+    if($bookingID == "Choose Booking ID") {
        if($choice == 'hotel_city') {
             echo '<option></option>';
         }
