@@ -34,6 +34,9 @@
                 .stripslashes($hotel[$choice]).
                 '</option>';
             }
+            else if ($choice == 'dates') {
+                echo '<strong style="margin-left:20px"> Room Booked from: 20/4/2013 to: 24/4/2013 </strong>';
+            }
             
             else if($choice == 'arrival') {
                 $arriveDate = DateTime::createFromFormat('Y-m-d', $hotel[$choice]);

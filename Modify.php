@@ -195,18 +195,32 @@ session_start();
 					<div>
 					<strong style="margin-left:20px"> Choose Hotel Name </strong>
 					<select type="text" disabled class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:60px;">
-					
-				      
+			
 					</select>
+					</div>
+					
+					<div id="booking_dates">
+		
 					</div>
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Arrival Date <input type="text" id="datepicker" class="input-medium" style="margin-left:59px;"></strong>
+					<script>
+					$(function() 
+					{
+					$( "#datepicker" ).datepicker({minDate: 0});
+					});
 					
+					</script>
 					</div>
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:34px;"></strong>
+					<script>
+					$(function() {
+					$( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
+					});
+					</script>
 					</div>
 					
 					<div>
@@ -249,6 +263,7 @@ session_start();
 						
 						      $("#hotel_city").load("getdetails.php?id=" + value + "&choice=hotel_city");
 						      $("#hotel_name").load("getdetails.php?id=" + value + "&choice=hotel_name");
+						      $("#booking_dates").load("getdetails.php?id=" + value + "&choice=dates");
 						      $("#datepicker").load("getdetails.php?id=" + value + "&choice=arrival");
 						      $("#datepicker2").load("getdetails.php?id=" + value + "&choice=departure");
 						      $("#type").load("getdetails.php?id=" + value + "&choice=type");
@@ -263,7 +278,7 @@ session_start();
 								     
 						});
 						$(".chzn-select").chosen();
-					       $(".chzn-select-deselect").chosen({ allow_single_deselect: true });
+					 $(".chzn-select-deselect").chosen({ allow_single_deselect: true });
 						$("#singleslogan").click(function () 
 						{
 						if($('#single').is(":visible"))
