@@ -1,11 +1,4 @@
 
-<!--
-LAB ASSIGNMENT 1 - CS3240
-NAME : MADHU MAITHRI PARVATANENI
-MATRIC NUMBER : A0074807Y
-WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
--->
-
 <!DOCTYPE html>
 <?php 
 session_start(); 	
@@ -92,6 +85,13 @@ session_start();
   </head>
 
   <body>
+  <?php include'db.php';
+  
+      if(!isset($_SESSION['username'])) {
+	header("Location: Login.html?from=modify");
+      }
+  ?>
+  
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -164,23 +164,33 @@ session_start();
 		  <div><h3 style="margin-left:20px">Modify Your Booking</h3></div>
 		  <h5 style="margin-left:20px">Here are your booking details which you can modify.</h5>
 		  <h5 style="margin-left:20px">We will check if your modifications are possible from our end.</h5>
+		  <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid">
 					
+					<div>
+					<strong style="margin-left:20px"> Choose Booking ID </strong>
+					<select type="text" class="input-medium" id="bookingID" style="margin-left:100px;width:200px;">
+					 <?php
+					  $booking_query = $db->query("SELECT booking_id FROM `Booking` user_id = '$username'");
+					 while($booking = $db->fetch_assoc($booking_query))
+					 {
+					  echo '<option>'
+					  .stripslashes($booking['booking_id']).
+					  '</option>';
+					 }
+					 ?>
+					 
+					</select>
+					</div>
 					<strong style="margin-left:20px"> Choose Location </strong>
-					<select type="text" class="input-medium" style="margin-left:79px;">
-					<option>New York</option>
-					<option>Singapore</option>
-					<option>Dubai</option>
-					<option>Paris</option>
+					<select type="text" class="input-medium" id="hotel_city" style="margin-left:79px;">
+					
 					</select>
 					
-					<br/>
 					<strong style="margin-left:20px"> Choose Hotel Name </strong>
-					<select type="text" class="input-medium" style="margin-left:60px;">
-					<option>x</option>
-					<option>y</option>
-					<option>z</option>
-					<option>w</option>
+					<select type="text" class="input-medium" id="hotel_name" style="margin-left:60px;">
+				    
+				      
 					</select>
 					
 					
@@ -206,37 +216,23 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Type Of Room </strong>
-					<select type="text" class="input-medium" style="margin-left:100px;width:200px;">
-					<option>Standard Single Room</option>
-					<option>Standard Double Room</option>
-					<option>Superior Single Room</option>
-					<option>Superior Double Room</option>
-					</select>
-					<div>
-					
-					<div>
-					<strong style="margin-left:20px"> Number Of Rooms </strong>
-					<select type="text" class="input-small" style="margin-left:71px;">
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
+					<select type="text" class="input-medium" id="type" style="margin-left:100px;width:200px;">
+				    
+					 
 					</select>
 					</div>
-					
+				    			
 					<div>
-					<strong style="margin-left:20px"> Number Of Adults Per Room </strong>
-					<select type="text" class="input-small" style="margin-left:4px;">
-					<option>1</option>
-					<option>2</option>
-					</select>
-					</div>
-					
-					<div>
-					<strong style="margin-left:20px"> Number Of Kids Per Room </strong>
-					<select type="text" class="input-small" style="margin-left:17px;">
-					<option>0</option>
-					<option>1</option>
-					<option>2</option>
+					<strong style="margin-left:20px"> Number Of Guests </strong>
+					<select type="text" name="numGuests" class="input-small" style="margin-left:4px;">
+					<?php
+					$username = $_SESSION['username'];
+					$hotel_query = $db->query("SELECT number FROM `Booking` where user_id = '$username'");
+					while($hotel = $db->fetch_assoc($hotel_query))
+					    {
+						 echo '<option disabled>'.stripslashes($hotel['number']).'</option>';
+					    }
+					 ?> 
 					</select>
 					</div>
 					
@@ -246,20 +242,12 @@ session_start();
 					
 				
 					<div style="margin-left:20px">
-					<!--<a href="Login.php"><button type="submit" class="btn btn-primary">Modify Now!</button></a>-->
-					<?php 
-					if(!isset($_SESSION['username'])) {
-						echo '<a href="Login.php"><button type="button" class="btn btn-primary">Modify Now!</button></a>';
-					}
-					else 
-					{
-						echo '<a href="index.php"><button type="submit" class="btn btn-primary">Modify Now!</button></a>';
-					}
-				    ?>
+					<a href="Login.php"><button type="submit" class="btn btn-primary">Modify Now!</button></a>
 					<a href="index.php"><button type="button" class="btn">Back</button></a>
 					</div>
 					<h5 style="margin-left:20px">In case you would like to cancel your booking click <a href="Cancel.html"">Cancel Booking</a>.</h5>
-        </div><!--/hererow-->
+			    </div><!--/hererow-->
+		  </form>
 
       <hr>
 	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -303,6 +291,13 @@ session_start();
 							date.setDate(date.getDate() + 1);
 							$( "#datepicker2" ).datepicker( "option", "minDate", date );
 							}
+						});
+						
+						$("#bookingID").click(function() {
+						    var value = $("#bookingID").val();
+						    $("#hotel_city").load("getbookingdetails.php?id=" + value + "&choice=hotel_city");
+						    $("#hotel_name").load("getbookingdetails.php?id=" + value + "&choice=hotel_name");
+						    $("#type").load("getbookingdetails.php?id=" + value + "&choice=type");
 						});
 	  </script>
 						
