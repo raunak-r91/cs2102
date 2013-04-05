@@ -114,18 +114,23 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     	$city = $_POST['city'];
     
     	$hotelname = $_POST['hotel_name'];
-	    $roomType = $_POST['room_type'];
+	$roomType = $_POST['room_type'];
     	$number = $_POST['numGuests'];
     
-	    $arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
-   		$arriveDate = $arriveDate->format('Y-m-d');
+	$arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
+	$arriveDate = $arriveDate->format('Y-m-d');
     
-	    $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
+	$departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
     	$departDate = $departDate->format('Y-m-d');    	
-    
-	    $check_query = $db->query("SELECT *
+    $roomquery = $db->query("SELECT distinct r.number as room_number FROM `Room` r WHERE r.`type` = '$roomType'");
+    $roomnumber_result = mysqli_fetch_assoc($roomquery);
+    $numberOfRoomsNeeded = $number/$roomnumber_result['room_number'];
+    if ($number%$roomnumber_result['room_number'] ) {
+      $numberOfRoomsNeeded = $numberOfRoomsNeeded + 1;
+    }
+      $check_query = $db->query("SELECT *
     	FROM `Room` r
-	    WHERE r.`hotel_name` = '$hotelname' AND r.`hotel_country` = 'India' AND r.`hotel_city` = '$city' AND r.`type` = '$roomType' AND r.`capacity` >= '$number'
+	    WHERE r.`hotel_name` = '$hotelname' AND r.`hotel_country` = 'India' AND r.`hotel_city` = '$city' AND r.`type` = '$roomType'
 	    AND r.`number` NOT IN (
 		    SELECT b.`room_number`
 		    FROM `Booking` b
@@ -137,7 +142,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     	)");
 
     	$count=mysql_num_rows($check_query);
-	    if ($count >= 1) {
+	    if ($count >= $numberOfRoomsNeeded) {
 	      	$row = mysql_fetch_assoc($check_query);
 			$roomnumber = intval($row['number']);
 			$number = intval($number);
@@ -345,7 +350,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		      
 		      <div>
 		      <strong style="margin-left:20px"> Number Of Guests </strong>
-		      <select type="text" name="numGuests" class="input-small" style="margin-left:4px;">
+		      <select type="text" name="numGuests" class="input-small" style="margin-left:60px;">
 		      <option>1</option>
 		      <option>2</option>
 		      <option>3</option>
