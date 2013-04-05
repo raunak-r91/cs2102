@@ -113,7 +113,7 @@ session_start();
 	    $flag = false;
        }
        
-       else if (!arriveDateSet && !departDateSet) {
+       else if (!$arriveDateSet && !$departDateSet) {
 	$arriveDate = DateTime::createFromFormat('m/d/Y',$_POST['arriveDate']);
 	$arriveDate = $arriveDate->format('Y-m-d');
 	$departDate = DateTime::createFromFormat('m/d/Y', $_POST['departDate']);
@@ -126,7 +126,7 @@ session_start();
 
        }
        
-       else if(!arriveDateSet && departDateSet) {
+       else if(!$arriveDateSet && $departDateSet) {
 	  $arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
 	  $arriveDate = $arriveDate->format('Y-m-d');
 	  
@@ -136,7 +136,7 @@ session_start();
 	  }
        }
        
-       else if(arriveDateSet && !departDateSet) {
+       else if($arriveDateSet && !$departDateSet) {
 	  $departDate = DateTime::createFromFormat('m/j/Y',$_POST['departDate']);
 	  $departDate = $departDate->format('Y-m-d');
 	  
