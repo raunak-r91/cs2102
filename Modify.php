@@ -260,7 +260,10 @@ session_start();
 						
 						      $("#hotel_city").load("getdetails.php?id=" + value + "&choice=hotel_city");
 						      $("#hotel_name").load("getdetails.php?id=" + value + "&choice=hotel_name");
-						      $("#numGuests").load("getdetails.php?id=" + value + "&choice=number");
+						      $("#datepicker").load("getdetails.php?id=" + value + "&choice=arrival");
+						      $("#datepicker2").load("getdetails.php?id=" + value + "&choice=departure");
+						      $("#type").load("getdetails.php?id=" + value + "&choice=type");
+						      $("#numGuests").load("getdetails.php?id=" + value + "&choice=guests");
 						    
 						    
 						    
