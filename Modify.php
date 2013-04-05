@@ -456,12 +456,7 @@ session_start();
 						{
 							var date = $("#datepicker").datepicker('getDate');
 							if (date){
-							date.setDate(<?php $hotel_query = $db->query("SELECT arrival FROM `Booking` where booking_id = '$bookingID'");
-									  $hotel = $db->fetch_assoc($hotel_query);
-							                  $arriveDate = DateTime::createFromFormat('Y-m-d', $hotel['arrival']);
-									  $arriveDate = $arriveDate->format('j');
-									  echo $arriveDate;
-								      ?> + 1);
+							date.setDate(date + 1);
 							$( "#datepicker2" ).datepicker( "option", "minDate", date );
 							}
 						});
