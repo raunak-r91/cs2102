@@ -93,10 +93,10 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
       if(!isset($_SESSION['username'])) {
 	header("Location: Login.html?from=booking");
       }
-
   ?>
   <?php
  if (isset($_POST['submit'])) {
+ 	echo "Check";
  	if(!isset($_POST['departDate']) || empty($_POST['departDate'])) {
 		$_SESSION['message'] = "Please fill in your departure date";
     }
