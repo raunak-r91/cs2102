@@ -20,7 +20,6 @@
     else {
         //echo '<option>'.$bookingID .'</option>';
         $hotel_query = $db->query("SELECT * FROM `Booking` where booking_id = '$bookingID'");
-                                        echo 'test';
 
         while($hotel = $db->fetch_assoc($hotel_query))
         {
@@ -39,6 +38,7 @@
             else if($choice == 'arrival') {
                 $arriveDate = DateTime::createFromFormat('Y-m-d', $hotel[$choice]);
                 $arriveDate = $arriveDate->format('m/j/Y');
+                echo 'test';
                 echo $arriveDate;
 
             }
@@ -46,6 +46,7 @@
             else if($choice == 'departure') {
                 $departDate = DateTime::createFromFormat('Y-m-d', $hotel[$choice]);
                 $departDate = $departDate->format('m/j/Y');
+                echo 'test';
                 echo $hotel[$departDate];
                 echo $departDate;
             }
