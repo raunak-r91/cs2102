@@ -1,4 +1,4 @@
 <?php include'db.php';
-    echo "test";
+    echo '<option> test </option>';
     
 ?>
