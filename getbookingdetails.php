@@ -1,6 +1,5 @@
 <?php include'db.php';
     
-    echo "test";
     $bookingID = mysql_real_escape_string($_GET['id']);
     $choice = mysql_real_escape_string($_GET['choice']);
     

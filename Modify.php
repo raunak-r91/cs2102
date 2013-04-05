@@ -299,6 +299,7 @@ session_start();
 						});
 						
 						$("#bookingID").change(function() {
+						  document.write("test");
 						    var value = $("#bookingID").val();
 						    $("#hotel_city").load("getbookingdetails.php?id=" + value + "&choice=hotel_city");
 						    $("#hotel_name").load("getbookingdetails.php?id=" + value + "&choice=hotel_name");
