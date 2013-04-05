@@ -169,7 +169,8 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Booking ID </strong>
-					<select type="text" class="input-medium" name="bookingID" id="bookingID" style="margin-left:100px;width:200px;">
+					<select type="text" class="input-medium" name="bookingID" id="bookingID" style="margin-left:80px;width:200px;">
+					 <option>Choose Booking ID</option>
 					 <?php
 					  $username = $_SESSION['username'];
 					  $booking_query = $db->query("SELECT booking_id FROM `Booking` WHERE guest_id = '$username'");
@@ -186,21 +187,21 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Location </strong>
-					<select type="text" disabled class="input-medium" name="hotel_city" id="hotel_city" style="margin-left:79px;">
+					<select type="text" disabled class="input-medium" name="hotel_city" id="hotel_city" style="margin-left:80px;">
 					
 					</select>
 					</div>
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Hotel Name </strong>
-					<select type="text" disabled class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:60px;">
+					<select type="text" disabled class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:80px;">
 					
 				      
 					</select>
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Choose Arrival date <input type="text" id="datepicker" class="input-medium" style="margin-left:58px;"/></strong>
+					<strong style="margin-left:20px"> Choose Arrival date <input type="text" id="datepicker" class="input-medium" style="margin-left:60px;"/></strong>
 					<script>
 					$(function() 
 					{
@@ -211,7 +212,7 @@ session_start();
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:32px;"/></strong>
+					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:40px;"/></strong>
 					<script>
 					$(function() {
 					$( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
@@ -221,14 +222,14 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Type Of Room </strong>
-					<select type="text" class="input-medium" name="type" id="type" style="margin-left:100px;width:200px;">
+					<select type="text" class="input-medium" name="type" id="type" style="margin-left:80px;width:200px;">
 				    
 					</select>
 					</div>
 				    			
 					<div>
 					<strong style="margin-left:20px"> Number Of Guests </strong>
-					<select type="text" disabled name="numGuests" class="input-small" style="margin-left:4px;">
+					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:80px;">
 					
 					</select>
 					</div>
@@ -255,9 +256,12 @@ session_start();
 	    $("#bookingID").change(function() {
 						    
 						  
-						    var value = $("#bookingID").val();					      
-						    $("#hotel_city").load("getdetails.php?id=" + value + "&choice=hotel_city");
-						    $("#hotel_name").load("getdetails.php?id=" + value + "&choice=hotel_name");
+						    var value = $("#bookingID").val();
+						    if (value != "Choose Booking ID") {
+						      $("#hotel_city").load("getdetails.php?id=" + value + "&choice=hotel_city");
+						      $("#hotel_name").load("getdetails.php?id=" + value + "&choice=hotel_name");
+						      $("#numGuests").load("getdetails.php?id=" + value + "&choice=number");
+						    }
 						    
 						    
 						});

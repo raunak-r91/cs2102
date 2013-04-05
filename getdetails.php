@@ -19,6 +19,12 @@
             .stripslashes($hotel[$choice]).
             '</option>';
         }
+        
+        else if($choice == 'number') {
+            echo '<option>'
+            .stripslashes($hotel[$choice]).
+            '</option>';
+        }
     }
 
 ?>
