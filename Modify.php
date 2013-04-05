@@ -263,6 +263,7 @@ session_start();
 						    
 						  
 						    var value = $("#bookingID").val();
+						    document.write(value);
 						    $("#hotel_city").load("getbookingdetails.php?id=" + value + "&choice=hotel_city");
 						    $("#hotel_name").load("getbookingdetails.php?id=" + value + "&choice=hotel_name");
 						    $("#type").load("getbookingdetails.php?id=" + value + "&choice=type");
