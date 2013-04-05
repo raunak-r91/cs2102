@@ -262,11 +262,10 @@ session_start();
 	    $("#bookingID").change(function() {
 						    
 						  
-						    var value = $("#bookingID").val();
-						    document.write(value);
-						    $("#hotel_city").load("getbookingdetails.php?id=" + value + "&choice=hotel_city");
-						    $("#hotel_name").load("getbookingdetails.php?id=" + value + "&choice=hotel_name");
-						    $("#type").load("getbookingdetails.php?id=" + value + "&choice=type");
+						    var value = $("#bookingID").val();					      
+						    $("#hotel_city").load("getbookingdetails.php?id=222114&choice=hotel_city");
+						    $("#hotel_name").load("getbookingdetails.php?id=222114&choice=hotel_name");
+						    $("#type").load("getbookingdetails.php?id=222114&choice=type");
 						});
 	    
 						$(document).ready(function()
