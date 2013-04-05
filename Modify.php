@@ -173,7 +173,19 @@ session_start();
 		  <h5 style="margin-left:20px">We will check if your modifications are possible from our end.</h5>
 		  <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid">
-					
+					<?php
+					  $username = $_SESSION['username'];
+					  if ($username == 'admin') {
+					    $bookingid = $_GET['bookingid'];
+					    $booking_query = $db->query("SELECT guest_id FROM `Booking` WHERE booking_id = '$bookingid'");
+					    $booking = $db->fetch_assoc($booking_query);
+					  echo '<div>
+					  <strong style="margin-left:20px"> User ID: </strong><input type="text" disabled class="input-medium" style="margin-left:35px" value="'
+					  .$booking['guest_id'].
+					  '</div>">';
+					  }
+					?>
+				      
 					<div>
 					<strong style="margin-left:20px"> Choose Booking ID </strong>
 					<select type="text" class="input-medium" name="bookingID" id="bookingID" style="margin-left:60px;width:200px;">
