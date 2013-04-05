@@ -256,8 +256,8 @@ session_start();
 						    
 						  
 						    var value = $("#bookingID").val();					      
-						    $("#hotel_city").load("getdetails.php?id=222114&choice=hotel_city");
-						    
+						    $("#hotel_city").load("getdetails.php?id=" + value + "&choice=hotel_city");
+						    $("#hotel_name").load("getdetails.php?id=" + value + "&choice=hotel_name");
 						    
 						    
 						});
