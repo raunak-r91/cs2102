@@ -174,6 +174,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 							echo '<h4> There are no bookings in your name currently.</h4>';
 							echo '<br/><br/><a href="index.php"><button type="button" class="btn">Back to Home</button></a>';
 						      }
+						      
 						      else
 						      {
 						      echo '<table border ="1">

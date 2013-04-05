@@ -189,7 +189,6 @@ session_start();
 					      <script>
 					    $(function() 
 					    {
-    
 							  $("#hotel_city").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=hotel_city");
 							  $("#hotel_name").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=hotel_name");
 							  $("#booking_dates").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=dates");
