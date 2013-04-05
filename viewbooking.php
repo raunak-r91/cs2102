@@ -184,7 +184,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					<div>
 					<strong style="margin-left:20px"> Booking ID </strong>
 					<?php
-					      echo '<select type="text" disabled class="input-medium" name="bookingID" id="bookingID" style="margin-left:60px;width:220px;">';
+					      echo '<select type="text" disabled class="input-medium" name="bookingID" id="bookingID" style="margin-left:110px;width:150px;">';
 					    $bookingid = $_GET['bookingid'];
 					      echo '<option>'
 					      .$bookingid.
@@ -213,7 +213,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 					<div>
 					<strong style="margin-left:20px"> Hotel Name </strong>
-					<select type="text" disabled class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:100px;">
+					<select type="text" disabled class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:115px;">
 			
 					</select>
 					</div>
