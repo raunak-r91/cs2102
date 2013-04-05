@@ -236,14 +236,7 @@ session_start();
 					<div>
 					<strong style="margin-left:20px"> Number Of Guests </strong>
 					<select type="text" name="numGuests" class="input-small" style="margin-left:4px;">
-					<?php
-					$username = $_SESSION['username'];
-					$hotel_query = $db->query("SELECT number FROM `Booking` where user_id = '$username'");
-					while($hotel = $db->fetch_assoc($hotel_query))
-					    {
-						 echo '<option disabled>'.stripslashes($hotel['number']).'</option>';
-					    }
-					 ?> 
+					
 					</select>
 					</div>
 					
