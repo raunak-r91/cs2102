@@ -180,9 +180,9 @@ session_start();
 					    $booking_query = $db->query("SELECT guest_id FROM `Booking` WHERE booking_id = '$bookingid'");
 					    $booking = $db->fetch_assoc($booking_query);
 					  echo '<div>
-					  <strong style="margin-left:20px"> User ID: </strong><input type="text" disabled class="input-medium" style="margin-left:35px" value="'
+					  <strong style="margin-left:20px"> User ID: </strong><input type="text" disabled class="input-medium" style="margin-left:79px" value="'
 					  .$booking['guest_id'].
-					  '</div>">';
+					  '"></div>';
 					  }
 					?>
 				      
