@@ -414,11 +414,11 @@ session_start();
 						      $("#numGuests").load("getdetails.php?id=" + value + "&choice=guests");
 						      $("#allTypes").load("getdetails.php?id=" + value + "&choice=allType");
 						      
-						    
+						      document.getElementById('allTypes').selectedIndex = -1;
 						    
 						});
 						
-						document.getElementById("allTypes").selectedIndex = -1;
+						
 						
 						$(document).ready(function()
 						{

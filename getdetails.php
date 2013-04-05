@@ -61,6 +61,7 @@
                 .stripslashes($room['roomtype']).
                 '</option>';
                 }
+                
             }
 
         }
