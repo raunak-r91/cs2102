@@ -114,10 +114,10 @@ session_start();
        }
        
        else if (!arriveDateSet && !departDateSet) {
-	$arriveDate = $_POST['arriveDate'];
-	
-	$departDate = $_POST['departDate'];
-	    	
+	$arriveDate = DateTime::createFromFormat('m/d/Y',$_POST['arriveDate']);
+	$arriveDate = $arriveDate->format('Y-m-d');
+	$departDate = DateTime::createFromFormat('m/d/Y', $_POST['departDate']);
+	$departDate = $departDate->format('Y-m-d');    	
 	  if($arriveDate > $departDate) {
 	     $_SESSION['message'] = "The dates entered are incorrect";
 	     $flag = false;
