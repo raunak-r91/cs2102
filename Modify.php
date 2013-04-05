@@ -201,7 +201,7 @@ session_start();
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Choose Arrival Date <input type="text" id="datepicker" class="input-medium" style="margin-left:58px;"/></strong>
+					<strong style="margin-left:20px"> Choose Arrival Date <input type="text" id="datepicker" class="input-medium" style="margin-left:59px;"/></strong>
 					<script>
 					$(function() 
 					{
@@ -212,7 +212,7 @@ session_start();
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:32px;"/></strong>
+					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:34px;"/></strong>
 					<script>
 					$(function() {
 					$( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
@@ -222,14 +222,14 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Type Of Room </strong>
-					<select type="text" class="input-medium" name="type" id="type" style="margin-left:90px;width:200px;">
+					<select type="text" class="input-medium" name="type" id="type" style="margin-left:92px;width:200px;">
 				    
 					</select>
 					</div>
 				    			
 					<div>
 					<strong style="margin-left:20px"> Number Of Guests </strong>
-					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:60px;">
+					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:63px;">
 					
 					</select>
 					</div>
