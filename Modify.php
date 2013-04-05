@@ -390,7 +390,16 @@ session_start();
 				
 					<div style="margin-left:20px">
 					<button name="modifybtn" type="submit" class="btn btn-primary">Modify Now!</button>
-					<a href="index.php"><button type="button" class="btn">Back</button></a>
+					<?php
+					  $username = $_SESSION['username'];
+					  if ($username == 'admin') {
+					    
+					    echo '<a href="View.php"><button type="button" class="btn">Back</button></a>';
+					  }
+					  else {
+					     echo '<a href="index.php"><button type="button" class="btn">Back</button></a>';
+					  }
+					  ?>
 					</div>
 					<h5 style="margin-left:20px">In case you would like to cancel your booking click <a href="Cancel.html"">Cancel Booking</a>.</h5>
 			    </div><!--/hererow-->
