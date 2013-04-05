@@ -418,7 +418,7 @@ session_start();
 						    
 						});
 						
-						document.getElementById("myDropdown").selectedIndex = -1;
+						document.getElementById("allTypes").selectedIndex = -1;
 						
 						$(document).ready(function()
 						{
