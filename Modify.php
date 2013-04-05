@@ -413,7 +413,7 @@ session_start();
 						      $("#booked_room_type").load("getdetails.php?id=" + value + "&choice=type");
 						      $("#numGuests").load("getdetails.php?id=" + value + "&choice=guests");
 						      $("#allTypes").load("getdetails.php?id=" + value + "&choice=allType");
-						      $("#allTypes").prop("selectedIndex", -1);
+						      document.getElementById("myDropdown").selectedIndex = -1;
 						    
 						    
 						});
