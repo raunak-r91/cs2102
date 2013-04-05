@@ -168,14 +168,14 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		            <div class="row-fluid" style="margin-left:20px">
 						<?php
 						$guest_id = $_SESSION['user_id'];
-						$booking_query = $db->query("SELECT * FROM `Booking` WHERE guest_id = '$username'");						
+						$booking_query = $db->query("SELECT * FROM `Booking` WHERE guest_id = '$guest_id'");						
 						//$booking_query = mysqli_query($con,"SELECT guest_id,booking_id FROM `Booking` WHERE guest_id='$guest_id'");
 						//$result=mysqli_query($booking_query);
 						$count=mysql_num_rows($booking_query);
 						if($count==0)
 						{
-						echo '<h4> There are no bookings in your name currently.</h4>';
-						echo '<br/><br/><a href="index.php"><button type="button" class="btn">Back to Home</button></a>';
+						  echo '<h4> There are no bookings in your name currently.</h4>';
+						  echo '<br/><br/><a href="index.php"><button type="button" class="btn">Back to Home</button></a>';
 						}
 						else
 						{
