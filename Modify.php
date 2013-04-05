@@ -190,11 +190,11 @@ session_start();
 					    $(function() 
 					    {
     
-							  $("#hotel_city").load("getdetails.php?id=" + <?php echo $bookingid; ?> + "&choice=hotel_city");
-							  $("#hotel_name").load("getdetails.php?id=" + <?php echo $bookingid; ?> + "&choice=hotel_name");
-							  $("#booking_dates").load("getdetails.php?id=" + <?php echo $bookingid; ?> + "&choice=dates");
-							  $("#booked_room_type").load("getdetails.php?id=" + <?php echo $bookingid; ?> + "&choice=type");
-							  $("#numGuests").load("getdetails.php?id=" + <?php echo $bookingid; ?> + "&choice=guests");
+							  $("#hotel_city").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=hotel_city");
+							  $("#hotel_name").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=hotel_name");
+							  $("#booking_dates").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=dates");
+							  $("#booked_room_type").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=type");
+							  $("#numGuests").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=guests");
 					    }
 					    </script>	    
 					  <?php }
