@@ -169,7 +169,7 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Booking ID </strong>
-					<select type="text" class="input-medium" id="bookingID" style="margin-left:100px;width:200px;">
+					<select type="text" class="input-medium" name="booking_id" id="bookingID" style="margin-left:100px;width:200px;">
 					 <?php
 					  $username = $_SESSION['username'];
 					  $booking_query = $db->query("SELECT booking_id FROM `Booking` WHERE guest_id = '$username'");
@@ -186,14 +186,14 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Location </strong>
-					<select type="text" class="input-medium" id="hotel_city" style="margin-left:79px;">
+					<select type="text" class="input-medium" name="hotel_city" id="hotel_city" style="margin-left:79px;">
 					
 					</select>
 					</div>
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Hotel Name </strong>
-					<select type="text" class="input-medium" id="hotel_name" style="margin-left:60px;">
+					<select type="text" class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:60px;">
 				    
 				      
 					</select>
@@ -221,7 +221,7 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Type Of Room </strong>
-					<select type="text" class="input-medium" id="type" style="margin-left:100px;width:200px;">
+					<select type="text" class="input-medium" name="type" id="type" style="margin-left:100px;width:200px;">
 				    
 					 
 					</select>
