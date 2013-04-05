@@ -3,11 +3,6 @@
     $bookingID = mysql_real_escape_string($_GET['id']);
     $choice = mysql_real_escape_string($_GET['choice']);
     
-    
-    $facility = mysql_real_escape_string($_GET['facility']);
-
-    $query = "SELECT name FROM `Hotel` where city = '$choice'";
-    
     $hotel_query = $db->query("SELECT * FROM `Booking` where booking_id = '$bookingID');
         
     
