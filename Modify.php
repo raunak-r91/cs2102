@@ -171,6 +171,7 @@ session_start();
 					<strong style="margin-left:20px"> Choose Booking ID </strong>
 					<select type="text" class="input-medium" id="bookingID" style="margin-left:100px;width:200px;">
 					 <?php
+					  $username = $_SESSION['username'];
 					  $booking_query = $db->query("SELECT booking_id FROM `Booking` user_id = '$username'");
 					 while($booking = $db->fetch_assoc($booking_query))
 					 {
