@@ -260,7 +260,7 @@ session_start();
 	  <script type="text/javascript">
 	    
 	    $("#bookingID").change(function() {
-						    document.write("test");
+						    
 						  
 						    var value = $("#bookingID").val();
 						    $("#hotel_city").load("getbookingdetails.php?id=" + value + "&choice=hotel_city");
