@@ -97,54 +97,56 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   ?>
   <?php
  if (isset($_POST['submit'])) {
-    $userid = $_SESSION['username'];
-    $city = $_POST['city'];
-    
-    if(empty($_POST['hotel_name'])) {
-    	$_SESSION['message'] = "Please select Hotel. Remove facilities filter to view all hotels";
-    	break;
-    }
-    $hotelname = $_POST['hotel_name'];
-    $roomType = $_POST['room_type'];
-    $number = $_POST['numGuests'];
-    
-    if(empty($_POST['arriveDate'])) {
-    	$_SESSION['message'] = "Please fill in your arrival date";
-    	break;
-    }
-    $arriveDate = DateTime::createFromFormat('m/j/Y',);
-    $arriveDate = $arriveDate->format('Y-m-d');
-    
-	if(empty($_POST['departDate'])) {
+ 	if(!isset($_POST['departDate']) || empty($_POST['departDate'])) {
 		$_SESSION['message'] = "Please fill in your departure date";
-    	break;
     }
-    $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
-    $departDate = $departDate->format('Y-m-d');    	
     
-    $check_query = $db->query("SELECT *
-    FROM `Room` r
-    WHERE r.`hotel_name` = '$hotelname' AND r.`hotel_country` = 'India' AND r.`hotel_city` = '$city' AND r.`type` = '$roomType' AND r.`capacity` >= '$number'
-    AND r.`number` NOT IN (
-	    SELECT b.`room_number`
-	    FROM `Booking` b
-	    WHERE '$arriveDate' BETWEEN b.`arrival` AND b.`departure`
-	OR '$departDate' BETWEEN b.`arrival` AND b.`departure`
-	or b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
-	or b.`departure` BETWEEN '$arriveDate' AND '$departDate'
-    )");
-
-    $count=mysql_num_rows($check_query);
-    if ($count > 1) {
-      	$row = mysql_fetch_assoc($check_query);
-	$roomnumber = intval($row['number']);
-	$number = intval($number);
-      $db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`, `guests`)
-                   values ('$userid', '$hotelname', 'India', '$city', $roomnumber, '$arriveDate', '$departDate', $number)");
-      $_SESSION['registered'] = true;
+    else if(!isset($_POST['arriveDate']) || empty($_POST['arriveDate'])) {
+    	$_SESSION['message'] = "Please fill in your arrival date";
     }
+ 	
+ 	else if(!isset($_POST['hotel_name']) || empty($_POST['hotel_name'])) {
+    	$_SESSION['message'] = "Please select Hotel. Remove facilities filter to view all hotels";
+    }
+    
     else {
-      $_SESSION['registered'] = false;
+    	$userid = $_SESSION['username'];
+    	$city = $_POST['city'];
+    
+    	$hotelname = $_POST['hotel_name'];
+	    $roomType = $_POST['room_type'];
+    	$number = $_POST['numGuests'];
+    
+	    $arriveDate = DateTime::createFromFormat('m/j/Y',);
+   		$arriveDate = $arriveDate->format('Y-m-d');
+    
+	    $departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
+    	$departDate = $departDate->format('Y-m-d');    	
+    
+	    $check_query = $db->query("SELECT *
+    	FROM `Room` r
+	    WHERE r.`hotel_name` = '$hotelname' AND r.`hotel_country` = 'India' AND r.`hotel_city` = '$city' AND r.`type` = '$roomType' AND r.`capacity` >= '$number'
+	    AND r.`number` NOT IN (
+		    SELECT b.`room_number`
+		    FROM `Booking` b
+		    WHERE '$arriveDate' BETWEEN b.`arrival` AND b.`departure`
+			OR '$departDate' BETWEEN b.`arrival` AND b.`departure`
+			or b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
+			or b.`departure` BETWEEN '$arriveDate' AND '$departDate'
+    	)");
+
+    	$count=mysql_num_rows($check_query);
+	    if ($count > 1) {
+	      	$row = mysql_fetch_assoc($check_query);
+			$roomnumber = intval($row['number']);
+			$number = intval($number);
+			$db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`, `guests`)
+                   values ('$userid', '$hotelname', 'India', '$city', $roomnumber, '$arriveDate', '$departDate', $number)");
+     		$_SESSION['registered'] = true;
+    	}
+   		else {
+     	    $_SESSION['registered'] = false;
+    	}
     }
   }
   ?>
