@@ -36,11 +36,16 @@
             }
             
             else if($choice == 'arrival') {
-                echo $hotel[$choice];
+                $arriveDate = DateTime::createFromFormat('Y-m-d', $hotel[$choice]);
+                $arriveDate = $arriveDate->format('m/d/Y');
+                echo $arriveDate;
             }
             
             else if($choice == 'departure') {
-                echo $hotel[$choice];
+                $departDate = DateTime::createFromFormat('Y-m-d', $hotel[$choice]);
+                $departDate = $departDate->format('m/d/Y');
+                echo $hotel[$departDate];
+                echo $departDate;
             }
             
             else if($choice == 'type') {
