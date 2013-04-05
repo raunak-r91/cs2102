@@ -61,7 +61,7 @@
                 .stripslashes($room['roomtype']).
                 '</option>';
                 }
-                
+                echo '<script>document.getElementById("allTypes").selectedIndex = -1</script>';
             }
 
         }
