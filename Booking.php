@@ -133,8 +133,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 			AND ('$arriveDate' BETWEEN b.`arrival` AND b.`departure`
 			OR '$departDate' BETWEEN b.`arrival` AND b.`departure`
 			OR b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
-			OR b.`departure` BETWEEN '$arriveDate' AND '$departDate'
-    	))");
+			OR b.`departure` BETWEEN '$arriveDate' AND '$departDate')
+    	)");
 
     	$count=mysql_num_rows($check_query);
 	    if ($count > 1) {
