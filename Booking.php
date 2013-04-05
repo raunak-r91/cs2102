@@ -122,10 +122,11 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     
 	$departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
     	$departDate = $departDate->format('Y-m-d');    	
-    $roomquery = $db->query("SELECT distinct r.`number` as room_number FROM `Room` r WHERE r.`type` = '$roomType'");
+    $roomquery = $db->query("SELECT distinct r.`capacity` as capacity FROM `Room` r WHERE r.`type` = '$roomType'");
     $roomnumber_result = mysql_fetch_assoc($roomquery);
-    $numberOfRoomsNeeded = intval($number)/intval($roomnumber_result['room_number']);
-    if (intval($number)%intval($roomnumber_result['room_number'])) {
+    $capacity = intval($roomnumber_result['capacity']);
+    $numberOfRoomsNeeded = intval($number)/$capacity;
+    if (intval($number)%$capacity) {
       $numberOfRoomsNeeded = $numberOfRoomsNeeded + 1;
     }
       $check_query = $db->query("SELECT *
@@ -143,14 +144,20 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 
     	$count=mysql_num_rows($check_query);
 	    if ($count >= $numberOfRoomsNeeded) {
+	      			$number = intval($number);
 	      while ($numberOfRoomsNeeded > 0) {
 	      	$row = mysql_fetch_assoc($check_query);
 			$roomnumber = intval($row['number']);
-			$number = intval($number);
+			$guestNumber = $number;
+			if ($capacity < $number){
+			  $guestNumber = $capacity;
+			}
+			
 			$db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`, `guests`)
-                   values ('$userid', '$hotelname', 'India', '$city', $roomnumber, '$arriveDate', '$departDate', $number)");
+                   values ('$userid', '$hotelname', 'India', '$city', $roomnumber, '$arriveDate', '$departDate', $guestNumber)");
      		$_SESSION['registered'] = true;
 		$numberOfRoomsNeeded = $numberOfRoomsNeeded - 1;
+		$number = $number - $capacity;
 	      }
     	}
    		else {
