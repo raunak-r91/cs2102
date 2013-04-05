@@ -191,7 +191,7 @@ session_start();
 					    $(function() 
 					    {
     
-							   $("#hotel_city").load("getdetails.php?id=" + <?php echo $bookingid; ?> + "&choice=hotel_city");
+							  $("#hotel_city").load("getdetails.php?id=" + <?php echo $bookingid; ?> + "&choice=hotel_city");
 							  $("#hotel_name").load("getdetails.php?id=" + value + "&choice=hotel_name");
 							  $("#booking_dates").load("getdetails.php?id=" + value + "&choice=dates");
 							  $("#booked_room_type").load("getdetails.php?id=" + value + "&choice=type");
