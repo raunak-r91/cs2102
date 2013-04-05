@@ -201,7 +201,7 @@ session_start();
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Choose Arrival Date <input type="text" id="datepicker" class="input-medium" style="margin-left:59px;"/></strong>
+					<strong style="margin-left:20px"> Choose Arrival Date <input type="text" id="datepicker" class="input-medium" style="margin-left:59px;"></strong>
 					<script>
 					$(function() 
 					{
@@ -212,7 +212,7 @@ session_start();
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:34px;"/></strong>
+					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:34px;"></strong>
 					<script>
 					$(function() {
 					$( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });

@@ -37,13 +37,13 @@
             
             else if($choice == 'arrival') {
                 $arriveDate = DateTime::createFromFormat('Y-m-d', $hotel[$choice]);
-                $arriveDate = $arriveDate->format('m/d/Y');
+                $arriveDate = $arriveDate->format('m/j/Y');
                 echo $arriveDate;
             }
             
             else if($choice == 'departure') {
                 $departDate = DateTime::createFromFormat('Y-m-d', $hotel[$choice]);
-                $departDate = $departDate->format('m/d/Y');
+                $departDate = $departDate->format('m/j/Y');
                 echo $hotel[$departDate];
                 echo $departDate;
             }
