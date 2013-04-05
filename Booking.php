@@ -95,7 +95,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
       }
   ?>
   <?php
-  echo "Check";
  if (isset($_POST['submit'])) {
  	
  	if(!isset($_POST['departDate']) || empty($_POST['departDate'])) {
@@ -130,11 +129,12 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	    AND r.`number` NOT IN (
 		    SELECT b.`room_number`
 		    FROM `Booking` b
-		    WHERE '$arriveDate' BETWEEN b.`arrival` AND b.`departure`
+		    WHERE b.`hotel_name` = '$hotelname' AND b.`hotel_country` = 'India' AND b.`hotel_city` = '$city'
+			AND ('$arriveDate' BETWEEN b.`arrival` AND b.`departure`
 			OR '$departDate' BETWEEN b.`arrival` AND b.`departure`
-			or b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
-			or b.`departure` BETWEEN '$arriveDate' AND '$departDate'
-    	)");
+			OR b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
+			OR b.`departure` BETWEEN '$arriveDate' AND '$departDate'
+    	))");
 
     	$count=mysql_num_rows($check_query);
 	    if ($count > 1) {
