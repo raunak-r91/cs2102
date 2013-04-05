@@ -88,6 +88,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   </head>
 
   <body>
+    <?php include'db.php';
+    ?>
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -138,14 +140,20 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
               <br/>
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
               <br/><li><a href="Booking.php" style="font-size:18px">Book Here</a></li>
-			  <br/><li><a href="View.php" style="font-size:18px">View Your Booking</a></li>
+	      <?php
+	      	    if(isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
+			  echo '<br/><li><a href="View.php" style="font-size:18px">View All Bookings</a></li>';
+		    }
+		    else {
+			 echo '
 			  <br/><li><a href="Modify.php" style="font-size:18px">Modify Your Booking</a></li>
-			  <br/><li class="active" ><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
+			  <br/><li><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
 			  <br/>
 			  <br/>
 			  <br/>
-			  <li><a href="Booking.php"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>
-                			  
+			  <li><a href="Booking.php"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>';
+		    }
+		?>		  
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
@@ -158,97 +166,90 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  <br/>
 		  <br/>
 		  <br/>
-		  <div><h3 style="margin-left:20px">View Your Booking</h3></div>
-		  <h5 style="margin-left:20px">Here are your booking details.</h5>
-		 
+		  <div><h3 style="margin-left:20px">Cancel Your Booking</h3></div>
+		  <h5 style="margin-left:20px">Please select Booking ID to cancel.</h5>
+		  
+		  <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid">
+					<?php
+					    $bookingid = $_GET['bookingid'];
+					    $booking_query = $db->query("SELECT guest_id FROM `Booking` WHERE booking_id = '$bookingid'");
+					    $booking = $db->fetch_assoc($booking_query);
+					  echo '<div>
+					  <strong style="margin-left:20px"> User ID: </strong><input type="text" disabled class="input-medium" style="margin-left:138px" value="'
+					  .$booking['guest_id'].
+					  '"></div>';
+					?>
 					
-					<strong style="margin-left:20px"> Your Location </strong>
-					<select type="text" class="input-medium" style="margin-left:99px;" disabled>
-					<option>New York</option>
-					<option>Singapore</option>
-					<option>Dubai</option>
-					<option>Paris</option>
+					<div>
+					<strong style="margin-left:20px"> Choose Booking ID </strong>
+					<?php
+					      echo '<select type="text" disabled class="input-medium" name="bookingID" id="bookingID" style="margin-left:60px;width:200px;">';
+					    $bookingid = $_GET['bookingid'];
+					      echo '<option>'
+					      .$bookingid.
+					      '</option>';
+					  ?>
+					      <script>
+					    $(function() 
+					    {
+							  $("#hotel_city").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=hotel_city");
+							  $("#hotel_name").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=hotel_name");
+							  $("#booking_dates").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=dates");
+							  $("#booked_room_type").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=type");
+							  $("#numGuests").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=guests");
+							   $("#allTypes").load("getdetails.php?id=" + <?php echo $_GET['bookingid']; ?> + "&choice=allType");
+					    });
+					    </script>	    
 					</select>
+					</div>
 					
-					<br/>
+					<div>
+					<strong style="margin-left:20px"> Choose Location </strong>
+					<select type="text" disabled class="input-medium" name="hotel_city" id="hotel_city" style="margin-left:79px;">
+					
+					</select>
+					</div>
+					
+					<div>
 					<strong style="margin-left:20px"> Choose Hotel Name </strong>
-					<select type="text" class="input-medium" style="margin-left:60px;" disabled>
-					<option>x</option>
-					<option>y</option>
-					<option>z</option>
-					<option>w</option>
-					</select>
-					
-					<div>
-					<strong style="margin-left:20px"> Choose Arrival date <input type="text" id="datepicker" class="input-medium" style="margin-left:58px;" disabled></input></strong>
-					<script>
-					$(function() 
-					{
-					$( "#datepicker" ).datepicker({minDate: 0});
-					});
-					</script>
-					</div>
-					
-					<div>
-					<strong style="margin-left:20px"> Choose Departure Date <input type="text" id="datepicker2" class="input-medium" style="margin-left:32px;" disabled></input></strong>
-					<script>
-					$(function() {
-					$( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
-					});
-					</script>
-					</div>
-					
-					<div>
-					<strong style="margin-left:20px"> Type Of Room </strong>
-					<select type="text" class="input-medium" style="margin-left:100px;width:200px;" disabled>
-					<option>Standard Single Room</option>
-					<option>Standard Double Room</option>
-					<option>Superior Single Room</option>
-					<option>Superior Double Room</option>
-					</select>
-					<div>
-					
-					<div>
-					<strong style="margin-left:20px"> Number Of Rooms </strong>
-					<select type="text" class="input-small" style="margin-left:71px;" disabled>
-					<option>1</option>
-					<option>2</option>
-					<option>3</option>
+					<select type="text" disabled class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:60px;">
+			
 					</select>
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Number Of Adults Per Room </strong>
-					<select type="text" class="input-small" style="margin-left:4px;" disabled>
-					<option>1</option>
-					<option>2</option>
+					<strong style="margin-left:20px"> Number Of Guests </strong>
+					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:67px;">
+					
 					</select>
 					</div>
 					
-					<div>
-					<strong style="margin-left:20px"> Number Of Kids Per Room </strong>
-					<select type="text" class="input-small" style="margin-left:17px;" disabled>
-					<option>0</option>
-					<option>1</option>
-					<option>2</option>
-					</select>
+					<div id="booking_dates">
+		
 					</div>
+					
+					<div id="booked_room_type">
+		
+					</div> <br/>
 					
 					<br/>
 					<br/>
 					<br/>
 					<div style="margin-left:20px">
-					
-					<a href="View.php"><button type="button" class="btn">Back</button></a>
+					<button type="submit" name="cancelbtn" class="btn btn-primary" onclick="return confirm('Are you sure you want to cancel this booking?');">Confirm Cancellation</button>
+					<a href="index.php"><button type="button" class="btn">Back</button></a>
 					</div>
         </div><!--/hererow-->
+	</form>
 
       <hr>
 	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
       <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	  <script src="chosen/chosen.jquery.js" type="text/javascript"></script>
 	  <script type="text/javascript">
+	    
+	    	    
 						$(document).ready(function()
 						{
 								     

@@ -193,7 +193,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						      <tr>
 						      <td style="width:200px; height: 30px" align="middle">' .stripslashes($booking['guest_id']). '</td>
 						      <td style="width:200px; height: 30px" align="middle">' .stripslashes($booking['booking_id']). '</td>
-						      <td style="width:200px; height: 30px" align="middle"><a href="viewbooking.php"><button class= "btn">View Booking</button></a></td>
+						      <td style="width:200px; height: 30px" align="middle"><a href="viewbooking.php?bookingid='.$booking['booking_id'].'"><button class= "btn">View Booking</button></a></td>
 						      <td style="width:200px; height: 30px" align="middle"><a href="Modify.php?bookingid='.$booking['booking_id'].'"><button class= "btn">Modify Booking</button></a></td>
 						      <td style="width:200px; height: 30px" align="middle"><a href="Cancel.php?bookingid='.$booking['booking_id'].'"><button class= "btn">Cancel Booking</button></a></td>
 						      </tr>
