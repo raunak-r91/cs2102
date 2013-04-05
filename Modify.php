@@ -180,13 +180,34 @@ session_start();
 					 <option>BookingID</option>
 					 <?php
 					  $username = $_SESSION['username'];
-					  $booking_query = $db->query("SELECT booking_id FROM `Booking` WHERE guest_id = '$username'");
-					 while($booking = $db->fetch_assoc($booking_query))
-					 {
-					  echo '<option>'
-					  .stripslashes($booking['booking_id']).
-					  '</option>';
-					 }
+					  
+					  if ($username == 'admin') {
+					    $bookingid = $_GET['bookingid'];
+					      echo '<option>'
+					      .$bookingid.
+					      '</option>';
+					  ?>
+					      <script>
+					    $(function() 
+					    {
+    
+							   $("#hotel_city").load("getdetails.php?id=" + <?php echo $bookingid; ?> + "&choice=hotel_city");
+							  $("#hotel_name").load("getdetails.php?id=" + value + "&choice=hotel_name");
+							  $("#booking_dates").load("getdetails.php?id=" + value + "&choice=dates");
+							  $("#booked_room_type").load("getdetails.php?id=" + value + "&choice=type");
+							  $("#numGuests").load("getdetails.php?id=" + value + "&choice=guests");
+					    }
+					    </script>	    
+					  <?php }
+					  else {
+					      $booking_query = $db->query("SELECT booking_id FROM `Booking` WHERE guest_id = '$username'");
+					     while($booking = $db->fetch_assoc($booking_query))
+					     {
+					      echo '<option>'
+					      .stripslashes($booking['booking_id']).
+					      '</option>';
+					     }
+					  }
 					 ?>
 					 
 					</select>
