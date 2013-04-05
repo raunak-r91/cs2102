@@ -167,7 +167,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 		            <div class="row-fluid" style="margin-left:20px">
 						<?php
-						$guest_id = $_SESSION['user_id'];
+						$guest_id = $_SESSION['username'];
 						$booking_query = $db->query("SELECT * FROM `Booking` WHERE guest_id = '$guest_id'");						
 						//$booking_query = mysqli_query($con,"SELECT guest_id,booking_id FROM `Booking` WHERE guest_id='$guest_id'");
 						//$result=mysqli_query($booking_query);
