@@ -130,7 +130,7 @@ session_start();
 	  $arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
 	  $arriveDate = $arriveDate->format('Y-m-d');
 	  
-	  if ($arriveDate >  $getcurrentroom['arrival']) {
+	  if ($arriveDate >  $getcurrentroom['departure']) {
 	    $_SESSION['message'] = "The date entered is incorrect";
 	    $flag = false;
 	  }
@@ -140,7 +140,7 @@ session_start();
 	  $departDate = DateTime::createFromFormat('m/j/Y',$_POST['departDate']);
 	  $departDate = $departDate->format('Y-m-d');
 	  
-	  if ($departDate >  $getcurrentroom['departure']) {
+	  if ($departDate <  $getcurrentroom['arrival']) {
 	    $_SESSION['message'] = "The date entered is incorrect";
 	    $flag = false;
 	  }
