@@ -166,8 +166,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  <br/>
 		  <br/>
 		  <br/>
-		  <div><h3 style="margin-left:20px">Cancel Your Booking</h3></div>
-		  <h5 style="margin-left:20px">Please select Booking ID to cancel.</h5>
+		  <div><h3 style="margin-left:20px">Adminstrator's View Page</h3></div>
+		  <h5 style="margin-left:20px">Displaying the booking details for the selected Booking ID</h5>
 		  
 		  <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid">
@@ -234,10 +234,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					</div> <br/>
 					
 					<br/>
-					<br/>
-					<br/>
 					<div style="margin-left:20px">
-					<a href="index.php"><button type="button" class="btn">Back</button></a>
+					<a href="View.php"><button type="button" class="btn">Back</button></a>
 					</div>
         </div><!--/hererow-->
 	</form>
