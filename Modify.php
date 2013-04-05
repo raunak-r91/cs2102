@@ -147,8 +147,8 @@ session_start();
 		    }
 		    else {
 			 echo '
-			  <br/><li><a href="Modify.php" style="font-size:18px">Modify Your Booking</a></li>
-			  <br/><li class="active"><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
+			  <br/><li  class="active"><a href="Modify.php" style="font-size:18px">Modify Your Booking</a></li>
+			  <br/><li><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
 			  <br/>
 			  <br/>
 			  <br/>
