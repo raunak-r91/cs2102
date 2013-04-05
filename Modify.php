@@ -169,7 +169,7 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Booking ID </strong>
-					<select type="text" class="input-medium" name="bookingID" id="bookingID" style="margin-left:79px;width:200px;">
+					<select type="text" class="input-medium" name="bookingID" id="bookingID" style="margin-left:60px;width:200px;">
 					 <option>BookingID</option>
 					 <?php
 					  $username = $_SESSION['username'];
@@ -222,14 +222,14 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Type Of Room </strong>
-					<select type="text" class="input-medium" name="type" id="type" style="margin-left:80px;width:200px;">
+					<select type="text" class="input-medium" name="type" id="type" style="margin-left:90px;width:200px;">
 				    
 					</select>
 					</div>
 				    			
 					<div>
 					<strong style="margin-left:20px"> Number Of Guests </strong>
-					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:80px;">
+					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:60px;">
 					
 					</select>
 					</div>
