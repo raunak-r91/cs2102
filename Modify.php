@@ -377,7 +377,7 @@ session_start();
 					<div>
 					<strong style="margin-left:20px"> Type Of Room </strong>
 					<select type="text" class="input-medium" name="allTypes" id="allTypes" style="margin-left:91px;width:200px;">
-					<option>" "</option>
+					
 					</select>
 					</div>
 				    			
@@ -413,7 +413,7 @@ session_start();
 						      $("#booked_room_type").load("getdetails.php?id=" + value + "&choice=type");
 						      $("#numGuests").load("getdetails.php?id=" + value + "&choice=guests");
 						      $("#allTypes").load("getdetails.php?id=" + value + "&choice=allType");
-
+						      $("#allTypes").prop("selectedIndex", -1);
 						    
 						    
 						});
@@ -432,6 +432,8 @@ session_start();
 						$( "#single" ).show();
 						return false;
 						});
+						
+						
 						
 						$("#booknow").click(function () 
 						{
