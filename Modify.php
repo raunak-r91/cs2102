@@ -180,7 +180,7 @@ session_start();
 					    $booking_query = $db->query("SELECT guest_id FROM `Booking` WHERE booking_id = '$bookingid'");
 					    $booking = $db->fetch_assoc($booking_query);
 					  echo '<div>
-					  <strong style="margin-left:20px"> User ID: </strong><input type="text" disabled class="input-medium" style="margin-left:79px" value="'
+					  <strong style="margin-left:20px"> User ID: </strong><input type="text" disabled class="input-medium" style="margin-left:90px" value="'
 					  .$booking['guest_id'].
 					  '"></div>';
 					  }
@@ -188,7 +188,6 @@ session_start();
 				      
 					<div>
 					<strong style="margin-left:20px"> Choose Booking ID </strong>
-					<select type="text" class="input-medium" name="bookingID" id="bookingID" style="margin-left:60px;width:200px;">
 					 <?php
 					  $username = $_SESSION['username'];
 					  
@@ -198,6 +197,7 @@ session_start();
 					      .$bookingid.
 					      '</option>';
 					  ?>
+					<select type="text" disabled class="input-medium" name="bookingID" id="bookingID" style="margin-left:60px;width:200px;">
 					      <script>
 					    $(function() 
 					    {
@@ -210,6 +210,7 @@ session_start();
 					    </script>	    
 					  <?php }
 					  else {
+					    echo '<select type="text" class="input-medium" name="bookingID" id="bookingID" style="margin-left:60px;width:200px;">';
 					    echo '<option> Choose Booking ID </option>';
 					      $booking_query = $db->query("SELECT booking_id FROM `Booking` WHERE guest_id = '$username'");
 					     while($booking = $db->fetch_assoc($booking_query))

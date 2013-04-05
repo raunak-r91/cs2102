@@ -95,7 +95,7 @@
 					}
 					else 
 					{
-						echo '<li><a href="Login.php" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
+						echo '<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
 								<li class="divider-vertical"></li>
 								<li class="divider-vertical"></li>';
 					}
