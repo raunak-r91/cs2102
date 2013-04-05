@@ -161,6 +161,17 @@ session_start();
 	      $_SESSION['registered'] = true;
 	   }
 	  else {
+	    $_SESSION['message'] = "SELECT *
+	   FROM `Room` r
+	       WHERE r.`hotel_name` = '$hotelname' AND r.`hotel_country` = 'India' AND r.`hotel_city` = '$city' AND r.`type` = '$roomType' AND r.`capacity` >= '$number'
+	       AND r.`number` NOT IN (
+		       SELECT b.`room_number`
+		       FROM `Booking` b
+		       WHERE b.`hotel_name` = '$hotelname' AND b.`hotel_country` = 'India' AND b.`hotel_city` = '$city'
+			   AND ('$arriveDate' BETWEEN b.`arrival` AND b.`departure`
+			   OR '$departDate' BETWEEN b.`arrival` AND b.`departure`
+			   OR b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
+			   OR b.`departure` BETWEEN '$arriveDate' AND '$departDate'";
 	    $_SESSION['registered'] = false;
 	   }
        
