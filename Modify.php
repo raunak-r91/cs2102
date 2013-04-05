@@ -199,7 +199,18 @@ session_start();
 					</select>
 					</div>
 					
+					<div>
+					<strong style="margin-left:20px"> Number Of Guests </strong>
+					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:63px;">
+					
+					</select>
+					</div>
+					
 					<div id="booking_dates">
+		
+					</div> <br/>
+					
+					<div id="booked_room_type">
 		
 					</div> <br/>
 					
@@ -230,12 +241,7 @@ session_start();
 					</select>
 					</div>
 				    			
-					<div>
-					<strong style="margin-left:20px"> Number Of Guests </strong>
-					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:63px;">
 					
-					</select>
-					</div>
 					
 					<br/>
 					<br/>
@@ -264,9 +270,7 @@ session_start();
 						      $("#hotel_city").load("getdetails.php?id=" + value + "&choice=hotel_city");
 						      $("#hotel_name").load("getdetails.php?id=" + value + "&choice=hotel_name");
 						      $("#booking_dates").load("getdetails.php?id=" + value + "&choice=dates");
-						      $("#datepicker").load("getdetails.php?id=" + value + "&choice=arrival");
-						      $("#datepicker2").load("getdetails.php?id=" + value + "&choice=departure");
-						      $("#type").load("getdetails.php?id=" + value + "&choice=type");
+						      $("#booked_room_type").load("getdetails.php?id=" + value + "&choice=type");
 						      $("#numGuests").load("getdetails.php?id=" + value + "&choice=guests");
 						    
 						    

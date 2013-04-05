@@ -35,35 +35,18 @@
                 '</option>';
             }
             else if ($choice == 'dates') {
-               $arriveDate = DateTime::createFromFormat('Y-m-d', $hotel['arrival']);
+                $arriveDate = DateTime::createFromFormat('Y-m-d', $hotel['arrival']);
                 $arriveDate = $arriveDate->format('j/m/Y');
                 $departDate = DateTime::createFromFormat('Y-m-d', $hotel['departure']);
                 $departDate = $departDate->format('j/m/Y');
-                echo '<strong style="margin-left:20px"> Room Booked </strong><strong style="margin-left:70px;">'.$arriveDate.' to '.$departDate .'</strong>';
-            }
-            
-            else if($choice == 'arrival') {
-                $arriveDate = DateTime::createFromFormat('Y-m-d', $hotel[$choice]);
-                $arriveDate = $arriveDate->format('m/j/Y');
-                echo 'test';
-                echo $arriveDate;
-
-            }
-            
-            else if($choice == 'departure') {
-                $departDate = DateTime::createFromFormat('Y-m-d', $hotel[$choice]);
-                $departDate = $departDate->format('m/j/Y');
-                echo 'test';
-                echo $hotel[$departDate];
-                echo $departDate;
+                echo '<strong style="margin-left:20px"> Current Booking Dates <input type="text" disabled class="input-medium" style="margin-left:70px">'.$arriveDate.'</input> to <input type="text" disabled class="input-medium" style="margin-left:70px">'.$departDate .'</input></strong>';
             }
             
             else if($choice == 'type') {
                 $room_query = $db->query("SELECT r.type as roomtype FROM `Room` r, `Booking` b where booking_id = '$bookingID' and r.number = b.room_number and r.hotel_name = b.hotel_name and r.hotel_country = b.hotel_country and r.hotel_city = b.hotel_city");
                 $room = $db->fetch_assoc($room_query);
-               echo '<option>'
-                .stripslashes($room['roomtype']).
-                '</option>';
+                echo '<strong style="margin-left:20px"> Current Type Of Room <input type="text" disabled class="input-medium" style="margin-left:92px">'.stripslashes($room['roomtype']).'</input></strong>';
+               
             }
             
             else if($choice == 'guests') {
