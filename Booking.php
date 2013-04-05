@@ -95,8 +95,9 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
       }
   ?>
   <?php
+  echo "Check";
  if (isset($_POST['submit'])) {
- 	echo "Check";
+ 	
  	if(!isset($_POST['departDate']) || empty($_POST['departDate'])) {
 		$_SESSION['message'] = "Please fill in your departure date";
     }
