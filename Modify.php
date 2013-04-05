@@ -197,7 +197,7 @@ session_start();
 	      $_SESSION['registered'] = true;
 	   }
 	  else {
-	    $_SESSION['message'] = "Please check the details entered below";
+	    $_SESSION['message'] = "Sorry, no rooms are available for your given choices";
 	    $_SESSION['registered'] = false;
 	   }
        
