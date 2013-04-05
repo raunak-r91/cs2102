@@ -157,7 +157,7 @@ session_start();
 	  if ($count >= 1) {
 	      $row = mysql_fetch_assoc($check_query);
 	      $roomnumber = intval($row['number']);
-	      $db->query("UPDATE `Booking` SET `room_number`= $roomnumber, `arrival`='$arriveDate',`departure`='$departDate' `WHERE `booking_id`='$bookingid'");
+	      $db->query("UPDATE `Booking` SET `room_number`= $roomnumber, `arrival`='$arriveDate',`departure`='$departDate' WHERE `booking_id`='$bookingid'");
 	      $_SESSION['registered'] = true;
 	   }
 	  else {
