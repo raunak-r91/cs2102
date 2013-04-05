@@ -210,6 +210,7 @@ session_start();
 					    </script>	    
 					  <?php }
 					  else {
+					    echo '<option> Choose Booking ID </option>';
 					      $booking_query = $db->query("SELECT booking_id FROM `Booking` WHERE guest_id = '$username'");
 					     while($booking = $db->fetch_assoc($booking_query))
 					     {
@@ -274,7 +275,7 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Type Of Room </strong>
-					<select type="text" class="input-medium" name="type" id="type" style="margin-left:91px;width:200px;">
+					<select type="text" class="input-medium" name="allTypes" id="allTypes" style="margin-left:91px;width:200px;">
 				    
 					</select>
 					</div>
@@ -310,7 +311,8 @@ session_start();
 						      $("#booking_dates").load("getdetails.php?id=" + value + "&choice=dates");
 						      $("#booked_room_type").load("getdetails.php?id=" + value + "&choice=type");
 						      $("#numGuests").load("getdetails.php?id=" + value + "&choice=guests");
-						    
+						      $("#allTypes").load("getdetails.php?id=" + value + "&choice=allType");
+
 						    
 						    
 						});
