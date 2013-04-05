@@ -208,7 +208,7 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Number Of Guests </strong>
-					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:65px;">
+					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:67px;">
 					
 					</select>
 					</div>
@@ -243,7 +243,7 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Type Of Room </strong>
-					<select type="text" class="input-medium" name="type" id="type" style="margin-left:92px;width:200px;">
+					<select type="text" class="input-medium" name="type" id="type" style="margin-left:91px;width:200px;">
 				    
 					</select>
 					</div>
