@@ -180,7 +180,7 @@ session_start();
 					    $booking_query = $db->query("SELECT guest_id FROM `Booking` WHERE booking_id = '$bookingid'");
 					    $booking = $db->fetch_assoc($booking_query);
 					  echo '<div>
-					  <strong style="margin-left:20px"> User ID: </strong><input type="text" disabled class="input-medium" style="margin-left:150px" value="'
+					  <strong style="margin-left:20px"> User ID: </strong><input type="text" disabled class="input-medium" style="margin-left:138px" value="'
 					  .$booking['guest_id'].
 					  '"></div>';
 					  }
@@ -190,8 +190,8 @@ session_start();
 					<strong style="margin-left:20px"> Choose Booking ID </strong>
 					 <?php
 					  $username = $_SESSION['username'];
-					  echo '<select type="text" disabled class="input-medium" name="bookingID" id="bookingID" style="margin-left:60px;width:200px;">';
 					  if ($username == 'admin') {
+					      echo '<select type="text" disabled class="input-medium" name="bookingID" id="bookingID" style="margin-left:60px;width:200px;">';
 					    $bookingid = $_GET['bookingid'];
 					      echo '<option>'
 					      .$bookingid.
