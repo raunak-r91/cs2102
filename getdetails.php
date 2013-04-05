@@ -1,7 +1,7 @@
 <?php include'db.php';
     //echo '<option> test </option>';
-    $bookingID = mysql_real_escape_string($_GET['id']);
-    $choice = mysql_real_escape_string($_GET['choice']);
+    $bookingID = $_GET['id'];
+    $choice = $_GET['choice'];
     
     echo '<option>'.$bookingID.'</option>';
     $hotel_query = $db->query("SELECT * FROM `Booking` where booking_id = '$bookingID');
