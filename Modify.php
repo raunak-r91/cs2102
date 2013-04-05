@@ -135,7 +135,7 @@ session_start();
 	   else {
 	        $roomtype_query = $db->query("SELECT type FROM `Room` where hotel_name = '$hotelname' and hotel_city = '$city' and number = $currentroom");
 		$thisroomtype = $db->fetch_assoc($roomtype_query);
-		$roomType = $thisroomtype['departure'];
+		$roomType = $thisroomtype['type'];
 	   }
 
 	   
