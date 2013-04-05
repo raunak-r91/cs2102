@@ -108,7 +108,7 @@ session_start();
 	   $number = intval($getcurrentroom['guests']);
 	   $flag = true;
       
-       if ($alltypesSet && ($departDateSet && $arriveDateSet)) {
+       if ( ($departDateSet && $arriveDateSet)) {
 	    $_SESSION['message'] = "Please enter the correct date or room type for modification";
 	    $flag = false;
        }
