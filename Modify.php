@@ -98,11 +98,11 @@ session_start();
       $departDateSet = !isset($_POST['departDate']) || empty($_POST['departDate']);
       $arriveDateSet = !isset($_POST['arriveDate']) || empty($_POST['arriveDate']);
       
-       if ($alltypesSet && ($departDateSet || $arriveDateSet)) {
-	    $_SESSION['message'] = "Please enter the correct date or room type for modification";
-       }	
-	 
-       else {
+//       if ($alltypesSet && ($departDateSet || $arriveDateSet)) {
+//	    $_SESSION['message'] = "Please enter the correct date or room type for modification";
+//       }	
+//	 
+//       else {
 	   $city = $_POST['hotel_city'];
 	   $bookingid = $_POST['bookingID'];
 	   $hotelname = $_POST['hotel_name'];
@@ -164,7 +164,7 @@ session_start();
 	    $_SESSION['registered'] = false;
 	   }
        
-       }
+       //}
  }
  ?>
   
