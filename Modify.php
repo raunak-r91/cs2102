@@ -130,7 +130,7 @@ session_start();
 	   }
 	   
 	   if (isset($_POST['allTypes'])) {
-	   	   $roomType = $_POST['allTypes'];
+	       $roomType = $_POST['allTypes'];
 	   }
 	   else {
 	        $roomtype_query = $db->query("SELECT type FROM `Room` where hotel_name = '$hotelname' and hotel_city = '$city' and number = $currentroom");
@@ -154,17 +154,18 @@ session_start();
 	   )");
      
 	   $count=mysql_num_rows($check_query);
-	       if ($count >= 1) {
-		   $row = mysql_fetch_assoc($check_query);
-		   $roomnumber = intval($row['number']);
-		 $db->query("UPDATE `Booking` SET `room_number`= $roomnumber, `arrival`='$arriveDate',`departure`='$departDate' `WHERE `booking_id`='$bookingid'");
-		   $_SESSION['registered'] = true;
+	  if ($count >= 1) {
+	      $row = mysql_fetch_assoc($check_query);
+	      $roomnumber = intval($row['number']);
+	      $db->query("UPDATE `Booking` SET `room_number`= $roomnumber, `arrival`='$arriveDate',`departure`='$departDate' `WHERE `booking_id`='$bookingid'");
+	      $_SESSION['registered'] = true;
 	   }
-		   else {
-	       $_SESSION['registered'] = false;
+	  else {
+	    $_SESSION['registered'] = false;
 	   }
        
        }
+ }
  ?>
   
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
