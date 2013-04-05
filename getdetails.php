@@ -35,7 +35,11 @@
                 '</option>';
             }
             else if ($choice == 'dates') {
-                echo '<strong style="margin-left:20px"> Room Booked from: 20/4/2013 to: 24/4/2013 </strong>';
+               $arriveDate = DateTime::createFromFormat('Y-m-d', $hotel['arrival']);
+                $arriveDate = $arriveDate->format('m/j/Y');
+                $departDate = DateTime::createFromFormat('Y-m-d', $hotel['departure']);
+                $departDate = $departDate->format('m/j/Y');
+                echo '<strong style="margin-left:20px"> Room Booked     from: '.$arriveDate.'      to:'.$departDate .'</strong>';
             }
             
             else if($choice == 'arrival') {
