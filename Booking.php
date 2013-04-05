@@ -129,7 +129,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     if (intval($number)%$capacity > 0) {
       $numberOfRoomsNeeded = $numberOfRoomsNeeded + 1;
     }
-    $_SESSION['message'] = $numberOfRoomsNeeded;
       $check_query = $db->query("SELECT *
     	FROM `Room` r
 	    WHERE r.`hotel_name` = '$hotelname' AND r.`hotel_country` = 'India' AND r.`hotel_city` = '$city' AND r.`type` = '$roomType'
