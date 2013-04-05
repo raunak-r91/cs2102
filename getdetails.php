@@ -4,6 +4,6 @@
     $choice = $_GET['choice'];
     
     //echo '<option> $bookingID </option>';
-    $hotel_query = $db->query("SELECT * FROM `Booking` where booking_id = '$bookingID');
+    //$hotel_query = $db->query("SELECT * FROM `Booking` where booking_id = '$bookingID');
    
 ?>
