@@ -208,14 +208,14 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Number Of Guests </strong>
-					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:63px;">
+					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:65px;">
 					
 					</select>
 					</div>
 					
 					<div id="booking_dates">
 		
-					</div> <br/>
+					</div>
 					
 					<div id="booked_room_type">
 		
