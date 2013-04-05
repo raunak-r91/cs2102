@@ -139,22 +139,13 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
               <br/>
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
               <br/><li><a href="Booking.php" style="font-size:18px">Book Here</a></li>
-	      <?php
-		    if(isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
-			      echo '<br/><li><a href="View.php" style="font-size:18px">View All Bookings</a></li>';
-		    }
-		    else {
-			 echo '
 			  <br/><li><a href="Modify.php" style="font-size:18px">Modify Your Booking</a></li>
 			  <br/><li><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
 			  <br/>
 			  <br/>
 			  <br/>
-			  <li><a href="Booking.php"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>';
-			 
-		    }
-	      ?>
-	       </ul>
+			  <li><a href="Booking.php"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>   			  
+            </ul>
           </div><!--/.well -->
         </div><!--/span-->
 		
