@@ -55,7 +55,8 @@
             }
             
             else if($choice == 'allType') {
-                $room_query = $db->query("SELECT r.type as roomtype FROM `Room` r, `Booking` b where b.booking_id = '$bookingID' r.hotel_name = b.hotel_name and r.hotel_country = b.hotel_country and r.hotel_city = b.hotel_city");
+               echo '<option>test</option>';
+                $room_query = $db->query("SELECT r.type as roomtype FROM `Room` r, `Booking` b where booking_id = '$bookingID' r.hotel_name = b.hotel_name and r.hotel_country = b.hotel_country and r.hotel_city = b.hotel_city");
                 while ($room = $db->fetch_assoc($room_query)) {
                 echo '<option>'
                 .stripslashes($room['roomtype']).
