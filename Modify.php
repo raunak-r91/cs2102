@@ -150,9 +150,9 @@ session_start();
 			   OR '$departDate' BETWEEN b.`arrival` AND b.`departure`
 			   OR b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
 			   OR b.`departure` BETWEEN '$arriveDate' AND '$departDate')
-			   AND b.`room_number`<> '$currentroom'
+			  
 	   )");
-     
+     // AND b.`room_number`<> '$currentroom'
 	   $count=mysql_num_rows($check_query);
 	  if ($count >= 1) {
 	      $row = mysql_fetch_assoc($check_query);
@@ -249,6 +249,29 @@ session_start();
 		  <h5 style="margin-left:20px">We will check if your modifications are possible from our end.</h5>
 		  <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid">
+			      <?php
+		      if (isset($_SESSION['message'])) {
+		      	echo '<h4 name="message"><font color = "red">'.$_SESSION['message'].'</font></h4>';
+			  	unset($_SESSION['message']);
+			  } 
+			  else if (isset($_SESSION['registered'])) {
+			 	 if ($_SESSION['registered']==true ) {
+			 	  $userid = $_SESSION['username'];
+			  	  $booking_query = $db->query("Select max(`booking_id`) as 'booking_id' from `Booking` where guest_id = '$userid'");
+			  	  $booking = $db->fetch_assoc($booking_query);
+  
+			  	  $message = 'Congratulations, your booking is successul!<br/>Please note your Booking Id - '.$booking['booking_id'].' for future references';
+			  	  echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
+			      unset($_SESSION['registered']); 
+				}
+				else {
+			  		$message = 'Sorry, All the rooms are full!<br/>Please select another room type';
+			  		echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
+			  		unset($_SESSION['registered']); 
+				}
+		      }
+		      ?>
+		  
 					<?php
 					  $username = $_SESSION['username'];
 					  if ($username == 'admin') {
