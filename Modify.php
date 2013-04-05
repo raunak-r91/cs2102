@@ -118,7 +118,7 @@ session_start();
 	
 	$departDate = $_POST['departDate'];
 	    	
-	  if(strtotime($arriveDate) > strtotime($departDate)) {
+	  if($arriveDate > $departDate) {
 	     $_SESSION['message'] = "The dates entered are incorrect";
 	     $flag = false;
 	  }
