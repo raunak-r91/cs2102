@@ -14,20 +14,20 @@
     while($hotel = $db->fetch_assoc($hotel_query))
     {
         if($choice == 'hotel_city') {
-            echo '<option disabled>'
-            .stripslashes($hotel['hotel_city']).
+            echo '<option>'
+            .stripslashes($hotel[$choice]).
             '</option>';
         }
         
         else if($choice == 'hotel_name') {
-            echo '<option disabled>'
-            .stripslashes($hotel['hotel_name']).
+            echo '<option>'
+            .stripslashes($hotel[$choice]).
             '</option>';
         }
         
         if($choice == 'type') {
-            echo '<option disabled>'
-            .stripslashes($hotel['type']).
+            echo '<option>'
+            .stripslashes($hotel[$choice]).
             '</option>';
         }
         

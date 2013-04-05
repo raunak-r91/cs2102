@@ -169,7 +169,7 @@ session_start();
 					
 					<div>
 					<strong style="margin-left:20px"> Choose Booking ID </strong>
-					<select type="text" class="input-medium" name="booking_id" id="bookingID" style="margin-left:100px;width:200px;">
+					<select type="text" class="input-medium" name="bookingID" id="bookingID" style="margin-left:100px;width:200px;">
 					 <?php
 					  $username = $_SESSION['username'];
 					  $booking_query = $db->query("SELECT booking_id FROM `Booking` WHERE guest_id = '$username'");
@@ -259,6 +259,15 @@ session_start();
       <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	  <script src="chosen/chosen.jquery.js" type="text/javascript"></script>
 	  <script type="text/javascript">
+	    
+	    $("#bookingID").change(function() {
+						  document.write("test");
+						    var value = $("#bookingID").val();
+						    $("#hotel_city").load("getbookingdetails.php?id=" + value + "&choice=hotel_city");
+						    $("#hotel_name").load("getbookingdetails.php?id=" + value + "&choice=hotel_name");
+						    $("#type").load("getbookingdetails.php?id=" + value + "&choice=type");
+						});
+	    
 						$(document).ready(function()
 						{
 								     
@@ -298,13 +307,8 @@ session_start();
 							}
 						});
 						
-						$("#bookingID").change(function() {
-						  document.write("test");
-						    var value = $("#bookingID").val();
-						    $("#hotel_city").load("getbookingdetails.php?id=" + value + "&choice=hotel_city");
-						    $("#hotel_name").load("getbookingdetails.php?id=" + value + "&choice=hotel_name");
-						    $("#type").load("getbookingdetails.php?id=" + value + "&choice=type");
-						});
+						
+						
 	  </script>
 						
 
