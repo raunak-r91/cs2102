@@ -141,8 +141,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
               <br/><li><a href="Booking.php" style="font-size:18px">Book Here</a></li>
 			  <br/><li><a href="View.php" style="font-size:18px">View Your Booking</a></li>
-			  <br/><li><a href="Modify.php" style="font-size:18px">Modify Your Booking</a></li>
-			  <br/><li><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
 			  <br/>
 			  <br/>
 			  <br/>
@@ -167,8 +165,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					
 		            <div class="row-fluid" style="margin-left:20px">
 						<?php
-						$guest_id = $_SESSION['username'];
-						if ($_SESSION['username']=='admin') {
 						      $booking_query = $db->query("SELECT * FROM `Booking`");						
 						      //$booking_query = mysqli_query($con,"SELECT guest_id,booking_id FROM `Booking` WHERE guest_id='$guest_id'");
 						      //$result=mysqli_query($booking_query);
@@ -204,7 +200,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						      }    
 						      echo '<br/><br/><a href="index.php"><button type="button" class="btn">Back to Home</button></a>';
 						      }
-						}
 						?> 
                     </div><!--/span-->		
 							
