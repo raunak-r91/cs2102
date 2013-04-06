@@ -158,7 +158,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		      $password = $_POST['password'];
 		      $hotelname = $_GET['hotel_name'];
 		    
-		      $check_query = $db->query("SELECT * FROM `Guests` where user_id = '$userid'");
+		      $check_query = $db->query("SELECT * FROM `Guest` where user_id = '$userid'");
 		      $count = mysql_num_rows($check_query);
 		      
 		      if ($count == 0) {
