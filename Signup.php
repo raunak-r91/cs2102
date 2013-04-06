@@ -157,13 +157,22 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		      $userid = $_POST['userID'];
 		      $password = $_POST['password'];
 		      $hotelname = $_GET['hotel_name'];
-	      
-		      $result = $db->query("INSERT into `Guest` (`user_id`, `password`, `name`, `phone_number`, `address`, `email`, `passport`, `nationality`)
-				 values ('$userid', '$password', '$name', '$phone', '$address', '$email', '$passport', '$nationality')");
+		    
+		      $check_query = $db->query("SELECT * FROM `Guests` where user_id = '$userid'");
+		      $count = mysql_num_rows($check_query);
 		      
-		      if ($result) {
-			echo '<h5 style="margin-left:20px">Congratulations, your account with id '.$userid.' has been created</h5>';
-		      }
+		      if ($count == 0) {
+			$result = $db->query("INSERT into `Guest` (`user_id`, `password`, `name`, `phone_number`, `address`, `email`, `passport`, `nationality`)
+				   values ('$userid', '$password', '$name', '$phone', '$address', '$email', '$passport', '$nationality')");
+			
+			if ($result) {
+			  echo '<h5 style="color:white;margin-left:20px"=>Congratulations, your account with id '.$userid.' has been created</h5>';
+			}
+		       }
+		       else {
+			echo '<h5 style="margin-left:20px">Sorry! The userid '.$userid.' has already been taken!</h5>';
+			
+		       }
 		  }
 		  ?>
 		  <h3 style="margin-left:20px">Signup</h3></div>
