@@ -166,11 +166,11 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 				   values ('$userid', '$password', '$name', '$phone', '$address', '$email', '$passport', '$nationality')");
 			
 			if ($result) {
-			  echo '<h5 style="color:white;margin-left:20px"=>Congratulations, your account with id '.$userid.' has been created</h5>';
+			  echo '<h5 style="color:red;margin-left:20px"=>Congratulations, your account with id '.$userid.' has been created</h5>';
 			}
 		       }
 		       else {
-			echo '<h5 style="margin-left:20px">Sorry! The userid '.$userid.' has already been taken!</h5>';
+			echo '<h5 style="color:red;margin-left:20px">Sorry! The userid '.$userid.' has already been taken!</h5>';
 			
 		       }
 		  }
