@@ -150,7 +150,6 @@
 		      $nationality = $_POST['nationality'];
 		      $userid = $_POST['userID'];
 		      $password = $_POST['password'];
-		      $hotelname = $_GET['hotel_name'];
 		    
 		      $check_query = $db->query("SELECT * FROM `Guest` where user_id = '$userid'");
 		      $count = mysql_num_rows($check_query);
@@ -160,7 +159,7 @@
 				   values ('$userid', '$password', '$name', '$phone', '$address', '$email', '$passport', '$nationality')");
 			
 			if ($result) {
-			  echo '<h5 style="color:red;margin-left:20px"=>Congratulations, your account with id '.$userid.' has been created</h5>';
+			  echo '<h5 style="color:red;margin-left:20px">Congratulations, your account with id '.$userid.' has been created</h5>';
 			}
 		       }
 		       else {

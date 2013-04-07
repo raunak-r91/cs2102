@@ -139,7 +139,8 @@
 		  <br/>
 		  <div>
 		   <?php
-		  if (isset($_POST['submit'])) {
+		  if (isset($_POST['deletebtn'])) {
+		    $guestid = $_POST['guestid'];
 		      $name = $_POST['name'];
 		      $email = $_POST['email'];
 		      $address = $_POST['address'];
@@ -147,39 +148,46 @@
 		      $nationality = $_POST['nationality'];
 		      $userid = $_POST['userID'];
 		      $password = $_POST['password'];
+		      $check_query = $db->query("SELECT * FROM `Booking` WHERE guest_id = '$guestid'");
+		      $guestbookings = mysql_num_rows($check_query);
 		    
-		      $check_query = $db->query("SELECT * FROM `Guest` where user_id = '$userid'");
-		      $count = mysql_num_rows($check_query);
-		      
-		      if ($count == 0) {
-			$result = $db->query("INSERT into `Guest` (`user_id`, `password`, `name`, `phone_number`, `address`, `email`, `passport`, `nationality`)
-				   values ('$userid', '$password', '$name', '$phone', '$address', '$email', '$passport', '$nationality')");
-			
-			if ($result) {
-			  echo '<h5 style="color:red;margin-left:20px">Guest with '.$userid.' has been created</h5>';
-			}
-		       }
-		       else {
-			echo '<h5 style="color:red;margin-left:20px">Sorry! The userid '.$userid.' has already been taken!</h5>';
-			
-		       }
+		      if ($guestbookings > 0) {
+			  echo '<h5 style="color:red;margin-left:20px">'.$userid.' has some bookings and cannot be deleted!</h5>';	
+		      }
+		      else {
+			$check_query = $db->query("DELETE FROM `Guest` WHERE `user_id` = '$guestid'");
+			 echo '<h5 style="color:red;margin-left:20px">Guest with '.$userid.' has been deleted!</h5>';
+		      }
 		  }
 		  ?>
 		  <h3 style="margin-left:20px">Create A Guest</h3></div>
 		  <br/>
 		  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid" style="margin-left:20px">
+			    <strong style="margin-left:20px"> Choose Booking ID </strong>
+			    <select type="text" class="input-medium" name="guestid" id="guestid" style="margin-left:60px;width:200px;">
+			    <option> Choose Guest ID </option>
+					<?php
+					      $booking_query = $db->query("SELECT user_id FROM `Guest'");
+					     while($booking = $db->fetch_assoc($booking_query))
+					     {
+					      echo '<option>'
+					      .stripslashes($booking['user_id']).
+					      '</option>';
+					     }
+					 ?>
+					</select>
+			      
+			      
 						<strong style="margin-left:20px"> Name </strong><input name="name" style="width:200px;margin-left:100px" type="text" class="input-block-level">
 						<br/><strong style="margin-left:20px"> Email ID </strong><input name="email"style="width:200px;margin-left:83px" type="text" class="input-block-level">
 						<br/><strong style="margin-left:20px"> Address </strong><input name="address" style="width:200px;margin-left:80px" type="text" class="input-block-level">
 						<br/><strong style="margin-left:20px"> Phone Number </strong><input name="phone" style="width:200px;margin-left:34px" type="text" class="input-block-level">
 						<br/><strong style="margin-left:20px"> Nationality </strong><input name="nationality" style="width:200px;margin-left:67px" type="text" class="input-block-level">
 						<br/><strong style="margin-left:20px"> Passport Number </strong><input name="passport" style="width:200px;margin-left:19px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Choose A User ID </strong><input name="userID" style="width:200px;margin-left:17px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Choose A Password </strong><input name="password" style="width:200px;" type="password" class="input-block-level">
 						
                     </div><!--/span-->
-					<br/><button style="margin-left:40px" name="submit" class="btn btn-primary" type="submit">Signup</button>
+					<br/><button style="margin-left:40px" name="deletebtn" class="btn btn-primary" type="submit">Delete User</button>
         		  </form>	
       </div><!--/hererow-->
 

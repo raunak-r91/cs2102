@@ -158,7 +158,11 @@
 					<br/>
 					
 		            <div class="row-fluid" style="margin-left:20px">
-			      <a href="CreateUser.php"><button type="button" class="btn"> Create a Guest </button></a>
+			      <div style="margin-left:20px">
+			      <a href="CreateUser.php"><button type="button" class="btn"> Create a Guest </button></a><br/>
+			      <a href="EditUser.php"><button type="button" class="btn"> Edit/Delete a Guest </button></a><br/>
+			      <a href="index.php"><button type="button" class="btn"> Create/Edit Rooms </button></a><br/>
+			      </div>
 						<?php
 						      $booking_query = $db->query("SELECT * FROM `Booking`");						
 						      //$booking_query = mysqli_query($con,"SELECT guest_id,booking_id FROM `Booking` WHERE guest_id='$guest_id'");
