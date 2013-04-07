@@ -85,8 +85,7 @@
           if(!isset($_SESSION['username'])) {
 	header("Location: Login.html?from=booking");
       }
-    
-    ?>
+?>
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -145,47 +144,89 @@
 		  <br/>
 		  <div>
 		   <?php
-		  if (isset($_POST['deletebtn'])) {
-		    $guestid = $_POST['guestid'];
-		      $name = $_POST['name'];
-		      $email = $_POST['email'];
-		      $address = $_POST['address'];
-		      $phone = $_POST['phone'];
-		      $nationality = $_POST['nationality'];
-		      $password = $_POST['password'];
-
-			$check_query = $db->query("DELETE FROM `Guest` WHERE `user_id` = '$guestid'");
-			 echo '<h5 style="color:red;margin-left:20px">'.$guestid.' has been deleted!</h5>';
+		  if (isset($_POST['submit'])) {
+		      if (!isset($_POST['name'])) {
+			  echo '<h5 style="color:red;margin-left:20px">Please enter a name for the hotel!</h5>';
+		      }
+		      else if (!isset($_POST['city'])) {
+			  echo '<h5 style="color:red;margin-left:20px">Please enter the city of the hotel!</h5>';
+		      }
+		      else if (!isset($_POST['address'])) {
+			  echo '<h5 style="color:red;margin-left:20px">Please enter the address of the hotel!</h5>';
+		      }
+		      else if (!isset($_POST['phone'])) {
+			  echo '<h5 style="color:red;margin-left:20px">Please enter the contact number of the hotel!</h5>';
+		      }
+		      else if (!isset($_POST['email'])) {
+			  echo '<h5 style="color:red;margin-left:20px">Please enter the email of the hotel!</h5>';
+		      }
+		      else {
+			  $name = $_POST['name'];
+			  $email = $_POST['email'];
+			  $address = $_POST['address'];
+			  $phone = $_POST['phone'];
+			  $city = $_POST['city'];
+			  $pool = 0;
+			  $gym = 0;
+			  $restaurant = 0;
+			  $wifi = 0;
+			  if ($_POST['pool'] == 'YES'){
+			    $pool = 1;
+			  }
+			  if ($_POST['gym'] == 'YES'){
+			    $gym = 1;
+			  }
+			  if ($_POST['restaurant'] == 'YES'){
+			    $restaurant = 1;
+			  }
+			  if ($_POST['wifi'] == 'YES'){
+			    $wifi = 1;
+			  }
+			  
+			
+			  $inserthotel = $db->query("INSERT INTO `Hotel`(`name`, `country`, `city`, `address`, `phone_number`, `email`, `swimming_pool`, `gym`, `restaurant`, `wifi`)
+						    VALUES ('$name','India','$city','$address','$phone','$email',$pool,$gym,$restaurant, $wifi)'");
+			    
+			    echo '<h5 style="color:red;margin-left:20px">Guest with '.$userid.' has been created</h5>';
+		      }
 		  }
 		  ?>
 		  <h3 style="margin-left:20px">Create A Guest</h3></div>
 		  <br/>
 		  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid" style="margin-left:20px">
-			    <strong style="margin-left:20px"> Choose Booking ID </strong>
-			    <select type="text" class="input-medium" name="guestid" id="guestid" style="margin-left:60px;width:200px;">
-			    <option> Choose Guest ID </option>
-	      		<?php
-			  $booking_query = $db->query("SELECT user_id FROM `Guest`");			
-			  while($booking = $db->fetch_assoc($booking_query))
-			     {
-				echo '<option>'
-				.stripslashes($booking['user_id']).
-				'</option>';
-			       }
-			      ?>
-			  </select>
-			      
-			      
-						<strong style="margin-left:20px"> Name </strong><input name="name" style="width:200px;margin-left:100px" type="text" class="input-block-level">
+						<strong style="margin-left:20px">Hotel City </strong><input name="city" style="width:200px;margin-left:80px" type="text" class="input-block-level">
+						<strong style="margin-left:20px">Hotel Name </strong><input name="name" style="width:200px;margin-left:80px" type="text" class="input-block-level">
 						<br/><strong style="margin-left:20px"> Email ID </strong><input name="email"style="width:200px;margin-left:83px" type="text" class="input-block-level">
 						<br/><strong style="margin-left:20px"> Address </strong><input name="address" style="width:200px;margin-left:80px" type="text" class="input-block-level">
 						<br/><strong style="margin-left:20px"> Phone Number </strong><input name="phone" style="width:200px;margin-left:34px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Nationality </strong><input name="nationality" style="width:200px;margin-left:67px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Passport Number </strong><input name="passport" style="width:200px;margin-left:19px" type="text" class="input-block-level">
 						
+		  </br><strong style="margin-left:20px"> Swimming Pool </strong>
+		  <select type="text" name="pool" id="pool" class="input-medium" style="margin-left:70px;width:200px;">
+		  <option>YES</option>
+		  <option>NO</option>
+		  </select>
+		  
+		  </br><strong style="margin-left:20px"> Gym </strong>
+		  <select type="text" name="gym" id="gym" class="input-medium" style="margin-left:100px;width:200px;">
+		  <option>YES</option>
+		  <option>NO</option>
+		  </select>
+		  
+		  </br><strong style="margin-left:20px"> Restaurant </strong>
+		  <select type="text" name="restaurant" id="restaurant" class="input-medium" style="margin-left:100px;width:200px;">
+		  <option>YES</option>
+		  <option>NO</option>
+		  </select>
+		  
+		  </br><strong style="margin-left:20px"> Wifi </strong>
+		  <select type="text" name="wifi" id="wifi" class="input-medium" style="margin-left:100px;width:200px;">
+		  <option>YES</option>
+		  <option>NO</option>
+		  </select>
+		  
                     </div><!--/span-->
-					<br/><button style="margin-left:40px" name="deletebtn" class="btn btn-primary" type="submit">Delete User</button>
+					<br/><button style="margin-left:40px" name="submit" class="btn btn-primary" type="submit">Create Hotel</button>
         		  </form>	
       </div><!--/hererow-->
 
