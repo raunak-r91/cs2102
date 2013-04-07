@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -121,8 +119,7 @@
               <br/>
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
               <br/><li><a href="Booking.php" style="font-size:18px">Book Here</a></li>
-			  <br/><li><a href="Modify.php" style="font-size:18px">Modify Your Booking</a></li>
-			  <br/><li><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
+			  <br/><li><a href="View.php" style="font-size:18px">View Your Booking</a></li>
 			  <br/>
 			  <br/>
 			  <br/>
@@ -160,7 +157,7 @@
 				   values ('$userid', '$password', '$name', '$phone', '$address', '$email', '$passport', '$nationality')");
 			
 			if ($result) {
-			  echo '<h5 style="color:red;margin-left:20px"=>Congratulations, your account with id '.$userid.' has been created</h5>';
+			  echo '<h5 style="color:red;margin-left:20px"=>Guest with '.$userid.' has been created</h5>';
 			}
 		       }
 		       else {
@@ -169,8 +166,7 @@
 		       }
 		  }
 		  ?>
-		  <h3 style="margin-left:20px">Signup</h3></div>
-		  <h5 style="margin-left:20px">You need to signup with us for bookings and modifications.</h5>
+		  <h3 style="margin-left:20px">Create A Guest</h3></div>
 		  <br/>
 		  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid" style="margin-left:20px">

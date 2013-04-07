@@ -1,10 +1,4 @@
 <?php session_start(); ?>
-<!--
-LAB ASSIGNMENT 1 - CS3240
-NAME : MADHU MAITHRI PARVATANENI
-MATRIC NUMBER : A0074807Y
-WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
--->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -164,6 +158,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					<br/>
 					
 		            <div class="row-fluid" style="margin-left:20px">
+			      <a href="CreateUser.php"><button type="button" class="btn"> Create a Guest </button></a>
 						<?php
 						      $booking_query = $db->query("SELECT * FROM `Booking`");						
 						      //$booking_query = mysqli_query($con,"SELECT guest_id,booking_id FROM `Booking` WHERE guest_id='$guest_id'");
@@ -171,7 +166,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						      $count=mysql_num_rows($booking_query);
 						      if($count==0)
 						      {
-							echo '<h4> There are no bookings in your name currently.</h4>';
+							echo '<h4> There are no bookings currently.</h4>';
 							echo '<br/><br/><a href="index.php"><button type="button" class="btn">Back to Home</button></a>';
 						      }
 						      
