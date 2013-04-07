@@ -147,17 +147,16 @@
 		      $address = $_POST['address'];
 		      $phone = $_POST['phone'];
 		      $nationality = $_POST['nationality'];
-		      $userid = $_POST['userID'];
 		      $password = $_POST['password'];
 		      $check_query = $db->query("SELECT * FROM `Booking` WHERE guest_id = '$guestid'");
 		      $guestbookings = mysql_num_rows($check_query);
 		    
 		      if ($guestbookings > 0) {
-			  echo '<h5 style="color:red;margin-left:20px">'.$userid.' has some bookings and cannot be deleted!</h5>';	
+			  echo '<h5 style="color:red;margin-left:20px">Sorry! '.$guestid.' has some bookings and cannot be deleted!</h5>';	
 		      }
 		      else {
 			$check_query = $db->query("DELETE FROM `Guest` WHERE `user_id` = '$guestid'");
-			 echo '<h5 style="color:red;margin-left:20px">Guest with '.$userid.' has been deleted!</h5>';
+			 echo '<h5 style="color:red;margin-left:20px">Guest with '.$guestid.' has been deleted!</h5>';
 		      }
 		  }
 		  ?>
