@@ -159,8 +159,8 @@
 					
 		            <div class="row-fluid" style="margin-left:20px">
 			      <div style="margin-left:20px">
-			      <a href="CreateUser.php"><button type="button" class="btn"> Create a Guest </button></a><br/>
-			      <a href="EditUser.php"><button type="button" class="btn"> Edit/Delete a Guest </button></a><br/>
+			      <a href="CreateUser.php"><button type="button" class="btn"> Create a Guest </button></a>
+			      <a href="EditUser.php"><button type="button" class="btn"> Edit/Delete a Guest </button></a>
 			      <a href="index.php"><button type="button" class="btn"> Create/Edit Rooms </button></a><br/>
 			      </div>
 						<?php

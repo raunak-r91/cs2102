@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -167,16 +168,16 @@
 			    <strong style="margin-left:20px"> Choose Booking ID </strong>
 			    <select type="text" class="input-medium" name="guestid" id="guestid" style="margin-left:60px;width:200px;">
 			    <option> Choose Guest ID </option>
-					<?php
-					      $booking_query = $db->query("SELECT user_id FROM `Guest'");
-					     while($booking = $db->fetch_assoc($booking_query))
-					     {
-					      echo '<option>'
-					      .stripslashes($booking['user_id']).
-					      '</option>';
-					     }
-					 ?>
-					</select>
+	      		<?php
+			  $booking_query = $db->query("SELECT user_id FROM `Guest`");			
+			  while($booking = $db->fetch_assoc($booking_query))
+			     {
+				echo '<option>'
+				.stripslashes($booking['user_id']).
+				'</option>';
+			       }
+			      ?>
+			  </select>
 			      
 			      
 						<strong style="margin-left:20px"> Name </strong><input name="name" style="width:200px;margin-left:100px" type="text" class="input-block-level">
