@@ -89,6 +89,10 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 
   <body>
     <?php include'db.php';
+          if(!isset($_SESSION['username'])) {
+	header("Location: Login.html?from=booking");
+      }
+
     ?>
     <?php
     if(isset($_POST['cancelbtn'])) {

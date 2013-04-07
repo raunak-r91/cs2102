@@ -82,7 +82,11 @@
   </head>
 
   <body>
-  <?php include'db.php'; ?>
+  <?php include'db.php';
+            if(!isset($_SESSION['username'])) {
+	header("Location: Login.html?from=booking");
+      }
+?>
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -170,13 +174,13 @@
 						      $count=mysql_num_rows($booking_query);
 						      if($count==0)
 						      {
-							echo '<h4> There are no bookings currently.</h4>';
+							echo '<br/><h4> There are no bookings currently.</h4>';
 							echo '<br/><br/><a href="index.php"><button type="button" class="btn">Back to Home</button></a>';
 						      }
 						      
 						      else
 						      {
-						      echo '<table border ="1">
+						      echo '<br/><table border ="1">
 						      <tr>
 						      <td style="width:200px; height: 30px" align="middle"><b> Guest Id </b></td>
 						      <td style="width:200px; height: 30px" align="middle"><b> Booking Id </b></td>

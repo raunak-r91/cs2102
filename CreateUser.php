@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -80,7 +81,11 @@
   </head>
 
   <body>
-    <?php include'db.php'; ?>
+    <?php include'db.php';
+          if(!isset($_SESSION['username'])) {
+	header("Location: Login.html?from=booking");
+      }
+?>
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
