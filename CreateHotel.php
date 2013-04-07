@@ -145,19 +145,19 @@
 		  <div>
 		   <?php
 		  if (isset($_POST['submit'])) {
-		      if (!isset($_POST['name'])) {
+		      if (!isset($_POST['name'])|| empty($_POST['name'])) {
 			  echo '<h5 style="color:red;margin-left:20px">Please enter a name for the hotel!</h5>';
 		      }
-		      else if (!isset($_POST['city'])) {
+		      else if (!isset($_POST['city'])|| empty($_POST['city'])) {
 			  echo '<h5 style="color:red;margin-left:20px">Please enter the city of the hotel!</h5>';
 		      }
-		      else if (!isset($_POST['address'])) {
+		      else if (!isset($_POST['address']) || empty($_POST['address'])) {
 			  echo '<h5 style="color:red;margin-left:20px">Please enter the address of the hotel!</h5>';
 		      }
-		      else if (!isset($_POST['phone'])) {
+		      else if (!isset($_POST['phone'])|| empty($_POST['phone'])) {
 			  echo '<h5 style="color:red;margin-left:20px">Please enter the contact number of the hotel!</h5>';
 		      }
-		      else if (!isset($_POST['email'])) {
+		      else if (!isset($_POST['email'])|| empty($_POST['email'])) {
 			  echo '<h5 style="color:red;margin-left:20px">Please enter the email of the hotel!</h5>';
 		      }
 		      else {
@@ -196,31 +196,31 @@
 		  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid" style="margin-left:20px">
 						<strong style="margin-left:20px">Hotel City </strong><input name="city" style="width:200px;margin-left:80px" type="text" class="input-block-level">
-						<strong style="margin-left:20px">Hotel Name </strong><input name="name" style="width:200px;margin-left:80px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Email ID </strong><input name="email"style="width:200px;margin-left:83px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Address </strong><input name="address" style="width:200px;margin-left:80px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Phone Number </strong><input name="phone" style="width:200px;margin-left:34px" type="text" class="input-block-level">
+						<br/><strong style="margin-left:20px">Hotel Name </strong><input name="name" style="width:200px;margin-left:80px" type="text" class="input-block-level">
+						<br/><strong style="margin-left:20px"> Email ID </strong><input name="email"style="width:200px;margin-left:86px" type="text" class="input-block-level">
+						<br/><strong style="margin-left:20px"> Address </strong><input name="address" style="width:200px;margin-left:86px" type="text" class="input-block-level">
+						<br/><strong style="margin-left:20px"> Phone Number </strong><input name="phone" style="width:200px;margin-left:44px" type="text" class="input-block-level">
 						
 		  </br><strong style="margin-left:20px"> Swimming Pool </strong>
-		  <select type="text" name="pool" id="pool" class="input-medium" style="margin-left:70px;width:200px;">
+		  <select type="text" name="pool" id="pool" class="input-medium" style="margin-left:60px;width:200px;">
 		  <option>YES</option>
 		  <option>NO</option>
 		  </select>
 		  
 		  </br><strong style="margin-left:20px"> Gym </strong>
-		  <select type="text" name="gym" id="gym" class="input-medium" style="margin-left:100px;width:200px;">
+		  <select type="text" name="gym" id="gym" class="input-medium" style="margin-left:114px;width:200px;">
 		  <option>YES</option>
 		  <option>NO</option>
 		  </select>
 		  
 		  </br><strong style="margin-left:20px"> Restaurant </strong>
-		  <select type="text" name="restaurant" id="restaurant" class="input-medium" style="margin-left:100px;width:200px;">
+		  <select type="text" name="restaurant" id="restaurant" class="input-medium" style="margin-left:80px;width:200px;">
 		  <option>YES</option>
 		  <option>NO</option>
 		  </select>
 		  
 		  </br><strong style="margin-left:20px"> Wifi </strong>
-		  <select type="text" name="wifi" id="wifi" class="input-medium" style="margin-left:100px;width:200px;">
+		  <select type="text" name="wifi" id="wifi" class="input-medium" style="margin-left:114px;width:200px;">
 		  <option>YES</option>
 		  <option>NO</option>
 		  </select>
