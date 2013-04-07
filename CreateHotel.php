@@ -185,7 +185,7 @@
 			  
 			
 			  $inserthotel = $db->query("INSERT INTO `Hotel`(`name`, `country`, `city`, `address`, `phone_number`, `email`, `swimming_pool`, `gym`, `restaurant`, `wifi`)
-						    VALUES ('$name','India','$city','$address','$phone','$email',$pool,$gym,$restaurant, $wifi)'");
+						    VALUES ('$name','India','$city','$address','$phone','$email',$pool,$gym,$restaurant, $wifi)");
 			    
 			    echo '<h5 style="color:red;margin-left:20px">Guest with '.$userid.' has been created</h5>';
 		      }
