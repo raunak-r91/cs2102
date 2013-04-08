@@ -168,7 +168,7 @@
 			      <a href="CreateHotel.php"><button type="button" class="btn"> Create Hotel </button></a><br/>
 			      </div>
 						<?php
-						      $booking_query = $db->query("SELECT * FROM `Booking` GROUP BY guest_id");						
+						      $booking_query = $db->query("SELECT * FROM `Booking` ORDER BY guest_id");						
 						      //$booking_query = mysqli_query($con,"SELECT guest_id,booking_id FROM `Booking` WHERE guest_id='$guest_id'");
 						      //$result=mysqli_query($booking_query);
 						      $count=mysql_num_rows($booking_query);
