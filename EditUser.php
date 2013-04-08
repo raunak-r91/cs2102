@@ -158,7 +158,7 @@
 			 echo '<h5 style="color:red;margin-left:20px">'.$guestid.' has been deleted!</h5>';
 		  }
 		  ?>
-		  <h3 style="margin-left:20px">Create A Guest</h3></div>
+		  <h3 style="margin-left:20px">Delete A Guest</h3></div>
 		  <br/>
 		  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid" style="margin-left:20px">
@@ -166,7 +166,7 @@
 			    <select type="text" class="input-medium" name="guestid" id="guestid" style="margin-left:60px;width:200px;">
 			    <option> Choose Guest ID </option>
 	      		<?php
-			  $booking_query = $db->query("SELECT user_id FROM `Guest`");			
+			  $booking_query = $db->query("SELECT user_id FROM `Guest` Where user_id <> 'admin'");			
 			  while($booking = $db->fetch_assoc($booking_query))
 			     {
 				echo '<option>'
