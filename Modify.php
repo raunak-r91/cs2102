@@ -323,7 +323,7 @@ session_start();
 					?>
 				      
 					<div>
-					<strong style="margin-left:20px"> Choose Booking ID </strong>
+					<strong style="margin-left:24px"> Choose Booking ID </strong>
 					 <?php
 					  $username = $_SESSION['username'];
 					  if ($username == 'admin') {
@@ -362,7 +362,7 @@ session_start();
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Choose Location </strong>
+					<strong style="margin-left:21px"> Choose Location </strong>
 					<select type="text" disabled class="input-medium" name="hotel_city" id="hotel_city" style="margin-left:79px;">
 					
 					</select>
@@ -376,7 +376,7 @@ session_start();
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Number Of Guests </strong>
+					<strong style="margin-left:21px"> Number Of Guests </strong>
 					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:67px;">
 					
 					</select>
@@ -391,7 +391,7 @@ session_start();
 					</div> <br/>
 					
 					<div>
-					<strong style="margin-left:20px"> Modify Arrival Date <input type="text" name="arriveDate" id="datepicker" class="input-medium" style="margin-left:59px;"></strong>
+					<strong style="margin-left:24px"> Modify Arrival Date <input type="text" name="arriveDate" id="datepicker" class="input-medium" style="margin-left:59px;"></strong>
 					<script>
 					$(function() 
 					{
@@ -402,7 +402,7 @@ session_start();
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Modify Departure Date <input type="text" name="departDate" id="datepicker2" class="input-medium" style="margin-left:34px;"></strong>
+					<strong style="margin-left:24px"> Modify Departure Date <input type="text" name="departDate" id="datepicker2" class="input-medium" style="margin-left:34px;"></strong>
 					<script>
 					$(function() {
 					$( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
@@ -411,7 +411,7 @@ session_start();
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Type Of Room </strong>
+					<strong style="margin-left:28px"> Type Of Room </strong>
 					<select type="text" class="input-medium" name="allTypes" id="allTypes" style="margin-left:91px;width:200px;">
 					
 					</select>

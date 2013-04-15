@@ -164,8 +164,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					<br/>
 		            <div class="row-fluid" style="margin-left:20px">
 						<form id="loginform" class="form-signin" action="check_login.php" method="post">
-						<input id="myusername" name="myusername" style="width:200px;" type="text" class="input-block-level" placeholder="Userid">
-						<br/><input id="mypassword" name="mypassword" style="width:200px;" type="password" class="input-block-level" placeholder="Password">
+						<input id="myusername" name="myusername" style="width:200px;" type="text" class="input-block-level" placeholder="Enter User Name">
+						<br/><input id="mypassword" name="mypassword" style="width:200px;" type="password" class="input-block-level" placeholder="Enter Password">
 						<br/>
 						<br/>
 						<?php 
