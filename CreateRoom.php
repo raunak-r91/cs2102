@@ -145,88 +145,91 @@
 		  <div>
 		   <?php
 		  if (isset($_POST['submit'])) {
-		      if (!isset($_POST['name'])|| empty($_POST['name'])) {
-			  echo '<h5 style="color:red;margin-left:20px">Please enter a name for the hotel!</h5>';
+		      if (!isset($_POST['room_number'])|| empty($_POST['room_number'])) {
+			  echo '<h5 style="color:red;margin-left:20px">Please enter the rooom number!</h5>';
 		      }
-		      else if (!isset($_POST['city'])|| empty($_POST['city'])) {
-			  echo '<h5 style="color:red;margin-left:20px">Please enter the city of the hotel!</h5>';
+		      else if (!isset($_POST['price'])|| empty($_POST['price'])) {
+			  echo '<h5 style="color:red;margin-left:20px">Please enter the price of the room!</h5>';
 		      }
-		      else if (!isset($_POST['address']) || empty($_POST['address'])) {
-			  echo '<h5 style="color:red;margin-left:20px">Please enter the address of the hotel!</h5>';
-		      }
-		      else if (!isset($_POST['phone'])|| empty($_POST['phone'])) {
-			  echo '<h5 style="color:red;margin-left:20px">Please enter the contact number of the hotel!</h5>';
-		      }
-		      else if (!isset($_POST['email'])|| empty($_POST['email'])) {
-			  echo '<h5 style="color:red;margin-left:20px">Please enter the email of the hotel!</h5>';
-		      }
+
 		      else {
-			  $name = $_POST['name'];
-			  $email = $_POST['email'];
-			  $address = $_POST['address'];
-			  $phone = $_POST['phone'];
-			  $city = $_POST['city'];
-			  $pool = 0;
-			  $gym = 0;
-			  $restaurant = 0;
-			  $wifi = 0;
-			  if ($_POST['pool'] == 'YES'){
-			    $pool = 1;
+			  $name = $_POST['hotel_name'];
+			  $number = $_POST['room_number'];
+			  $type = $_POST['room_type'];
+			  $price = $_POST['price'];
+
+			  if ($_POST['room_type'] == 'Single'){
+			    $capacity = 1;
 			  }
-			  if ($_POST['gym'] == 'YES'){
-			    $gym = 1;
+			  else if ($_POST['room_type'] == 'Double'){
+			    $capacity = 2;
 			  }
-			  if ($_POST['restaurant'] == 'YES'){
-			    $restaurant = 1;
+			  else if ($_POST['room_type'] == 'Deluxe'){
+			    $capacity = 4;
 			  }
-			  if ($_POST['wifi'] == 'YES'){
-			    $wifi = 1;
+			  else if ($_POST['room_type'] == 'Suite'){
+			    $capacity = 6;
 			  }
 			  
-			
-			  $inserthotel = $db->query("INSERT INTO `Hotel`(`name`, `country`, `city`, `address`, `phone_number`, `email`, `swimming_pool`, `gym`, `restaurant`, `wifi`)
-						    VALUES ('$name','India','$city','$address','$phone','$email',$pool,$gym,$restaurant, $wifi)");
+			  $checkquery = $db->query("Select MAX(number) as number FROM `Room` WHERE hotel_city = '$city' AND hotel_name = '$name' AND type = '$type'");
+			  $retrieveLarge = mysql_fetch_assoc($checkquery);
+			  $roomnumber = intval($retrieveLarge['number']);
+			  $roomnumber = $roomnumber + 1;
+			  $insertroom = $db->query("INSERT INTO `Room`(`number`, `type`, `price`, `hotel_name`, `hotel_country`, `hotel_city`, `capacity`)
+						    VALUES ('$roomnumber', '$type', '$price','$name', 'India','$city',$capacity)");
 			    
-			    echo '<h5 style="color:red;margin-left:20px">New hotel '.$name.' has been created</h5>';
+			    echo '<h5 style="color:red;margin-left:20px">New Room has been created</h5>';
 		      }
 		  }
 		  ?>
-		  <h3 style="margin-left:20px">Create A Hotel</h3></div>
+		  <h3 style="margin-left:20px">Create A Guest</h3></div>
 		  <br/>
 		  <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		            <div class="row-fluid" style="margin-left:20px">
-						<strong style="margin-left:20px">Hotel City </strong><input name="city" style="width:200px;margin-left:80px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px">Hotel Name </strong><input name="name" style="width:200px;margin-left:80px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Email ID </strong><input name="email"style="width:200px;margin-left:86px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Address </strong><input name="address" style="width:200px;margin-left:86px" type="text" class="input-block-level">
-						<br/><strong style="margin-left:20px"> Phone Number </strong><input name="phone" style="width:200px;margin-left:44px" type="text" class="input-block-level">
-						
-		  </br><strong style="margin-left:20px"> Swimming Pool </strong>
-		  <select type="text" name="pool" id="pool" class="input-medium" style="margin-left:60px;width:200px;">
-		  <option>YES</option>
-		  <option>NO</option>
-		  </select>
-		  
-		  </br><strong style="margin-left:20px"> Gym </strong>
-		  <select type="text" name="gym" id="gym" class="input-medium" style="margin-left:114px;width:200px;">
-		  <option>YES</option>
-		  <option>NO</option>
-		  </select>
-		  
-		  </br><strong style="margin-left:20px"> Restaurant </strong>
-		  <select type="text" name="restaurant" id="restaurant" class="input-medium" style="margin-left:80px;width:200px;">
-		  <option>YES</option>
-		  <option>NO</option>
-		  </select>
-		  
-		  </br><strong style="margin-left:20px"> Wifi </strong>
-		  <select type="text" name="wifi" id="wifi" class="input-medium" style="margin-left:114px;width:200px;">
-		  <option>YES</option>
-		  <option>NO</option>
-		  </select>
-		  
+			      		  <strong style="margin-left:20px"> Choose Location </strong>
+					  <select type="text" name="city" id="city" class="input-medium" style="margin-left:79px;">
+					  
+					  <?php
+					    $hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
+					    while($hotel = $db->fetch_assoc($hotel_query))
+					    {
+						 echo '<option>'.stripslashes($hotel['city']).'</option>';
+					    }
+					     ?> 
+					  </select>
+						      
+					  <br/>
+					  <strong style="margin-left:20px"> Choose Hotel Name </strong>
+					  <select type="text" name="hotel_name" id="hotel_name" class="input-medium" style="margin-left:60px;">
+					  <?php
+			
+					      $hotel_query = $db->query("SELECT distinct city FROM `Hotel`");
+					      $hotel = $db->fetch_assoc($hotel_query);
+			
+					      $choice = $hotel['city'];
+			
+					      $hotel_query = $db->query("SELECT name FROM `Hotel` where city = '$choice'");
+					      while($hotel = $db->fetch_assoc($hotel_query))
+					      {
+					       echo '<option>'
+					       .stripslashes($hotel['name']).
+					       '</option>';
+					      }    
+					  ?> 
+					  </select>
+
+					  <strong style="margin-left:20px">Room Number </strong><input name="room_number" style="width:200px;margin-left:80px" type="text" class="input-block-level">
+					  <br/><strong style="margin-left:20px">Room Type</strong>
+					  <select type="text" name="room_type" id="room_type" class="input-medium" style="margin-left:60px;">
+					  <option>Single</option>
+					  <option>Double</option>
+					  <option>Deluxe</option>
+					  <option>Suite</option>
+					  </select>
+					  <br/><strong style="margin-left:20px">Price </strong><input name="price" style="width:200px;margin-left:80px" type="text" class="input-block-level">
+					    
                     </div><!--/span-->
-					<br/><button style="margin-left:40px" name="submit" class="btn btn-primary" type="submit">Create Hotel</button>
+					<br/><button style="margin-left:40px" name="submit" class="btn btn-primary" type="submit">Create Room</button>
         		  </form>	
       </div><!--/hererow-->
 
@@ -235,6 +238,12 @@
       <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 	  <script src="chosen/chosen.jquery.js" type="text/javascript"></script>
 	  <script type="text/javascript">
+	    
+	      $("#city").change(function() {
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facility=");
+    	       });
+	       
+	       
 		    $(document).ready(function()
 		    {
 					 
@@ -250,29 +259,6 @@
 		    return false;
 		    });
 		    
-		    $("#booknow").click(function () 
-		    {
-		    if((($("#datepicker").val()=="")) && (($("#datepicker2").val()=="")))
-		    document.getElementById('errormsg').innerHTML="*Please fill in your arrival and departure dates";
-		    
-		    else if((($("#datepicker").val()=="")))
-		    document.getElementById('errormsg').innerHTML="*Please fill in your arrival date";
-		    
-		    else if(((($("#datepicker2").val()==""))))
-		    document.getElementById('errormsg').innerHTML="*Please fill in your departure date";
-		    
-		    else
-		    document.getElementById('errormsg').innerHTML="";
-		    });
-		    
-		    $("#datepicker2").focus(function () 
-		    {
-			    var date = $("#datepicker").datepicker('getDate');
-			    if (date){
-			    date.setDate(date.getDate() + 1);
-			    $( "#datepicker2" ).datepicker( "option", "minDate", date );
-			    }
-		    });
 	  </script>
 						
 

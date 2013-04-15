@@ -166,6 +166,7 @@
 			      <a href="CreateUser.php"><button type="button" class="btn"> Create a Guest </button></a>
 			      <a href="EditUser.php"><button type="button" class="btn"> Edit/Delete a Guest </button></a>
 			      <a href="CreateHotel.php"><button type="button" class="btn"> Create Hotel </button></a><br/>
+			      <a href="CreateRoom.php"><button type="button" class="btn"> Add Rooms </button></a><br/>
 			      </div>
 						<?php
 						      $booking_query = $db->query("SELECT * FROM `Booking` ORDER BY guest_id");						
