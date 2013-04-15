@@ -96,7 +96,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   ?>
   <?php 
   if (isset($_POST['submit'])) {
- 	date_default_timezone_set('Singapore');
+ 	date_default_timezone_set('UTC');
 	$d1 = new DateTime('m/j/y');
 	$arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
 
