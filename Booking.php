@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 
 <!--
 LAB ASSIGNMENT 1 - CS3240
@@ -6,7 +5,9 @@ NAME : MADHU MAITHRI PARVATANENI
 MATRIC NUMBER : A0074807Y
 WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 -->
+
 <!DOCTYPE html>
+<?php session_start(); ?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -88,87 +89,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   </head>
 
   <body>
-  <?php include'db.php';
-  
-      if(!isset($_SESSION['username'])) {
-	header("Location: Login.html?from=booking");
-      }
-  ?>
-  <?php
- if (isset($_POST['submit'])) {
- 	
- 	if(!isset($_POST['departDate']) || empty($_POST['departDate'])) {
-		$_SESSION['message'] = "Please fill in your departure date";
-    }
-    
-    else if(!isset($_POST['arriveDate']) || empty($_POST['arriveDate'])) {
-    	$_SESSION['message'] = "Please fill in your arrival date";
-    }
- 	
- 	else if(!isset($_POST['hotel_name']) || empty($_POST['hotel_name'])) {
-    	$_SESSION['message'] = "Please select Hotel. Remove facilities filter to view all hotels";
-    }
-    
-    else {
-    	$userid = $_SESSION['username'];
-    	$city = $_POST['city'];
-    
-    	$hotelname = $_POST['hotel_name'];
-	$roomType = $_POST['room_type'];
-    	$number = $_POST['numGuests'];
-    
-	$arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
-	$arriveDate = $arriveDate->format('Y-m-d');
-    
-	$departDate = DateTime::createFromFormat('m/j/Y', $_POST['departDate']);
-    	$departDate = $departDate->format('Y-m-d');    	
-    $roomquery = $db->query("SELECT distinct r.`capacity` as capacity FROM `Room` r WHERE r.`type` = '$roomType'");
-    $roomnumber_result = mysql_fetch_assoc($roomquery);
-    $capacity = intval($roomnumber_result['capacity']);
-    $numberOfRoomsNeeded = (int)(intval($number)/$capacity);
-    if (intval($number)%$capacity > 0) {
-      $numberOfRoomsNeeded = $numberOfRoomsNeeded + 1;
-    }
-      $check_query = $db->query("SELECT *
-    	FROM `Room` r
-	    WHERE r.`hotel_name` = '$hotelname' AND r.`hotel_country` = 'India' AND r.`hotel_city` = '$city' AND r.`type` = '$roomType'
-	    AND r.`number` NOT IN (
-		    SELECT b.`room_number`
-		    FROM `Booking` b
-		    WHERE b.`hotel_name` = '$hotelname' AND b.`hotel_country` = 'India' AND b.`hotel_city` = '$city'
-			AND ('$arriveDate' BETWEEN b.`arrival` AND b.`departure`
-			OR '$departDate' BETWEEN b.`arrival` AND b.`departure`
-			OR b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
-			OR b.`departure` BETWEEN '$arriveDate' AND '$departDate')
-    	)");
-
-    	$count=mysql_num_rows($check_query);
-	    if ($count >= $numberOfRoomsNeeded) {
-	      			$number = intval($number);
-	      while ($numberOfRoomsNeeded > 0) {
-	      	$row = mysql_fetch_assoc($check_query);
-			$roomnumber = intval($row['number']);
-			$guestNumber = $number;
-			if ($capacity < $number){
-			  $guestNumber = $capacity;
-			}
-			
-			$db->query("INSERT into `Booking` (`guest_id`, `hotel_name`, `hotel_country`, `hotel_city`, `room_number`, `arrival`, `departure`, `guests`)
-                   values ('$userid', '$hotelname', 'India', '$city', $roomnumber, '$arriveDate', '$departDate', $guestNumber)");
-     		$_SESSION['registered'] = true;
-		$numberOfRoomsNeeded = $numberOfRoomsNeeded - 1;
-		$number = $number - $capacity;
-	      }
-    	}
-   		else {
-	    	  
-     	    $_SESSION['registered'] = false;
-    	}
-    }
-  }
-  ?>
-
-  
+  <?php include'db.php'; ?>
   <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -199,8 +120,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					}
 				?>
 				</li>  
-			  			
-		      
 	    </ul>			
 	  </div><!--/.nav-collapse -->
 	</div>
@@ -218,21 +137,14 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	      <br/>
 			  <li class="nav-header" style="font-size:18px"><i class="icon-tags"></i> BOOKINGS</li>
 	      <br/><li class="active" ><a href="Booking.php" style="font-size:18px">Book Here</a></li>
-	      <?php
-	      	    if(isset($_SESSION['username']) && $_SESSION['username'] == 'admin') {
-			  echo '<br/><li><a href="View.php" style="font-size:18px">View All Bookings</a></li>';
-		    }
-		    else {
-			 echo '
-			  <br/><li><a href="Modify.php" style="font-size:18px">Modify Your Booking</a></li>
+			  <br/><li><a href="View.php" style="font-size:18px">View Your Booking</a></li>
+			  <br/><li><a href="modify.php" style="font-size:18px">Modify Your Booking</a></li>
 			  <br/><li><a href="Cancel.php" style="font-size:18px">Cancel Your Booking</a></li>
 			  <br/>
 			  <br/>
 			  <br/>
-			  <li><a href="Booking.php"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>';
-			 
-		    }
-		?>					  
+			  <li><a href="Booking.php"><button id="booknow" class="btn btn-medium btn-warning" type="button" style="margin-left: 30px; font-size: 24px; width: 200px; height: 50px;"><strong>Click To Book!</strong></button></a></li>
+					  
 	    </ul>
 	  </div><!--/.well -->
 	</div><!--/span-->
@@ -245,37 +157,13 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	      <br/>
 	      <br/>
 	      <br/>
+	      <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
 		  <div><h3 style="margin-left:20px">Book Your Room Here</h3></div>
-		  
-		  <form action="<?php $_SERVER['PHP_SELF']?>" method="post">
-		      
-		      <?php
-		      if (isset($_SESSION['message'])) {
-		      	echo '<h4 name="message"><font color = "red">'.$_SESSION['message'].'</font></h4>';
-			  	unset($_SESSION['message']);
-			  } 
-			  else if (isset($_SESSION['registered'])) {
-			 	 if ($_SESSION['registered']==true ) {
-			 	  $userid = $_SESSION['username'];
-			  	  $booking_query = $db->query("Select max(`booking_id`) as 'booking_id' from `Booking` where guest_id = '$userid'");
-			  	  $booking = $db->fetch_assoc($booking_query);
-  
-			  	  $message = 'Congratulations, your booking is successul!<br/>Please note your Booking Id - '.$booking['booking_id'].' for future references';
-			  	  echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
-			      unset($_SESSION['registered']); 
-				}
-				else {
-			  		$message = 'Sorry, All the rooms are full!<br/>Please select another room type';
-			  		echo '<h4 name="message"><font color = "red">'.$message.'</font></h4>';
-			  		unset($_SESSION['registered']); 
-				}
-		      }
-		      ?>
-		       <div class="row-fluid">
+		  <div class="row-fluid">
 			<div class="input-append span4">
 			      <br/>
 			  <div class="side-by-side clearfix" style="margin-left:20px">				
-			    <select id="form_field" name="facility" data-placeholder="Which are the facilities you would like	? (Optional to Choose)" style="width: 430px;height: 400px" multiple class="chzn-select" tabindex="8">
+			    <select id="form_field" data-placeholder="Which are the facilities you would like? (Optional to Choose)" style="width: 430px;height: 400px" multiple class="chzn-select" tabindex="8">
 			    <option value=""></option>
 			      <optgroup>
 				  <option value="pool">Swimming Pool</option>
@@ -284,7 +172,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 				  <option value="wifi">Wi-Fi</option>
 			      </optgroup>
 			      </select>
-				  <button name="faciltybtn" style="height: 29px; display:inline" id="loadbtn" type="button" class="btn btn-primary">Ok</button>
+				  <button style="height: 29px; display:inline" id="loadbtn" type="button" class="btn btn-primary">Ok</button>
 			    </div>
 			</div>
 		  </div><!--/span-->		
@@ -298,7 +186,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		    {
 			 echo '<option>'.stripslashes($hotel['city']).'</option>';
 		    }
-		     ?> 
+		   ?> 
 		  </select>
 			      
 		  <br/>
@@ -326,9 +214,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  <script>
 		  $(function() 
 		  {
-		  $( "#datepicker" ).datepicker({minDate: 0});
-		  });
-		  
+		  $( "#datepicker" ).datepicker({minDate: 'dateToday'});
+		  });		  
 		  </script>
 		  </div>
 			      
@@ -336,7 +223,8 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  <strong style="margin-left:20px"> Choose Departure Date <input type="text" name="departDate" id="datepicker2" class="input-medium" style="margin-left:32px;"/></strong>
 		  <script>
 		  $(function() {
-		  $( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
+		  //$( "#datepicker2" ).datepicker({ minDate: $( "#datepicker" ).val()+1 });
+		    $( "#datepicker2" ).datepicker({ minDate: '+1D' });		
 		  });
 		  </script>
 		  </div>
@@ -350,29 +238,31 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  <option>Superior Double Room</option> -->
 		  </select>
 		  <div>
-		      <!--<div>
+		      <div>
 		      <strong style="margin-left:20px"> Number Of Rooms </strong>
 		      <select type="text" name="numRooms"class="input-small" style="margin-left:71px;">
 		      <option>1</option>
 		      <option>2</option>
 		      <option>3</option>
 		      </select>
-		      </div> -->
+		      </div>
 		      
 		      <div>
-		      <strong style="margin-left:20px"> Number Of Guests </strong>
-		      <select type="text" name="numGuests" class="input-small" style="margin-left:60px;">
+		      <strong style="margin-left:20px"> Number Of Adults Per Room </strong>
+		      <select type="text" name="numAdults" class="input-small" style="margin-left:4px;">
 		      <option>1</option>
 		      <option>2</option>
-		      <option>3</option>
-		      <option>4</option>
-		      <option>5</option>
-		      <option>6</option>
-		      <option>7</option>
-		      <option>8</option>
 		      </select>
 		      </div>
 		      
+		      <div>
+		      <strong style="margin-left:20px"> Number Of Kids Per Room </strong>
+		      <select type="text" name="numKids" class="input-small" style="margin-left:17px;">
+		      <option>0</option>
+		      <option>1</option>
+		      <option>2</option>
+		      </select>
+		      </div>
 		      
 		      <br/>
 		      <br/>
@@ -390,31 +280,10 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	  <script src="chosen/chosen.jquery.js" type="text/javascript"></script>
 	  <script type="text/javascript">
 	    
-	    $("#loadbtn").click(function() {
-	      var temp = "";
-	      var G = document.getElementsByTagName('optgroup');
-	      var O = G[0].getElementsByTagName('option');
-	      for(i = 0; i < O.length; i++){
-		    if (O[i].selected) {
-		        temp = temp + i;
-		    }
-	      }	      
-		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facility=" + temp);
-	      
-	    });
-	    
 	    $("#city").change(function() {
-	      var temp = "";
-	      var G = document.getElementsByTagName('optgroup');
-	      var O = G[0].getElementsByTagName('option');
-	      for(i = 0; i < O.length; i++){
-		    if (O[i].selected) {
-		        temp = temp + i;
-		    }
-	      }
-		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val() + "&facility=" + temp);
+		  $("#hotel_name").load("gethotelname.php?choice=" + $("#city").val());
 		    
-		  $("#room_type").load("getroomtype.php?choice=&citychoice=" + $("#city").val());		    		    
+		     $("#room_type").load("getroomtype.php?choice=&citychoice=" + $("#city").val());		    		    
 	       });
 	       
 		       
@@ -425,13 +294,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		  $("#room_type").load("getroomtype.php?choice=" + value + "&citychoice=" + $("#city").val());		    		    
 	    });
 	       
-	       
-	    $("select").find("option:selected").each(function(){
-	      var value = $("#hotel_name").val();
-		value = value.replace(new RegExp(" ","g"), "%20"); 
-       
-		 $("#room_type").load("getroomtype.php?choice=" + value + "&citychoice=" + $("#city").val());		    		    
-	    });
 	       
 						$(document).ready(function()
 						{
@@ -450,36 +312,45 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						
 						$("#booknow").click(function () 
 						{
-
-							
 						if((($("#datepicker").val()=="")) && (($("#datepicker2").val()=="")))
 						document.getElementById('errormsg').innerHTML="*Please fill in your arrival and departure dates";
- 						
+						
 						else if((($("#datepicker").val()=="")))
 						document.getElementById('errormsg').innerHTML="*Please fill in your arrival date";
- 						
+						
 						else if(((($("#datepicker2").val()==""))))
 						document.getElementById('errormsg').innerHTML="*Please fill in your departure date";
- 						
- 						else
+						
+						else
 						document.getElementById('errormsg').innerHTML="";
-							
 						});
 						
-						$("#datepicker2").focus(function () 
+				        $('#datepicker').datepicker({					
+						onSelect: function() 
 						{
-							var date = $("#datepicker").datepicker('getDate');
-							if (date){
-							date.setDate(date.getDate() + 1);
-							$( "#datepicker2" ).datepicker( "option", "minDate", date );
-							}
-						});
+							//$( "#datepicker" ).datepicker({ minDate: new Date(2013, 1 - 1, 1) });
+						var date = $(this).datepicker('getDate',"minDate");
+						if (date){
+						date.setDate(date.getDate() + 1);
+						$( "#datepicker2" ).datepicker( "option", "minDate", date );
+						}
+
+						}}); 
+						
+						$('#datepicker2').datepicker({minDate: 'dateToday'}); 
 	  </script>
 						
 
     </div><!--/.fluid-container-->
-     
- 
+  
+  <?php
+  if (isset($_POST['submit'])) {
+    echo$_POST['city'];
+  // form not submitted
+  }
+  ?>
+
+   
 
   </body>
 </html>
