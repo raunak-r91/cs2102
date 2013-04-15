@@ -165,7 +165,7 @@
 			      <div style="margin-left:20px">
 			      <a href="CreateUser.php"><button type="button" class="btn"> Create a Guest </button></a>
 			      <a href="EditUser.php"><button type="button" class="btn"> Edit/Delete a Guest </button></a>
-			      <a href="CreateHotel.php"><button type="button" class="btn"> Create Hotel </button></a><br/>
+			      <a href="CreateHotel.php"><button type="button" class="btn"> Create Hotel </button></a>
 			      <a href="CreateRoom.php"><button type="button" class="btn"> Add Rooms </button></a><br/>
 			      </div>
 						<?php
