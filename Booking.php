@@ -94,17 +94,9 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 	header("Location: Login.html?from=booking");
       }
   ?>
-  <?php 
-  if (isset($_POST['submit'])) {
- 	date_default_timezone_set('Singapore');
-	$d1 = new DateTime('m/j/y');
-	$arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['departDate']);
-
-	if ($arriveDate < $d1) {
-	      	$_SESSION['message'] = "Please enter a valid depearture date";
-	}
-	else {
-	
+  <?php
+ if (isset($_POST['submit'])) {
+ 	
  	if(!isset($_POST['departDate']) || empty($_POST['departDate'])) {
 		$_SESSION['message'] = "Please fill in your departure date";
     }
@@ -112,10 +104,11 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
     else if(!isset($_POST['arriveDate']) || empty($_POST['arriveDate'])) {
     	$_SESSION['message'] = "Please fill in your arrival date";
     }
-    
-    else if(!isset($_POST['hotel_name']) || empty($_POST['hotel_name'])) {
+ 	
+ 	else if(!isset($_POST['hotel_name']) || empty($_POST['hotel_name'])) {
     	$_SESSION['message'] = "Please select Hotel. Remove facilities filter to view all hotels";
     }
+    
     else {
     	$userid = $_SESSION['username'];
     	$city = $_POST['city'];
@@ -172,7 +165,6 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
      	    $_SESSION['registered'] = false;
     	}
     }
-  }
   }
   ?>
 
