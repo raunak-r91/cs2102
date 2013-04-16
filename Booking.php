@@ -96,7 +96,14 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   ?>
   <?php 
   if (isset($_POST['submit'])) {
+ 	date_default_timezone_set('UTC');
+	$d1 = new DateTime('m/j/y');
+	$arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
 
+	if ($arriveDate < $d1) {
+	      	$_SESSION['message'] = "Please enter a valid depearture date";
+	}
+	else {
 	
  	if(!isset($_POST['departDate']) || empty($_POST['departDate'])) {
 		$_SESSION['message'] = "Please fill in your departure date";
@@ -165,6 +172,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
      	    $_SESSION['registered'] = false;
     	}
     }
+  }
   }
   ?>
 
