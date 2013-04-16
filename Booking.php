@@ -360,7 +360,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 		      </div> -->
 		      
 		      <div>
-		      <strong style="margin-left:28px"> Number Of Guests </strong>
+		      <strong style="margin-left:20px"> Number Of Guests </strong>
 		      <select type="text" name="numGuests" class="input-small" style="margin-left:60px;">
 		      <option>1</option>
 		      <option>2</option>

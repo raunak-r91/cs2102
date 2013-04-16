@@ -269,7 +269,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					</div>
 					
 					<div>
-					<strong style="margin-left:13px"> Number Of Guests </strong>
+					<strong style="margin-left:20px"> Number Of Guests </strong>
 					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:67px;">
 					
 					</select>
