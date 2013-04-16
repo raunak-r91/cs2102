@@ -88,7 +88,7 @@ session_start();
   <?php include'db.php';
   
       if(!isset($_SESSION['username'])) {
-	header("Location: Login.html?from=modify");
+	header("Location: Login.php?from=modify");
       }
   ?>
    <?php
