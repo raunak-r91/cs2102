@@ -83,7 +83,7 @@
   <body>
     <?php include'db.php';
           if(!isset($_SESSION['username'])) {
-	header("Location: Login.php?from=booking");
+	header("Location: Login.html?from=booking");
       }
     
     ?>
