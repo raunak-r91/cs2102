@@ -255,22 +255,22 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Location </strong>
-					<select type="text" disabled class="input-medium" name="hotel_city" id="hotel_city" style="margin-left:129px;">
+					<strong style="margin-left:22px"> Location </strong>
+					<select type="text" disabled class="input-medium" name="hotel_city" id="hotel_city" style="margin-left:132px;">
 					
 					</select>
 					</div>
 					
 					<div>
-					<strong style="margin-left:20px"> Hotel Name </strong>
-					<select type="text" disabled class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:110px;">
+					<strong style="margin-left:22px"> Hotel Name </strong>
+					<select type="text" disabled class="input-medium" name="hotel_name" id="hotel_name" style="margin-left:112px;">
 			
 					</select>
 					</div>
 					
 					<div>
-					<strong style="margin-left:13px"> Number Of Guests </strong>
-					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:67px;">
+					<strong style="margin-left:22px"> Number Of Guests </strong>
+					<select type="text" disabled name="numGuests" id="numGuests" class="input-small" style="margin-left:63px;">
 					
 					</select>
 					</div>
