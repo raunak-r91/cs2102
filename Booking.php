@@ -466,7 +466,7 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
 						$('#datepicker').datepicker({					
 						onSelect: function() 
 						{
-						$( "#datepicker" ).datepicker({minDate: 'dateToday'});
+						$( "#datepicker" ).datepicker({minDate: 0});
 
 							//$( "#datepicker" ).datepicker({ minDate: new Date(2013, 1 - 1, 1) });
 						var date = $(this).datepicker('getDate',"minDate");
