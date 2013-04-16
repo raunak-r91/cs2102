@@ -97,10 +97,10 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   <?php 
   if (isset($_POST['submit'])) {
  	date_default_timezone_set('Singapore');
-	$d1 = new DateTime('m/j/y');
-	$departDate = DateTime::createFromFormat('m/j/Y',$_POST['departDate']);
+	$d1 = date('m/j/y');
+	$arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['departDate']);
 
-	if ($departDate < $d1) {
+	if ($arriveDate < $d1) {
 	      	$_SESSION['message'] = "Please enter a valid depearture date";
 	}
 	else {
