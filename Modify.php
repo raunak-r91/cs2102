@@ -186,7 +186,6 @@ session_start();
 			   OR '$departDate' BETWEEN b.`arrival` AND b.`departure`
 			   OR b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
 			   OR b.`departure` BETWEEN '$arriveDate' AND '$departDate')
-			   AND b.room_number <> $currentroom
 			   
 	   )");
      
