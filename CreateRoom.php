@@ -154,7 +154,6 @@
 
 		      else {
 			  $name = $_POST['hotel_name'];
-			  $city = $_POST['city'];	
 			  $number = $_POST['room_number'];
 			  $type = $_POST['room_type'];
 			  $price = $_POST['price'];
