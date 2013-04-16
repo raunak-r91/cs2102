@@ -177,7 +177,7 @@ session_start();
 	   
 	       $check_query = $db->query("SELECT *
 	   FROM `Room` r
-	       WHERE r.`hotel_name` = '$hotelname' AND r.`hotel_country` = 'India' AND r.`hotel_city` = '$city' AND r.`type` = '$roomType'
+	       WHERE r.`hotel_name` = '$hotelname' AND r.`hotel_country` = 'India' AND r.`hotel_city` = '$city' AND r.`type` = '$roomType' AND r.`capacity` >= '$number'
 	       AND r.`number` NOT IN (
 		       SELECT b.`room_number`
 		       FROM `Booking` b
