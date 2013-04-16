@@ -437,7 +437,7 @@ session_start();
 					  }
 					  ?>
 					</div>
-					<h5 style="margin-left:20px">In case you would like to cancel your booking click <a href="Cancel.php"">Cancel Booking</a>.</h5>
+					<h5 style="margin-left:20px">In case you would like to cancel your booking click <a href="Cancel.html"">Cancel Booking</a>.</h5>
 			    </div><!--/hererow-->
 		  </form>
 
