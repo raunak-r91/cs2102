@@ -108,43 +108,43 @@ session_start();
 	   $number = intval($getcurrentroom['guests']);
 	   $flag = true;
       
-       if ( ($departDateSet && $arriveDateSet)) {
-	    $_SESSION['message'] = "Please enter the correct date or room type for modification";
-	    $flag = false;
-       }
-       
-       else if (!$arriveDateSet && !$departDateSet) {
-	$arriveDate = DateTime::createFromFormat('m/d/Y',$_POST['arriveDate']);
-	$arriveDate = $arriveDate->format('Y-m-d');
-	$departDate = DateTime::createFromFormat('m/d/Y', $_POST['departDate']);
-	$departDate = $departDate->format('Y-m-d');    	
-	  if($arriveDate > $departDate) {
-	     $_SESSION['message'] = "The dates entered are incorrect";
-	     $flag = false;
-	  }
-	  
-
-       }
-       
-       else if(!$arriveDateSet && $departDateSet) {
-	  $arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
-	  $arriveDate = $arriveDate->format('Y-m-d');
-	  
-	  if ($arriveDate >  $getcurrentroom['departure']) {
-	    $_SESSION['message'] = "The date entered is incorrect";
-	    $flag = false;
-	  }
-       }
-       
-       else if($arriveDateSet && !$departDateSet) {
-	  $departDate = DateTime::createFromFormat('m/j/Y',$_POST['departDate']);
-	  $departDate = $departDate->format('Y-m-d');
-	  
-	  if ($departDate <  $getcurrentroom['arrival']) {
-	    $_SESSION['message'] = "The date entered is incorrect";
-	    $flag = false;
-	  }
-       }
+//       if ( ($departDateSet && $arriveDateSet)) {
+//	    $_SESSION['message'] = "Please enter the correct date or room type for modification";
+//	    $flag = false;
+//       }
+//       
+//       else if (!$arriveDateSet && !$departDateSet) {
+//	$arriveDate = DateTime::createFromFormat('m/d/Y',$_POST['arriveDate']);
+//	$arriveDate = $arriveDate->format('Y-m-d');
+//	$departDate = DateTime::createFromFormat('m/d/Y', $_POST['departDate']);
+//	$departDate = $departDate->format('Y-m-d');    	
+//	  if($arriveDate > $departDate) {
+//	     $_SESSION['message'] = "The dates entered are incorrect";
+//	     $flag = false;
+//	  }
+//	  
+//
+//       }
+//       
+//       else if(!$arriveDateSet && $departDateSet) {
+//	  $arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
+//	  $arriveDate = $arriveDate->format('Y-m-d');
+//	  
+//	  if ($arriveDate >  $getcurrentroom['departure']) {
+//	    $_SESSION['message'] = "The date entered is incorrect";
+//	    $flag = false;
+//	  }
+//       }
+//       
+//       else if($arriveDateSet && !$departDateSet) {
+//	  $departDate = DateTime::createFromFormat('m/j/Y',$_POST['departDate']);
+//	  $departDate = $departDate->format('Y-m-d');
+//	  
+//	  if ($departDate <  $getcurrentroom['arrival']) {
+//	    $_SESSION['message'] = "The date entered is incorrect";
+//	    $flag = false;
+//	  }
+//       }
        
        if ($flag) {
 	   
