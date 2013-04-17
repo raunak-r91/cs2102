@@ -94,26 +94,26 @@ session_start();
    <?php
  if (isset($_POST['modifybtn'])) {
    
-      $alltypesSet = empty($_POST['allTypes']);
-      $departDateSet = empty($_POST['departDate']);
-      $arriveDateSet = empty($_POST['arriveDate']);
+      $alltypesNotSet = empty($_POST['allTypes']);
+      $departDateNotSet = empty($_POST['departDate']);
+      $arriveDateNotSet = empty($_POST['arriveDate']);
       
       $bookingid = $_POST['bookingID'];
 	   
-	   $getroom_query = $db->query("SELECT * FROM `Booking` b WHERE b.`booking_id` = '$bookingid'");
-	   $getcurrentroom = mysql_fetch_assoc($getroom_query);
-	   $currentroom = intval($getcurrentroom['room_number']);
-	   $city = $getcurrentroom['hotel_city'];
-	   $hotelname = $getcurrentroom['hotel_name'];
-	   $number = intval($getcurrentroom['guests']);
-	   $flag = true;
+      $getroom_query = $db->query("SELECT * FROM `Booking` b WHERE b.`booking_id` = '$bookingid'");
+      $getcurrentroom = mysql_fetch_assoc($getroom_query);
+      $currentroom = intval($getcurrentroom['room_number']);
+      $city = $getcurrentroom['hotel_city'];
+      $hotelname = $getcurrentroom['hotel_name'];
+      $number = intval($getcurrentroom['guests']);
+      $flag = true;
       
-       if ( ($departDateSet && $arriveDateSet)) {
+       if ( $departDateNotSet && $arriveDateNotSet && $alltypesNotSet) {
 	    $_SESSION['message'] = "Please enter the correct date or room type for modification";
 	    $flag = false;
        }
        
-       else if (!$arriveDateSet && !$departDateSet) {
+       else if (!$arriveDateNotSet && !$departDateNotSet) {
 	$arriveDate = DateTime::createFromFormat('m/d/Y',$_POST['arriveDate']);
 	$arriveDate = $arriveDate->format('Y-m-d');
 	$departDate = DateTime::createFromFormat('m/d/Y', $_POST['departDate']);
@@ -126,7 +126,7 @@ session_start();
 
        }
        
-       else if(!$arriveDateSet && $departDateSet) {
+       else if(!$arriveDateNotSet && $departDateNotSet) {
 	  $arriveDate = DateTime::createFromFormat('m/j/Y',$_POST['arriveDate']);
 	  $arriveDate = $arriveDate->format('Y-m-d');
 	  
@@ -136,7 +136,7 @@ session_start();
 	  }
        }
        
-       else if($arriveDateSet && !$departDateSet) {
+       else if($arriveDateNotSet && !$departDateNotSet) {
 	  $departDate = DateTime::createFromFormat('m/j/Y',$_POST['departDate']);
 	  $departDate = $departDate->format('Y-m-d');
 	  
@@ -149,7 +149,7 @@ session_start();
        if ($flag) {
 	   
 	   
-	   if ($arriveDateSet) {
+	   if ($arriveDateNotSet) {
 	     $arriveDate = $getcurrentroom['arrival'];
 	   }
 	   else {
@@ -157,7 +157,7 @@ session_start();
 	     $arriveDate = $arriveDate->format('Y-m-d');
 	   }
 	   
-	  if ($departDateSet) {
+	  if ($departDateNotSet) {
 	     $departDate = $getcurrentroom['departure'];
 	   }
 	   else {
