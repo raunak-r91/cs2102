@@ -100,17 +100,7 @@ session_start();
       
       $bookingid = $_POST['bookingID'];
 	   
-<<<<<<< HEAD
-      $getroom_query = $db->query("SELECT * FROM `Booking` b WHERE b.`booking_id` = '$bookingid'");
-      $getcurrentroom = mysql_fetch_assoc($getroom_query);
-      $currentroom = intval($getcurrentroom['room_number']);
-      $city = $getcurrentroom['hotel_city'];
-      $hotelname = $getcurrentroom['hotel_name'];
-      $number = intval($getcurrentroom['guests']);
-      $flag = true;
-      
-       if ( $departDateNotSet && $arriveDateNotSet && $alltypesNotSet) {
-=======
+
 	   $getroom_query = $db->query("SELECT * FROM `Booking` b WHERE b.`booking_id` = '$bookingid'");
 	   $getcurrentroom = mysql_fetch_assoc($getroom_query);
 	   $currentroom = intval($getcurrentroom['room_number']);
@@ -118,13 +108,10 @@ session_start();
 	   $city = $getcurrentroom['hotel_city'];
 	   $hotelname = $getcurrentroom['hotel_name'];
 	   $number = intval($getcurrentroom['guests']);
-	   echo $currentroom;
-	   echo $city;
-	   echo $hotel_name;
+	   
 	   $flag = true;
       
-       if ( ($departDateSet && $arriveDateSet && $alltypesSet)) {
->>>>>>> Debugging Modify
+       if ( $departDateNotSet && $arriveDateNotSet && $alltypesNotSet) {
 	    $_SESSION['message'] = "Please enter the correct date or room type for modification";
 	    $flag = false;
        }
