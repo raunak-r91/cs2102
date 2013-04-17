@@ -153,7 +153,8 @@
 			  $name = $_POST['hotel_name'];
 			  $type = $_POST['room_type'];
 			  $price = $_POST['price'];
-
+			  $city = $_POST['city'];
+			  
 			  if ($_POST['room_type'] == 'Single'){
 			    $capacity = 1;
 			  }
