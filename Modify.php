@@ -98,7 +98,7 @@ session_start();
       $departDateNotSet = empty($_POST['departDate']);
       $arriveDateNotSet = empty($_POST['arriveDate']);
       
-      $bookingid = $_POST['bookingID'];
+      $bookingid = $_GET['bookingid'];
 	   
 
 	   $getroom_query = $db->query("SELECT * FROM `Booking` b WHERE b.`booking_id` = '$bookingid'");
@@ -200,7 +200,7 @@ session_start();
 	      $_SESSION['registered'] = true;
 	   }
 	  else {
-	    $_SESSION['message'] = $_GET['bookingid']." Sorry, no rooms are available for your given choices";
+	    $_SESSION['message'] = " Sorry, no rooms are available for your given choices";
 	    $_SESSION['registered'] = false;
 	   }
        
