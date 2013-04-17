@@ -188,7 +188,7 @@ session_start();
 			   AND ('$arriveDate' BETWEEN b.`arrival` AND b.`departure`
 			   OR '$departDate' BETWEEN b.`arrival` AND b.`departure`
 			   OR b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
-			   OR b.`departure` BETWEEN '$arriveDate' AND '$departDate')
+			   OR b.`departure` BETWEEN '$arriveDate' AND '$departDate') AND b.`room_number` <> r.`number`
 			   
 	   )");
      
@@ -302,12 +302,14 @@ session_start();
   
 			  	  $message = 'Congratulations, your booking is has been successfully updated! (Booking Id - '.$booking['booking_id'].')';
 			  	  echo '<div><strong style="margin-left:20px"><font color = "red">'.$message.'</font></strong></div>';
-			      unset($_SESSION['registered']); 
+			      unset($_SESSION['registered']);
+			      			  	unset($_SESSION['message']);
 				}
 				else {
 			  		$message = 'Sorry, All the rooms are full!<br/>Please select another room type';
 			  		echo '<div><strong style="margin-left:20px"><font color = "red">'.$message.'</font></strong></div>';
-			  		unset($_SESSION['registered']); 
+			  		unset($_SESSION['registered']);
+								  	unset($_SESSION['message']);
 				}
 		      }
 		      ?>

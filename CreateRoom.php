@@ -145,16 +145,12 @@
 		  <div>
 		   <?php
 		  if (isset($_POST['submit'])) {
-		      if (!isset($_POST['room_number'])|| empty($_POST['room_number'])) {
-			  echo '<h5 style="color:red;margin-left:20px">Please enter the rooom number!</h5>';
-		      }
-		      else if (!isset($_POST['price'])|| empty($_POST['price'])) {
+		      if (!isset($_POST['price'])|| empty($_POST['price'])) {
 			  echo '<h5 style="color:red;margin-left:20px">Please enter the price of the room!</h5>';
 		      }
 
 		      else {
 			  $name = $_POST['hotel_name'];
-			  $number = $_POST['room_number'];
 			  $type = $_POST['room_type'];
 			  $price = $_POST['price'];
 
@@ -217,8 +213,6 @@
 					      }    
 					  ?> 
 					  </select>
-
-					  <strong style="margin-left:20px">Room Number </strong><input name="room_number" style="width:200px;margin-left:80px" type="text" class="input-block-level">
 					  <br/><strong style="margin-left:20px">Room Type</strong>
 					  <select type="text" name="room_type" id="room_type" class="input-medium" style="margin-left:60px;">
 					  <option>Single</option>
