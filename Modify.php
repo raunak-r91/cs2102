@@ -200,7 +200,7 @@ session_start();
 	      $_SESSION['registered'] = true;
 	   }
 	  else {
-	    $_SESSION['message'] = "'$bookingid' Sorry, no rooms are available for your given choices";
+	    $_SESSION['message'] = $_GET['bookingid']." Sorry, no rooms are available for your given choices";
 	    $_SESSION['registered'] = false;
 	   }
        
