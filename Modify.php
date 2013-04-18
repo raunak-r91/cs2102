@@ -98,7 +98,13 @@ session_start();
       $departDateNotSet = empty($_POST['departDate']);
       $arriveDateNotSet = empty($_POST['arriveDate']);
       
-      $bookingid = $_POST['bookingID'];
+      $username = $_SESSION['username'];
+      if($username == 'admin') {
+      	$bookingid = $_GET['bookingid'];
+      }
+      else {
+      	$bookingid = $_POST['bookingID'];
+      }
 	   
 
 	   $getroom_query = $db->query("SELECT * FROM `Booking` b WHERE b.`booking_id` = '$bookingid'");
