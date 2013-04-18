@@ -340,6 +340,7 @@ session_start();
 					?>
 				      
 					<div>
+					<select>
 					<strong style="margin-left:20px"> Choose Booking ID </strong>
 					 <?php
 					  $username = $_SESSION['username'];
