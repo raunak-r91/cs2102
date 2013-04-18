@@ -200,7 +200,19 @@ session_start();
 	      $_SESSION['registered'] = true;
 	   }
 	  else {
-	    $_SESSION['message'] = "Sorry, no rooms are available for your given choices";
+	    $_SESSION['message'] = "SELECT *
+	   FROM `Room` r
+	       WHERE r.`hotel_name` = '$hotelname' AND r.`hotel_country` = 'India' AND r.`hotel_city` = '$city' AND r.`type` = '$roomType' AND r.`capacity` >= '$number'
+	       AND r.`number` NOT IN (
+		       SELECT b.`room_number`
+		       FROM `Booking` b
+		       WHERE b.`hotel_name` = '$hotelname' AND b.`hotel_country` = 'India' AND b.`hotel_city` = '$city'
+			   AND ('$arriveDate' BETWEEN b.`arrival` AND b.`departure`
+			   OR '$departDate' BETWEEN b.`arrival` AND b.`departure`
+			   OR b.`arrival` BETWEEN '$arriveDate' AND '$departDate'
+			   OR b.`departure` BETWEEN '$arriveDate' AND '$departDate') AND b.`room_number` <> r.`number`
+			   
+	   )";
 	    $_SESSION['registered'] = false;
 	   }
        
@@ -442,7 +454,7 @@ session_start();
 					  }
 					  ?>
 					</div>
-					<h5 style="margin-left:20px">In case you would like to cancel your booking click <a href="Cancel.html"">Cancel Booking</a>.</h5>
+					<h5 style="margin-left:20px">In case you would like to cancel your booking click <a href="Cancel.php"">Cancel Booking</a>.</h5>
 			    </div><!--/hererow-->
 		  </form>
 
@@ -505,7 +517,7 @@ session_start();
 						{
 							var date = $("#datepicker").datepicker('getDate');
 							if (date){
-							date.setDate(date + 1);
+							date.setDate(date.getDate() + 1);
 							$( "#datepicker2" ).datepicker( "option", "minDate", date );
 							}
 						});
