@@ -4,7 +4,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>The Renaissance Group</title>
+    <title>The Fortuna Group</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -95,7 +95,7 @@
 					}
 					else 
 					{
-						echo '<li><a href="Login.html" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
+						echo '<li><a href="Login.php" style="color:white"><i class="icon-lock icon-white"></i> Login/Signup</a></li>
 								<li class="divider-vertical"></li>
 								<li class="divider-vertical"></li>';
 					}
@@ -189,7 +189,7 @@
 			<div class="span4">
 				<br/>
 				<blockquote class="well">
-				<p style="font-size: 32px; font-family:Georgia;">Renaissance provides 7-star luxury and service for the price of a 4-star.</p>
+				<p style="font-size: 32px; font-family:Georgia;">Fortuna provides 7-star luxury and service for the price of a 4-star.</p>
 				<small>Sidney Gosel, <cite title="Source Title">The New York Times</cite></small>
 				</blockquote>	
 			</div>

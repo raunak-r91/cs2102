@@ -7,7 +7,7 @@ session_start();
   
   <head>
     <meta charset="utf-8">
-    <title>The Renaissance Group</title>
+    <title>The Fortuna Group</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -88,7 +88,7 @@ session_start();
   <?php include'db.php';
   
       if(!isset($_SESSION['username'])) {
-	header("Location: Login.html?from=modify");
+	header("Location: Login.php?from=modify");
       }
   ?>
    <?php
@@ -200,7 +200,7 @@ session_start();
 	      $_SESSION['registered'] = true;
 	   }
 	  else {
-	    $_SESSION['message'] = " Sorry, no rooms are available for your given choices";
+	    $_SESSION['message'] = "Sorry, no rooms are available for your given choices";
 	    $_SESSION['registered'] = false;
 	   }
        
