@@ -98,7 +98,7 @@ session_start();
       $departDateNotSet = empty($_POST['departDate']);
       $arriveDateNotSet = empty($_POST['arriveDate']);
       
-      $bookingid = $_GET['bookingid'];
+      $bookingid = $_POST['bookingid'];
 	   
 
 	   $getroom_query = $db->query("SELECT * FROM `Booking` b WHERE b.`booking_id` = '$bookingid'");
