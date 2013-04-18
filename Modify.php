@@ -207,11 +207,10 @@ session_start();
 	   }
 	  else {
 	    $_SESSION['message'] = "Sorry, no rooms are available for your given choices";
-	    $_SESSION['registered'] = false;
 	   }
        
        }
-       unset($_POST['modifybtn']);
+
  }
  ?>
   
