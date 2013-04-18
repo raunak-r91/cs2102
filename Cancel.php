@@ -97,7 +97,13 @@ WEBSITE : HOMEPAGE OF A HOTEL'S WEBSITE
   
   <?php
     if(isset($_POST['cancelbtn'])) {
-      $bookingid = $_POST['bookingID'];
+    	$username = $_SESSION['username'];
+    	if($username == 'admin') {
+    		$bookingid = $_GET['bookingid'];
+    	}
+    	else {
+    		$bookingid = $_POST['bookingID'];
+    	}
       if($bookingid == "Choose Booking ID") {
 	$_SESSION['registered'] = false;
       }
