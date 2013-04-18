@@ -98,7 +98,7 @@ session_start();
       $departDateNotSet = empty($_POST['departDate']);
       $arriveDateNotSet = empty($_POST['arriveDate']);
       
-      $bookingid = $_POST['bookingid'];
+      $bookingid = $_POST['bookingID'];
 	   
 
 	   $getroom_query = $db->query("SELECT * FROM `Booking` b WHERE b.`booking_id` = '$bookingid'");
@@ -340,7 +340,6 @@ session_start();
 					?>
 				      
 					<div>
-					<select>
 					<strong style="margin-left:20px"> Choose Booking ID </strong>
 					 <?php
 					  $username = $_SESSION['username'];
