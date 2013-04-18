@@ -211,6 +211,7 @@ session_start();
 	   }
        
        }
+       unset($_POST['modifybtn']);
  }
  ?>
   
